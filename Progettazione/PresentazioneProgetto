@@ -7,5 +7,14 @@ Progetto Web App: Gestore Eventi
 - puoi creare eventi pubblici accessibili a tutti
 - puoi confermare la partecipazione agli eventi (gli eventi presentati saranno forniti di tutte le info necessarie)
 
-Problematiche da risolvere:
-- 
+PROBLEMATICHE DA RISOLVERE:
+- problemi organizzativi (messaggi non letti/ignorati, inviti cartacei non ricevuti) 
+- difficile comprensione e disordine delle varie specifiche (informazioni automatizzate con AI a partire dal luogo dell'evento)
+- difficoltà a trovare persone da invitare (eventi pubblici)
+
+CHICCHE
+- inviti personalizzati tramite uso di layout personalizzati con AI
+- autocompletamento delle informazioni relative al luogo dell'evento con uso di AI
+- sondaggi per gli invitati sugli eventi pubblici (cosa più remota)
+- link personalizzabili con accesso limitato agli invitati.
+
