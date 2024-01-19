@@ -1,2 +1,11 @@
-Progetto Web App: Gestore Eventi.
-si
+Progetto Web App: Gestore Eventi
+- puoi creare un evento e invitare amici
+  - scegliere dalla mappa il luogo e ricerca automatica di informazioni (da sviluppare)
+  - impostare un timer per accettare l'invito
+  - possibilità di rimodellare l'invito con AI (da sviluppare)
+- puoi creare una lista di amici stretti
+- puoi creare eventi pubblici accessibili a tutti
+- puoi confermare la partecipazione agli eventi (gli eventi presentati saranno forniti di tutte le info necessarie)
+
+Problematiche da risolvere:
+- 
