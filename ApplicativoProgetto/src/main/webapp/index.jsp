@@ -4,6 +4,7 @@
 <%
     String redirectURL = "http://localhost:8080/ApplicativoProgetto/login.jsp";
     response.sendRedirect(redirectURL);
+    out.write("cs");
 %>
 </body>
 </html>
