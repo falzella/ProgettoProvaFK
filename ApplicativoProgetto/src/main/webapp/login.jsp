@@ -10,6 +10,10 @@
 
 <div class="grid">
 
+    <div class="form__field">
+        <img src="images/quello_bello.svg" alt="Immagine di login" class="login__image">
+    </div>
+
     <form action="https://httpbin.org/post" method="POST" class="form login">
 
         <div class="form__field">
