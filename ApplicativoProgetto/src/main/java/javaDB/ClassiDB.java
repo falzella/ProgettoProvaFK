@@ -22,13 +22,13 @@ public class ClassiDB {
         ResultSet rs = stmt.executeQuery(sql);
 
         if (rs.next()) {
-            return getDipendenteFromResultSet(rs);
+            return getUtenteFromResultSet(rs);
         } else {
             return null;
         }
     }
 
-    public Utente getDipendenteFromResultSet(ResultSet rs) throws SQLException {
+    public Utente getUtenteFromResultSet(ResultSet rs) throws SQLException {
         String id_utente = rs.getString("Id_Utente");
         String username = rs.getString("Username");
         String password = rs.getString("Password");

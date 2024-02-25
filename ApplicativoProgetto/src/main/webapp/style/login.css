@@ -64,6 +64,14 @@
     border-radius: 15px;
 }
 
+.whiteboardlong {
+    background-color: white !important;
+    height: 810px;
+    width: 410px;
+    border-radius: 15px;
+}
+
+
 video {
     position: fixed;
     top: 0;
@@ -146,6 +154,8 @@ input[type='submit'] {
 
 .form input[type='password'],
 .form input[type='text'],
+.form input[type='email'],
+.form input[type='date'],
 .form input[type='submit'] {
     width: 100%;
 }
@@ -173,6 +183,8 @@ input[type='submit'] {
 .login label,
 .login input[type='text'],
 .login input[type='password'],
+.form input[type='email'],
+.form input[type='date'],
 .login input[type='submit'] {
     border-radius: 10px; /*0.25rem*/
     padding: 16px;
@@ -190,6 +202,8 @@ input[type='submit'] {
 }
 
 .login input[type='password'],
+.form input[type='email'],
+.form input[type='date'],
 .login input[type='text'] {
     background-color: #eee;
     border-bottom-left-radius: 0;
