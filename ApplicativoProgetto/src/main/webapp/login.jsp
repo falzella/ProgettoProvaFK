@@ -17,6 +17,10 @@
                     <img src="images/quello_bello_cropped.svg" alt="Immagine di login" class="login__image">
                 </div>
 
+                <div class="center-text">
+                    Welcome to KAMI!
+                </div>
+
                 <form action="https://httpbin.org/post" method="POST" class="form login">
 
                     <div class="form__field">
