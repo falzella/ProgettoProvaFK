@@ -18,7 +18,13 @@
                 </div>
 
                 <div class="center-text">
-                    Welcome to KAMI!
+                    <%
+                        String message = request.getParameter("messaggio");
+                        if(message == null || message.isEmpty()) {
+                            message = "Welcome to KAMI!";
+                        }
+                        out.write(message);
+                    %>
                 </div>
 
                 <form action="accesso.jsp" method="POST" class="form login">

@@ -18,7 +18,7 @@
         </div>
 
         <div class="center-text">
-            Register for KAMI!
+            Complete all the fields below
         </div>
 
         <form action="registration.jsp" method="POST" class="form login">

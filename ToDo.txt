@@ -1,0 +1,5 @@
+COSE DA FARE:
+- cambiare il colore di KAMI in rosso chiaro
+- whiteboardlong è troppo lunga (820px -> 750px) ma è meglio sostituire i px con le percentuali
+- mettere tutto il CSS in un solo file
+- chiedere al pino per il salvataggio di MIME
