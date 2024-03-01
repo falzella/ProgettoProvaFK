@@ -67,6 +67,27 @@ public class ClassiDB {
         return true;
     }
 
+    public boolean usernameEsistente(String username) {
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM utenti WHERE Username = ?";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, username);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    return count > 0; // Restituisce true se lo username esiste già, altrimenti false
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // In caso di errore, assume che lo username non esista
+    }
+
+
 
 
     public void setIdUtente(Utente utente) {
