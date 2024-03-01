@@ -31,6 +31,8 @@
 
     if (!password.equals(password2)) {
         response.sendRedirect("signup.jsp?messaggio=Le password non coincidono");
+    } else if (conn.usernameEsistente(username)) {
+        response.sendRedirect("signup.jsp?messaggio=Username gia' in uso");
     } else {
         Utente user = new Utente(username, password, mail, nome, cognome, data);
         session.setAttribute("user", user);
