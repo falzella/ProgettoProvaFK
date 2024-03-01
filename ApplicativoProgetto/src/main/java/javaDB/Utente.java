@@ -12,10 +12,22 @@ public class Utente {
 
 
 
-
+    //costruttore per login
     public Utente(String id_utente, String username, String password, String mail, String nome, String cognome, String data_nascita) {
         super();
         this.id_utente = id_utente;
+        this.username = username;
+        this.password = password;
+        this.mail = mail;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.data_nascita = data_nascita;
+    }
+
+    //costruttore per registrazione
+    public Utente(String username, String password, String mail, String nome, String cognome, String data_nascita) {
+        super();
+        this.id_utente = null;
         this.username = username;
         this.password = password;
         this.mail = mail;

@@ -18,10 +18,16 @@
         </div>
 
         <div class="center-text">
-            Complete all the fields below
+            <%
+                String message = request.getParameter("messaggio");
+                if(message == null || message.isEmpty()) {
+                    message = "Complete all the fields below";
+                }
+                out.write(message);
+            %>
         </div>
 
-        <form action="registration.jsp" method="POST" class="form login">
+        <form action="registra.jsp" method="POST" class="form login">
 
             <div class="form__field">
                 <label for="signup__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
@@ -35,17 +41,17 @@
 
             <div class="form__field">
                 <label for="signup__firstname"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">First Name</span></label>
-                <input id="signup__firstname" type="text" name="firstname" class="form__input" placeholder="First Name" required>
+                <input id="signup__firstname" type="text" name="nome" class="form__input" placeholder="First Name" required>
             </div>
 
             <div class="form__field">
                 <label for="signup__lastname"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Last Name</span></label>
-                <input id="signup__lastname" type="text" name="lastname" class="form__input" placeholder="Last Name" required>
+                <input id="signup__lastname" type="text" name="cognome" class="form__input" placeholder="Last Name" required>
             </div>
 
             <div class="form__field">
                 <label for="signup__birthdate"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg><span class="hidden">Date of Birth</span></label>
-                <input id="signup__birthdate" type="date" name="birthdate" class="form__input" required>
+                <input id="signup__birthdate" type="date" name="data" class="form__input" required>
             </div>
 
             <div class="form__field">
@@ -55,7 +61,7 @@
 
             <div class="form__field">
                 <label for="signup__confirm_password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Confirm Password</span></label>
-                <input id="signup__confirm_password" type="password" name="confirm_password" class="form__input" placeholder="Confirm Password" required>
+                <input id="signup__confirm_password" type="password" name="password2" class="form__input" placeholder="Confirm Password" required>
             </div>
 
             <div class="form__field">

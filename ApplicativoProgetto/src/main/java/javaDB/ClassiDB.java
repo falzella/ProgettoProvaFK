@@ -12,7 +12,7 @@ public class ClassiDB {
         // caricamento driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // connessione database
-        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "");
+        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "grandesql");
 
         this.stmt = cn.createStatement();
     }
@@ -39,6 +39,53 @@ public class ClassiDB {
 
 
         return new Utente(id_utente, username, password, mail, nome, cognome, data_nascita);
+    }
+
+    public boolean inserisciUtenza(Utente p) {
+        try {
+            String sql = "INSERT INTO utenti (Username, Password, Mail, Nome, Cognome, Data_Nascita) VALUES (?, ?, ?, ?, ?, ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, p.getUsername());
+                preparedStatement.setString(2, p.getPassword());
+                preparedStatement.setString(3, p.getMail());
+                preparedStatement.setString(4, p.getNome());
+                preparedStatement.setString(5, p.getCognome());
+                preparedStatement.setString(6, p.getData_nascita());
+
+
+                //p.setData_nascita(p.getData_nascita());
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        setIdUtente(p);
+
+        return true;
+    }
+
+
+
+    public void setIdUtente(Utente utente) {
+        try {
+            String sql = "SELECT Id_Utente FROM utenti WHERE Username = ?";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, utente.getUsername());
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    String id_utente = rs.getString("Id_Utente");
+                    utente.setId_utente(id_utente);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
