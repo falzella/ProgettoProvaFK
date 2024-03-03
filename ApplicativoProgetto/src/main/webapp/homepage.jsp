@@ -4,40 +4,42 @@
     <title>homepage</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
 
+</head>
+<body class="homepage-body">
     <header>
         <div class="vcenter-div">
             <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
-            <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="cerca in KAMI!" name="search">
-                </form>
-            </div>
         </div>
     </header>
-
-</head>
-<body class="homepage-body">
-    <div class="container-fluid">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Export</a></li>
-                </ul>
+    <div>
+        <div class="sidebar">
+            <div class="navigation-contents">
+                <div class="navigation-element">nuovo evento</div>
+                <div class="navigation-element">i tuoi eventi</div>
+                <div class="navigation-element">partecipazioni</div>
+                <div class="navigation-element">Export</div>
             </div>
+        </div>
 
-            <div class="col-sm-3 col-md-2 sidebar-right">
-                <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Export</a></li>
-                </ul>
+        <div class="sidebar-right">
+            <div class="navigation-contents">
+                <div class="navigation-element">Overview</div>
+                <div class="navigation-element">Reports</div>
+                <div class="navigation-element">Analytics</div>
+                <div class="navigation-element">Export</div>
             </div>
+        </div>
     </div>
     <div class="homepage-flow">
-        center stuff
+        <div class="event-block">
+            NEW EVENT
+        </div>
+        <div class="event-block">
+            NEW EVENT
+        </div>
+        <div class="event-block">
+            NEW EVENT
+        </div>
     </div>
 </body>
 </html>
