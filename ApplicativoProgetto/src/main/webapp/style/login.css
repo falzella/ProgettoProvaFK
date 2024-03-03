@@ -57,17 +57,29 @@
     width: 1em;
 }
 
+@media only screen and (max-width: 768px) {
+    .whiteboard {
+        height: 53%;
+        width: 27%;
+    }
+    .whiteboardlong {
+        height: 96%;
+        width: 27%;
+    }
+}
+
+
 .whiteboard {
     background-color: white;
-    height: 53%;
-    width: 27%;
+    height: 35%;
+    width: 20%;
     border-radius: 15px;
 }
 
 .whiteboardlong {
     background-color: white;
-    height: 96%;
-    width: 27%;
+    height: 68%;
+    width: 20%;
     border-radius: 15px;
 }
 

@@ -12,7 +12,7 @@ public class ClassiDB {
         // caricamento driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // connessione database
-        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "grandesql");
+        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "");
 
         this.stmt = cn.createStatement();
     }
@@ -86,6 +86,27 @@ public class ClassiDB {
         }
         return false; // In caso di errore, assume che lo username non esista
     }
+
+    public boolean emailEsistente(String email) {
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM utenti WHERE Mail = ?";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, email);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    return count > 0; // Restituisce true se l'email esiste già, altrimenti false
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // In caso di errore, assume che l'email non esista
+    }
+
 
 
 

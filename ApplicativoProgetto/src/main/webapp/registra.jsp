@@ -31,6 +31,8 @@
 
     if (!password.equals(password2)) {
         response.sendRedirect("signup.jsp?messaggio=Le password non coincidono");
+    } else if (conn.emailEsistente(mail)) {
+        response.sendRedirect("signup.jsp?messaggio=Email gia' in uso");
     } else if (conn.usernameEsistente(username)) {
         response.sendRedirect("signup.jsp?messaggio=Username gia' in uso");
     } else {
@@ -48,6 +50,7 @@
         }
     }
 %>
+
 
 
 
