@@ -4,12 +4,13 @@
     --kami-red: #D40707;
 }
 
-body, html {
+body, html, header {
     height: 100%;
     padding: 0;
     margin: 0;
     font-family: 'Sniglet', cursive;
     background-color: red;
+    color: white;
 }
 
 h1 {
@@ -76,8 +77,8 @@ h1 {
 
 
 header {
-    height: 160px;
-    background: url('http://www.geertjanhendriks.nl/codepen/form/golf.png') repeat-x bottom;
+    height: 10%;
+    background-color: red;
 }
 
 #form {
@@ -117,7 +118,6 @@ input, textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-
 }
 
 input:focus, textarea:focus {
@@ -184,4 +184,69 @@ label {
     justify-content: center;
     align-items: center;
     min-height: 65vh; /* Optional: Set minimum height for vertical centering */
+}
+
+.vcenter-div {
+    display: flex;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.img-round {
+    border-radius: 10px;
+    margin-left: 1%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    width: 15%;
+    border-radius: 0 15px 15px 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: red;
+    border-right: 1px solid #eee;
+}
+
+.sidebar-right {
+    position: fixed;
+    top: 10%;
+    bottom: 0;
+    right: 0;
+    width: 15%;
+    border-radius: 15px 0 0 15px;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: blue;
+}
+
+.homepage-body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Sniglet', cursive;
+    background-color: white;
+}
+
+/* navigation content */
+input[type=”text” i]{
+    padding: 8px 20px;
+    border-radius: 50px;
+    background-color: #123;
+    border-color: white;
+    margin-right: 30px;
+    border: 0;
+}
+
+/* homepage flow*/
+
+.homepage-flow {
+    border-radius: 10px 10px 0 0;
+    display: block;
 }
