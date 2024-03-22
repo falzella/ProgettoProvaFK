@@ -12,7 +12,7 @@ public class ClassiDB {
         // caricamento driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // connessione database
-        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "");
+        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "grandesql");
 
         this.stmt = cn.createStatement();
     }
@@ -129,6 +129,33 @@ public class ClassiDB {
             e.printStackTrace();
         }
     }
+
+    public boolean inserisciEvento(Evento evento) {
+        try {
+            String sql = "INSERT INTO eventi (Nome, Luogo, Indirizzo, Citta, Data, Ora, Informazioni_Luogo, Descrizione_Evento, Tipo, Id_Host) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, evento.getNome());
+                preparedStatement.setString(2, evento.getLuogo());
+                preparedStatement.setString(3, evento.getIndirizzo());
+                preparedStatement.setString(4, evento.getCitta());
+                preparedStatement.setString(5, evento.getData());
+                preparedStatement.setString(6, evento.getOra());
+                preparedStatement.setString(7, evento.getInformazioniLuogo());
+                preparedStatement.setString(8, evento.getDescrizione());
+                preparedStatement.setString(9, evento.getTipo());
+                preparedStatement.setString(10, evento.getIdHost());
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
 
 
 
