@@ -3,10 +3,12 @@
 :root {
     --kami-red: #D40707;
     --super-soft-red: #fff6f6;
+    --ultra-soft-red: #fffbfb;
     --not-so-super-soft-red: #ffefef;
     --soft-red: #FFB2B2FF;
     --not-so-soft-red: #ff3737;
     --sidebar-color: var(--soft-red);
+    --kami-text-color: #8d8d8d
 }
 
 body, html, header {
@@ -200,7 +202,7 @@ label {
     left: 0;
     border-radius: 0 15px 15px 0;
     border-top-color: white;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     width: 15%;
     z-index: 1000;
     display: flex;
@@ -218,7 +220,7 @@ label {
     bottom: 0;
     right: 0;
     border-radius: 15px 0 0 15px;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     width: 15%;
     z-index: 1000;
     display: flex;
@@ -239,6 +241,7 @@ label {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    color: var(--kami-text-color);
 }
 
 .navigation-element {
@@ -250,12 +253,13 @@ label {
     align-content: center;
     justify-content: center;
     flex-wrap: wrap;
-    color: black;
+    color: var(--kami-text-color);
     background-color: transparent;
     transition: 0.2s ease-in-out;
 }
 .navigation-element:hover{
     background-color: var(--soft-red);
+    color: var(--kami-red);
     transition: 0.2s ease-in-out;
 }
 
@@ -264,9 +268,9 @@ label {
 .homepage-flow {
     margin-left: 15.5%;
     margin-right: 15.5%;
-    margin-top: 0;
+    margin-top: 0.7%;
     border-radius: 15px;
-    height: 89%;
+    height: 88%;
     overflow-y: auto !important;
     display: flex;
     flex-direction: column;
