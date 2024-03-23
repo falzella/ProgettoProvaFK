@@ -7,8 +7,20 @@
 </head>
 <body class="homepage-body">
     <header>
-        <div class="vcenter-div">
-            <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+        <div class="hcenter-div">
+            <div class="vcenter-div">
+                <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+            </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="search in KAMI!">
+                <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+                <div class="cancel-icon">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
         </div>
     </header>
     <div>

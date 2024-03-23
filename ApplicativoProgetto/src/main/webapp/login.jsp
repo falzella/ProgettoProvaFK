@@ -14,7 +14,7 @@
             <div class="grid">
 
                 <div class="form__field">
-                    <img src="images/quello_bello_cropped.svg" alt="Immagine di login" class="login__image">
+                    <img src="images/quello_bello_cropped.svga" alt="Immagine di login" class="login__image">
                 </div>
 
                 <div class="center-text">
