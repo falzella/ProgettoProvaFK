@@ -158,6 +158,7 @@ input[type='submit'] {
     cursor: pointer;
 }
 
+
 .form {
     margin: -14px;
     margin: -0.875rem;
@@ -210,6 +211,12 @@ input[type='submit'] {
     padding-right: 20px;
     padding-right: 1.25rem;
 }
+
+#checkbox__label {
+    background-color: transparent; /* Rimuove lo sfondo */
+    font-weight: bold; /* Rende il testo in grassetto */
+    /*
+
 
 .login input[type='password'],
 .form input[type='email'],
@@ -310,6 +317,7 @@ p {
 
 .toggle-switch__checkbox:checked + .toggle-switch__label .toggle-switch__switch {
     left: 30px;
-    background-color: #337ab7; /* colore quando attivo */
 }
+
+
 

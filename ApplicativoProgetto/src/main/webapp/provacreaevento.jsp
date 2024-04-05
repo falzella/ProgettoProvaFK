@@ -116,8 +116,34 @@
 
                     // Inizializza lo stato iniziale della checkbox
                     checkboxLabel.textContent = checkbox.checked ? "Pubblico" : "Privato";
+
+                    // Aggiungi un listener per l'invio del modulo
+                    document.querySelector('.form').addEventListener('submit', function() {
+                        // Assegna il valore corretto al checkbox prima di inviare il modulo
+                        checkbox.value = checkbox.checked ? "pubblico" : "privato";
+                    });
                 });
             </script>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var checkbox = document.getElementById("evento__tipo_checkbox");
+
+                    // Aggiungi un listener per l'invio del modulo
+                    document.querySelector('.form').addEventListener('submit', function(event) {
+                        // Verifica se la checkbox è selezionata
+                        if (!checkbox.checked) {
+                            // Se la checkbox non è selezionata, imposta il valore di "tipo" a "privato"
+                            var hiddenInput = document.createElement('input');
+                            hiddenInput.type = 'hidden';
+                            hiddenInput.name = 'tipo';
+                            hiddenInput.value = 'privato';
+                            this.appendChild(hiddenInput);
+                        }
+                    });
+                });
+            </script>
+
 
 
 

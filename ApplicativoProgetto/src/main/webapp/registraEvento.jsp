@@ -27,8 +27,8 @@
     String ora = request.getParameter("ora");
     String informazioniLuogo = request.getParameter("informazioni_luogo");
     String descrizione = request.getParameter("descrizione");
-    //String tipo = request.getParameter("tipo");
-    String tipo = "privato";
+    String tipo = request.getParameter("tipo");
+    //String tipo = "privato";
     String id_host = "";
 
     if(session.getAttribute("idUtente")==null){
