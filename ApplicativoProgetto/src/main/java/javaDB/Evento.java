@@ -1,6 +1,7 @@
 package javaDB;
 
 public class Evento {
+    private  String id_evento;
     private String nome;
     private String luogo;
     private String indirizzo;
@@ -13,6 +14,21 @@ public class Evento {
     private String idHost;
 
     public Evento(String nome, String luogo, String indirizzo, String citta, String data, String ora, String informazioniLuogo, String descrizione, String tipo, String idHost) {
+        this.id_evento = null;
+        this.nome = nome;
+        this.luogo = luogo;
+        this.indirizzo = indirizzo;
+        this.citta = citta;
+        this.data = data;
+        this.ora = ora;
+        this.informazioniLuogo = informazioniLuogo;
+        this.descrizione = descrizione;
+        this.tipo = tipo;
+        this.idHost = idHost;
+    }
+
+    public Evento(String id_evento, String nome, String luogo, String indirizzo, String citta, String data, String ora, String informazioniLuogo, String descrizione, String tipo, String idHost) {
+        this.id_evento = id_evento;
         this.nome = nome;
         this.luogo = luogo;
         this.indirizzo = indirizzo;
@@ -105,5 +121,13 @@ public class Evento {
 
     public void setIdHost(String idHost) {
         this.idHost = idHost;
+    }
+
+    public String getId_evento() {
+        return id_evento;
+    }
+
+    public void setId_evento(String id_evento) {
+        this.id_evento = id_evento;
     }
 }
