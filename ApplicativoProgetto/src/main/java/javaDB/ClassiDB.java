@@ -12,7 +12,7 @@ public class ClassiDB {
         // caricamento driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // connessione database
-        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "");
+        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "grandesql");
 
         this.stmt = cn.createStatement();
     }
@@ -154,6 +154,52 @@ public class ClassiDB {
         }
 
         return true;
+    }
+
+    public Evento getEventoFromResultSet(ResultSet rs) throws SQLException {
+        String nome = rs.getString("Nome");
+        String luogo = rs.getString("Luogo");
+        String indirizzo = rs.getString("Indirizzo");
+        String citta = rs.getString("Citta");
+        String data = rs.getString("Data");
+        String ora = rs.getString("Ora");
+        String informazioniLuogo = rs.getString("Informazioni_Luogo");
+        String descrizione = rs.getString("Descrizione_Evento");
+        String tipo = rs.getString("Tipo");
+        String idHost = rs.getString("ID_Host");
+
+        return new Evento(nome, luogo, indirizzo, citta, data, ora, informazioniLuogo, descrizione, tipo, idHost);
+    }
+
+
+    public Evento getEventoFromHost(String idEvento) throws SQLException {
+        String sql = "SELECT * FROM eventi WHERE ID_Evento = ?";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, idEvento);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                return getEventoFromResultSet(rs);
+            } else {
+                return null;
+            }
+        }
+
+    }
+
+    public ArrayList<Evento> getEventList(String idHost) throws SQLException {
+        ArrayList<Evento> eventiList = new ArrayList<>();
+        String sql = "SELECT * FROM eventi WHERE ID_Host = ?";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, idHost);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Evento evento = getEventoFromResultSet(rs);
+                eventiList.add(evento);
+            }
+        }
+
+        return eventiList;
     }
 
 
