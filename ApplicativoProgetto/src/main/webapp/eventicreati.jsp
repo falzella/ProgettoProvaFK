@@ -32,7 +32,7 @@
 
     for (Evento evento : eventoList) {
 %>
-<a href="dettaglievento.jsp?IdEvento=<%= "1" %>"><%= evento.getNome() %></a>
+<a href="dettaglievento.jsp?IdEvento=<%= evento.getId_evento() %>"><%= evento.getNome() %></a>
 <br>
 <% } %>
 <br>

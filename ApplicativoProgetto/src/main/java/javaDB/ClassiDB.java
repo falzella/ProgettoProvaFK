@@ -157,6 +157,7 @@ public class ClassiDB {
     }
 
     public Evento getEventoFromResultSet(ResultSet rs) throws SQLException {
+        String id_evento = rs.getString("ID_Evento");
         String nome = rs.getString("Nome");
         String luogo = rs.getString("Luogo");
         String indirizzo = rs.getString("Indirizzo");
@@ -168,7 +169,7 @@ public class ClassiDB {
         String tipo = rs.getString("Tipo");
         String idHost = rs.getString("ID_Host");
 
-        return new Evento(nome, luogo, indirizzo, citta, data, ora, informazioniLuogo, descrizione, tipo, idHost);
+        return new Evento(id_evento, nome, luogo, indirizzo, citta, data, ora, informazioniLuogo, descrizione, tipo, idHost);
     }
 
 
