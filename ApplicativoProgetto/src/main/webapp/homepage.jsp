@@ -6,6 +6,39 @@
 
 </head>
 <body class="homepage-body">
+
+<%
+    // Recupera il parametro messaggio dalla richiesta
+    String messaggio = request.getParameter("messaggio");
+    if (messaggio != null && !messaggio.isEmpty()) {
+%>
+
+<script>
+    // Funzione per mostrare la notifica
+    function mostraNotifica() {
+        // Crea un nuovo oggetto di notifica
+        var notification = new Notification("Notifica", {
+            body: "<%= messaggio %>",
+            icon: "icon.png" // Opzionale: inserisci un'icona per la notifica
+        });
+
+        // Chiudi la notifica dopo 5 secondi
+        setTimeout(notification.close.bind(notification), 5000);
+    }
+
+    // Controlla se il browser supporta le notifiche
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    } else {
+        mostraNotifica(); // Mostra la notifica se le autorizzazioni sono già state concesse
+    }
+</script>
+<%
+    }
+%>
+
+
+
     <header>
         <div class="hcenter-div">
             <div class="vcenter-div">
@@ -23,6 +56,32 @@
             </div>
         </div>
     </header>
+
+
+    <script>
+        window.onload = function() {
+            // Ottieni tutti gli elementi di navigazione
+            var navigationElements = document.querySelectorAll('.navigation-element');
+
+            // Aggiungi un evento di click a ciascun elemento di navigazione
+            navigationElements.forEach(function(element) {
+                element.addEventListener('click', function() {
+                    // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
+                    if (element.textContent.trim() === "i tuoi eventi") {
+                        // Esegui il redirect a eventicreati.jsp
+                        window.location.href = 'eventicreati.jsp';
+                    }else{
+                        if (element.textContent.trim() === "nuovo evento") {
+                            // Esegui il redirect a eventicreati.jsp
+                            window.location.href = 'provacreaevento.jsp';
+                        }
+                    }
+                });
+            });
+        };
+    </script>
+
+
     <div>
         <div class="sidebar">
             <div class="navigation-contents">

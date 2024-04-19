@@ -7,6 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="connessione.jsp"%>
+<%@page import="javaDB.Utente"%>
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@ page import="javaDB.Evento"%>
@@ -23,10 +24,11 @@
 
 <%
     String id_host = "";
-    if(session.getAttribute("idUtente")==null){
+    if(session.getAttribute("user")==null){
         id_host = "2";
     }else{
-        id_host = session.getAttribute("idUtente").toString();
+        Utente user = (Utente) session.getAttribute("user");
+        id_host = user.getId_utente();
     }
     ArrayList<Evento> eventoList = conn.getEventList(id_host);
 

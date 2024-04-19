@@ -34,10 +34,8 @@
         if (username != null && psw != null && !username.isEmpty() && !psw.isEmpty()) {
             Utente p =  conn.checkUtenza(username, psw);
             if ( p != null) {
-                out.write("WESH");
-                out.write(username);
-
-                session.setAttribute("Utente", p);
+                session.setAttribute("user", p);
+                response.sendRedirect("homepage.jsp");
             } else {
                 response.sendRedirect("login.jsp?messaggio=Credenziali errate");
             }

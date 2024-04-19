@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="javaDB.Evento"%>
+<%@page import="javaDB.Utente"%>
 <%@page import="javaDB.ClassiDB"%>
 <%@page import="java.io.*"%>
 <%@include file="connessione.jsp"%>
@@ -31,10 +32,11 @@
     //String tipo = "privato";
     String id_host = "";
 
-    if(session.getAttribute("idUtente")==null){
+    if(session.getAttribute("user")==null){
         id_host = "2";
     }else{
-            id_host = session.getAttribute("idUtente").toString();
+            Utente user = (Utente) session.getAttribute("user");
+            id_host = user.getId_utente();
     }
 
 
@@ -48,7 +50,7 @@
 
         // Salvataggio dell'evento nel database
         if (conn.inserisciEvento(evento)) {
-            out.write("Evento registrato con successo!");
+            response.sendRedirect("homepage.jsp?messaggio=Evento+creato+con+successo%21");
         } else {
             response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
         }

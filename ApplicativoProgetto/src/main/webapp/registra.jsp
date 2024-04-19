@@ -40,8 +40,8 @@
         session.setAttribute("user", user);
         if (user != null) {
             if (conn.inserisciUtenza(user)) {
-                out.write("Registrato con successo!");%>
-<a href="riservato.jsp">Accedi alla tua area Personale</a>
+                response.sendRedirect("homepage.jsp");
+            %>
 <br>
 <%
             } else {
