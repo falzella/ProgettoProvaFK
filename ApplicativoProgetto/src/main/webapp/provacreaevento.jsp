@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
     <title>Registra Evento</title>
-    <link href="style/login.css" rel="stylesheet" type="text/css">
+    <link href="style/creaEvento.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<body class="align">
-<video autoplay="" loop="" muted>
-    <source src="images/spheres-balls-bouncing-together-animation.mp4" type="video/mp4" />
-</video>
-<div class="whiteboardlong">
-    <div class="grid">
+<body class="align body-creaevento">
 
+<div class="whiteboardlong-horizontal">
+    <div class="grid-kami">
         <div class="form__field">
-            <img src="images/quello_bello_cropped.svg" alt="Immagine di login" class="login__image">
+            <img src="images/quello_bello_cropped.svg" alt="KAMI" class="login__image">
         </div>
 
         <div class="center-text">
@@ -26,138 +23,140 @@
                 out.write(message);
             %>
         </div>
-
-        <form action="registraEvento.jsp" method="POST" class="form login">
-
-            <div class="form__field">
-                <label for="evento__nome">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
-                    <span class="hidden">Nome</span>
-                </label>
-                <input id="evento__nome" type="text" name="nome" class="form__input" placeholder="Nome" required>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__luogo">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
-                    <span class="hidden">Luogo</span>
-                </label>
-                <input id="evento__luogo" type="text" name="luogo" class="form__input" placeholder="Luogo" required>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__indirizzo">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
-                    <span class="hidden">Indirizzo</span>
-                </label>
-                <input id="evento__indirizzo" type="text" name="indirizzo" class="form__input" placeholder="Indirizzo" required>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__citta">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
-                    <span class="hidden">Città</span>
-                </label>
-                <input id="evento__citta" type="text" name="citta" class="form__input" placeholder="Città" required>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__data">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
-                    <span class="hidden">Data</span>
-                </label>
-                <input id="evento__data" type="date" name="data" class="form__input" required>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__ora">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
-                    <span class="hidden">Ora</span>
-                </label>
-                <input id="evento__ora" type="time" name="ora" class="form__input" required>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__informazioni_luogo">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
-                    <span class="hidden">Informazioni Luogo</span>
-                </label>
-                <textarea id="evento__informazioni_luogo" name="informazioni_luogo" class="form__input" placeholder="Informazioni Luogo" required></textarea>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__descrizione">
-                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
-                    <span class="hidden">Descrizione</span>
-                </label>
-                <textarea id="evento__descrizione" name="descrizione" class="form__input" placeholder="Descrizione" required></textarea>
-            </div>
-
-            <div class="form__field">
-                <label for="evento__tipo_checkbox">
-                    <svg class="icon">
-                        <use xlink:href="#lock"></use>
-                    </svg>
-                    <span class="hidden">Tipo</span>
-                </label>
-                <br>
-                <input id="evento__tipo_checkbox" type="checkbox" name="tipo" value="pubblico">
-                <label for="evento__tipo_checkbox" id="checkbox__label"></label><br>
-            </div>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    var checkbox = document.getElementById("evento__tipo_checkbox");
-                    var checkboxLabel = document.getElementById("checkbox__label");
-
-                    checkbox.addEventListener("change", function() {
-                        checkboxLabel.textContent = this.checked ? "Pubblico" : "Privato";
-                    });
-
-                    // Inizializza lo stato iniziale della checkbox
-                    checkboxLabel.textContent = checkbox.checked ? "Pubblico" : "Privato";
-
-                    // Aggiungi un listener per l'invio del modulo
-                    document.querySelector('.form').addEventListener('submit', function() {
-                        // Assegna il valore corretto al checkbox prima di inviare il modulo
-                        checkbox.value = checkbox.checked ? "pubblico" : "privato";
-                    });
-                });
-            </script>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    var checkbox = document.getElementById("evento__tipo_checkbox");
-
-                    // Aggiungi un listener per l'invio del modulo
-                    document.querySelector('.form').addEventListener('submit', function(event) {
-                        // Verifica se la checkbox è selezionata
-                        if (!checkbox.checked) {
-                            // Se la checkbox non è selezionata, imposta il valore di "tipo" a "privato"
-                            var hiddenInput = document.createElement('input');
-                            hiddenInput.type = 'hidden';
-                            hiddenInput.name = 'tipo';
-                            hiddenInput.value = 'privato';
-                            this.appendChild(hiddenInput);
-                        }
-                    });
-                });
-            </script>
-
-
-
-
-
-
-            <div class="form__field">
-                <input type="submit" value="Sign Up">
-            </div>
-
-        </form>
-
-        <p class="text--center">Already a member? <a href="login.jsp">Sign in</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
-
     </div>
+    <form action="registraEvento.jsp" method="POST" class="form login">
+        <div class="grid-split-container">
+            <div class="grid-split">
+
+                <div class="form__field">
+                    <label for="evento__nome">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
+                        <span class="hidden">Nome</span>
+                    </label>
+                    <input id="evento__nome" type="text" name="nome" class="form__input" placeholder="Nome" required>
+                </div>
+
+                <div class="form__field">
+                    <label for="evento__luogo">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
+                        <span class="hidden">Luogo</span>
+                    </label>
+                    <input id="evento__luogo" type="text" name="luogo" class="form__input" placeholder="Luogo" required>
+                </div>
+
+                <div class="form__field">
+                    <label for="evento__indirizzo">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
+                        <span class="hidden">Indirizzo</span>
+                    </label>
+                    <input id="evento__indirizzo" type="text" name="indirizzo" class="form__input" placeholder="Indirizzo" required>
+                </div>
+
+                <div class="form__field">
+                    <label for="evento__citta">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
+                        <span class="hidden">Città</span>
+                    </label>
+                    <input id="evento__citta" type="text" name="citta" class="form__input" placeholder="Città" required>
+                </div>
+
+
+
+                <div class="form__field">
+                    <label for="evento__tipo_checkbox">
+                        <svg class="icon">
+                            <use xlink:href="#lock"></use>
+                        </svg>
+                        <span class="hidden">Tipo</span>
+                    </label>
+                    <br>
+                    <input id="evento__tipo_checkbox" type="checkbox" name="tipo" value="pubblico">
+                    <label for="evento__tipo_checkbox" id="checkbox__label"></label><br>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var checkbox = document.getElementById("evento__tipo_checkbox");
+                        var checkboxLabel = document.getElementById("checkbox__label");
+
+                        checkbox.addEventListener("change", function() {
+                            checkboxLabel.textContent = this.checked ? "Pubblico" : "Privato";
+                        });
+
+                        // Inizializza lo stato iniziale della checkbox
+                        checkboxLabel.textContent = checkbox.checked ? "Pubblico" : "Privato";
+
+                        // Aggiungi un listener per l'invio del modulo
+                        document.querySelector('.form').addEventListener('submit', function() {
+                            // Assegna il valore corretto al checkbox prima di inviare il modulo
+                            checkbox.value = checkbox.checked ? "pubblico" : "privato";
+                        });
+                    });
+                </script>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var checkbox = document.getElementById("evento__tipo_checkbox");
+
+                        // Aggiungi un listener per l'invio del modulo
+                        document.querySelector('.form').addEventListener('submit', function(event) {
+                            // Verifica se la checkbox è selezionata
+                            if (!checkbox.checked) {
+                                // Se la checkbox non è selezionata, imposta il valore di "tipo" a "privato"
+                                var hiddenInput = document.createElement('input');
+                                hiddenInput.type = 'hidden';
+                                hiddenInput.name = 'tipo';
+                                hiddenInput.value = 'privato';
+                                this.appendChild(hiddenInput);
+                            }
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="grid-split">
+                <div class="form__field">
+                    <label for="evento__data">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
+                        <span class="hidden">Data</span>
+                    </label>
+                    <input id="evento__data" type="date" name="data" class="form__input" required>
+                </div>
+
+                <div class="form__field">
+                    <label for="evento__ora">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
+                        <span class="hidden">Ora</span>
+                    </label>
+                    <input id="evento__ora" type="time" value="00:00" name="ora" class="form__input" required>
+                </div>
+
+                <div class="form__field">
+                    <label for="evento__informazioni_luogo">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
+                        <span class="hidden">Informazioni Luogo</span>
+                    </label>
+                    <textarea id="evento__informazioni_luogo" name="informazioni_luogo" class="form__input text-area" placeholder="Informazioni Luogo" required></textarea>
+                </div>
+
+                <div class="form__field">
+                    <label for="evento__descrizione">
+                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg>
+                        <span class="hidden">Descrizione</span>
+                    </label>
+                    <textarea id="evento__descrizione" name="descrizione" class="form__input text-area" placeholder="Descrizione" required></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-button">
+            <div class="form__field creaevento-btn">
+                <input type="submit" value="CREA EVENTO">
+            </div>
+        </div>
+
+        <p class="text--center"><a href="homepage.jsp">annulla</a> creazione<svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+    </form>
 </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="icons"><symbol id="arrow-right" viewBox="0 0 1792 1792"><path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z"/></symbol>
