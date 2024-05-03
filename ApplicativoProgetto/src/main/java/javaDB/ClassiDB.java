@@ -213,19 +213,21 @@ public class ClassiDB {
                 eventiList.add(evento);
             }
         }
+        return eventiList;
+    }
+
     public ArrayList<Evento> getPartecipazioniList(String idHost) throws SQLException {
-        ArrayList<Evento> eventiList = new ArrayList<>();
-        String sql = "SELECT * FROM partecipazioni WHERE ID_Utente = ?";
-        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
-            preparedStatement.setString(1, idHost);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                Evento evento = getEventoFromHost(rs.getString("ID_Evento"));
-                eventiList.add(evento);
+            ArrayList<Evento> eventiList = new ArrayList<>();
+            String sql = "SELECT * FROM partecipazioni WHERE ID_Utente = ?";
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idHost);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    Evento evento = getEventoFromHost(rs.getString("ID_Evento"));
+                    eventiList.add(evento);
+                }
             }
-        }
-
-
-
+        return eventiList;
+    }
 
 }
