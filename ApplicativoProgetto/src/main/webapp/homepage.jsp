@@ -39,8 +39,14 @@
                         window.location.href = 'eventicreati.jsp';
                     }else{
                         if (element.textContent.trim() === "nuovo evento") {
-                            // Esegui il redirect a eventicreati.jsp
+                            // Esegui il redirect a provacreaevento.jsp
                             window.location.href = 'provacreaevento.jsp';
+                        }else{
+                            if(element.textContent.trim() === "partecipazioni"){
+                                // Esegui il redirect a partecipazionieventi.jsp
+                                window.location.href = 'partecipazionieventi.jsp';
+                            }
+
                         }
                     }
                 });

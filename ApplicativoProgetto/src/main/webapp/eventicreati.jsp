@@ -11,6 +11,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@ page import="javaDB.Evento"%>
+<%@ page import="java.sql.SQLException" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +31,18 @@
         Utente user = (Utente) session.getAttribute("user");
         id_host = user.getId_utente();
     }
-    ArrayList<Evento> eventoList = conn.getEventList(id_host);
+    ArrayList<Evento> eventoList = null;
+    try {
+        eventoList = conn.getEventList(id_host);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
 
-    for (Evento evento : eventoList) {
+    if(eventoList.isEmpty()){%>
+        Non hai creato nessun evento!
+    <%}%>
+
+    <%for (Evento evento : eventoList) {
 %>
 <a href="dettaglievento.jsp?IdEvento=<%= evento.getId_evento() %>"><%= evento.getNome() %></a>
 <br>
