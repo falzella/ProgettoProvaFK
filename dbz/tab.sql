@@ -50,15 +50,19 @@ CREATE TABLE IF NOT EXISTS `eventi` (
   PRIMARY KEY (`ID_Evento`),
   KEY `ID_Host` (`ID_Host`),
   CONSTRAINT `ID_Host` FOREIGN KEY (`ID_Host`) REFERENCES `utenti` (`Id_Utente`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bellieventi.eventi: ~2 rows (approximately)
+-- Dumping data for table bellieventi.eventi: ~6 rows (approximately)
 INSERT INTO `eventi` (`ID_Evento`, `Nome`, `Luogo`, `Indirizzo`, `Citta`, `Data`, `Ora`, `Informazioni_Luogo`, `Descrizione_Evento`, `Tipo`, `ID_Host`) VALUES
 	(1, 'm', 'm', 'm', 'm', '0012-12-12', '12:12:00', 'm', 'm', 'privato', 2),
-	(2, 'z', 'z', 'z', 'z', '0121-12-12', '12:12:00', 'ijiwj', 'ijij', 'privato', 2);
+	(2, 'z', 'z', 'z', 'z', '0121-12-12', '12:12:00', 'ijiwj', 'ijij', 'privato', 2),
+	(3, 'Festa da me', 'Casa mia', 'via degli alfieri 1', 'Ballabio', '2024-04-27', '23:00:00', 'Si trova dietro la pizzeria', 'Spacchiamoci, niente di piu', 'privato', 2),
+	(4, 'Festa da me', 'casa tua', 'indirizzo', 'calolzio', '2024-04-29', '00:00:00', 'trovalo', 'si', 'privato', 11),
+	(5, 'after party', 'disco', 'via 1 maggio', 'caposile', '2024-04-30', '06:00:00', 'si trova sulla spiaggia', 'il costo sarà 10 euro a persona', 'pubblico', 11),
+	(6, 'grigliata', 'casa mia', 'via via', 'calolzio', '2024-04-28', '12:00:00', 'dietro la scuola', 'prendo tutto io, porta 5 euro e 2 patatina', 'privato', 11);
 
--- Dumping structure for table bellieventi.invito
-CREATE TABLE IF NOT EXISTS `invito` (
+-- Dumping structure for table bellieventi.inviti
+CREATE TABLE IF NOT EXISTS `inviti` (
   `ID_Invito` int NOT NULL AUTO_INCREMENT,
   `ID_Invitato` int DEFAULT NULL,
   `ID_Evento` int DEFAULT NULL,
@@ -69,11 +73,11 @@ CREATE TABLE IF NOT EXISTS `invito` (
   CONSTRAINT `ID_Invitato` FOREIGN KEY (`ID_Invitato`) REFERENCES `utenti` (`Id_Utente`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bellieventi.invito: ~0 rows (approximately)
+-- Dumping data for table bellieventi.inviti: ~0 rows (approximately)
 
--- Dumping structure for table bellieventi.partecipazione
-CREATE TABLE IF NOT EXISTS `partecipazione` (
-  `ID_Partecipazione` int NOT NULL,
+-- Dumping structure for table bellieventi.partecipazioni
+CREATE TABLE IF NOT EXISTS `partecipazioni` (
+  `ID_Partecipazione` int NOT NULL AUTO_INCREMENT,
   `ID_Utente` int DEFAULT NULL,
   `ID_Evento` int DEFAULT NULL,
   PRIMARY KEY (`ID_Partecipazione`),
@@ -81,9 +85,13 @@ CREATE TABLE IF NOT EXISTS `partecipazione` (
   KEY `ID_Evento` (`ID_Evento`),
   CONSTRAINT `ID_Evento` FOREIGN KEY (`ID_Evento`) REFERENCES `eventi` (`ID_Evento`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `ID_Utente` FOREIGN KEY (`ID_Utente`) REFERENCES `utenti` (`Id_Utente`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bellieventi.partecipazione: ~0 rows (approximately)
+-- Dumping data for table bellieventi.partecipazioni: ~3 rows (approximately)
+INSERT INTO `partecipazioni` (`ID_Partecipazione`, `ID_Utente`, `ID_Evento`) VALUES
+	(1, 2, 4),
+	(2, 2, 5),
+	(3, 11, 6);
 
 -- Dumping structure for table bellieventi.utenti
 CREATE TABLE IF NOT EXISTS `utenti` (
@@ -95,9 +103,9 @@ CREATE TABLE IF NOT EXISTS `utenti` (
   `Cognome` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Data_Nascita` date DEFAULT NULL,
   PRIMARY KEY (`Id_Utente`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bellieventi.utenti: ~10 rows (approximately)
+-- Dumping data for table bellieventi.utenti: ~12 rows (approximately)
 INSERT INTO `utenti` (`Id_Utente`, `Username`, `Password`, `Mail`, `Nome`, `Cognome`, `Data_Nascita`) VALUES
 	(1, 'sunnyday23', 'segreta', 'user1@example.com', 'John', 'Doe', '1990-01-01'),
 	(2, 'guitarlover', 'segreta', 'user2@example.com', 'Jane', 'Smith', '1985-03-15'),
@@ -109,7 +117,8 @@ INSERT INTO `utenti` (`Id_Utente`, `Username`, `Password`, `Mail`, `Nome`, `Cogn
 	(8, 'starwarsfan', 'segreta', 'user8@example.com', 'William', 'Anderson', '1991-06-30'),
 	(9, 'musicjunkie', 'segreta', 'user9@example.com', 'Olivia', 'Garcia', '1989-02-18'),
 	(10, 'photographylover', 'segreta', 'user10@example.com', 'Daniel', 'Lee', '1986-10-05'),
-	(11, 'falz', 'p', 'we@we', 'ciao', 'cognome', '2024-03-01');
+	(11, 'falz', 'p', 'we@we', 'ciao', 'cognome', '2024-03-01'),
+	(12, 'katchhh', 'a', 'erkatch@gmail.com', 'Xhelian', 'kacaku', '2005-04-28');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
