@@ -8,14 +8,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="javaDB.ClassiDB"%>
 <%@page import="javaDB.Evento"%>
+<%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html>
 <body>
 <%
+        String id_host = "";
+        if(session.getAttribute("user")==null){
+                id_host = "3";
+        }else{
+                Utente user = (Utente) session.getAttribute("user");
+                id_host = user.getId_utente();
+        }
+
         ClassiDB db = new ClassiDB();
-        ArrayList<Evento> feed = db.GetEventFeed();
+        ArrayList<Evento> feed = db.GetEventFeed(id_host);
 %>
         <%for (Evento evento : feed) { %>
                 Nome: <%=evento.getNome()%><br>
