@@ -127,6 +127,7 @@
     height: 80%;
     width: 60%;
     border-radius: 15px;
+    min-width: 700px !important;
 }
 
 
@@ -262,6 +263,11 @@ textarea:hover {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+}
+
+.colored_input {
+    background-color: #fff6f6 !important;
+    border-radius: 0 15px 15px 0 !important;
 }
 
 /* modules/login.css */

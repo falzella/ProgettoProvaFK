@@ -203,6 +203,16 @@ public class ClassiDB {
         return eventiList;
     }
 
+    public ArrayList<Evento> GetEventFeed() throws SQLException {
+        ArrayList<Evento> eventiList = new ArrayList<>();
+        String sql = "SELECT * FROM eventi WHERE eventi.Tipo = 'pubblico'";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Evento evento = getEventoFromResultSet(rs);
+                eventiList.add(evento);
+            }
+        }
     public ArrayList<Evento> getPartecipazioniList(String idHost) throws SQLException {
         ArrayList<Evento> eventiList = new ArrayList<>();
         String sql = "SELECT * FROM partecipazioni WHERE ID_Utente = ?";
@@ -214,10 +224,6 @@ public class ClassiDB {
                 eventiList.add(evento);
             }
         }
-
-        return eventiList;
-    }
-
 
 
 
