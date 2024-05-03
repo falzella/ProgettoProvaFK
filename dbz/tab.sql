@@ -16,6 +16,7 @@
 
 
 -- Dumping database structure for bellieventi
+DROP DATABASE IF EXISTS `bellieventi`;
 CREATE DATABASE IF NOT EXISTS `bellieventi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bellieventi`;
 
