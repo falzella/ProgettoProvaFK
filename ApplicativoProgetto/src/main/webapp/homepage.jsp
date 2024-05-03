@@ -6,39 +6,6 @@
 
 </head>
 <body class="homepage-body">
-
-<%
-    // Recupera il parametro messaggio dalla richiesta
-    String messaggio = request.getParameter("messaggio");
-    if (messaggio != null && !messaggio.isEmpty()) {
-%>
-
-<script>
-    // Funzione per mostrare la notifica
-    function mostraNotifica() {
-        // Crea un nuovo oggetto di notifica
-        var notification = new Notification("Notifica", {
-            body: "<%= messaggio %>",
-            icon: "icon.png" // Opzionale: inserisci un'icona per la notifica
-        });
-
-        // Chiudi la notifica dopo 5 secondi
-        setTimeout(notification.close.bind(notification), 5000);
-    }
-
-    // Controlla se il browser supporta le notifiche
-    if (Notification.permission !== "granted") {
-        Notification.requestPermission();
-    } else {
-        mostraNotifica(); // Mostra la notifica se le autorizzazioni sono già state concesse
-    }
-</script>
-<%
-    }
-%>
-
-
-
     <header>
         <div class="hcenter-div">
             <div class="vcenter-div">
