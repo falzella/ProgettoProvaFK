@@ -10,6 +10,7 @@
 <%@page import="javaDB.Evento"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.SQLException" %>
 
 <!DOCTYPE html>
 <html>
@@ -37,6 +38,22 @@
                 Descrizione: <%=evento.getDescrizione()%><br>
                 Tipo: <%=evento.getTipo()%><br>
                 ID Host: <%=evento.getIdHost()%><br>
+        <%}%>
+
+        <%
+            ArrayList<Utente> feedUser = null;
+            try {
+                feedUser = db.GetFriendFeed(id_host);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        %>
+
+        <%for (Utente utente : feedUser) { %>
+        Username: <%=utente.getUsername()%><br>
+        Nome: <%=utente.getNome()%><br>
+        Cognome: <%=utente.getCognome()%><br>
+        Mail: <%=utente.getMail()%><br>
         <%}%>
 </body>
 </html>

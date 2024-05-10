@@ -12,7 +12,7 @@ public class ClassiDB {
         // caricamento driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // connessione database
-        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "");
+        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "grandesql");
 
         this.stmt = cn.createStatement();
     }
@@ -217,6 +217,22 @@ public class ClassiDB {
         }
         return eventiList;
     }
+
+    public ArrayList<Utente> GetFriendFeed(String IdHost) throws SQLException {
+        ArrayList<Utente> utentiList = new ArrayList<>();
+        String sql = "SELECT * FROM  utenti WHERE utenti.Id_Utente <> ?";
+
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, IdHost);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Utente utente = getUtenteFromResultSet(rs);
+                utentiList.add(utente);
+            }
+        }
+        return utentiList;
+    }
+
 
     public ArrayList<Evento> getPartecipazioniList(String idHost) throws SQLException {
             ArrayList<Evento> eventiList = new ArrayList<>();
