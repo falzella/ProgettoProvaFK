@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="javaDB.ClassiDB"%>
-<%@page import="javaDB.Evento"%>
+<%@page import="javaDB.EventoFeed"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.sql.SQLException" %>
@@ -16,7 +16,7 @@
     }
 
     ClassiDB db = new ClassiDB();
-
+    ArrayList<EventoFeed> feed = db.GetEventFeed(id_host);
 %>
 
 
@@ -102,19 +102,6 @@
     </div>
     <div class="homepage-flow">
         <a href="feedrefresh.jsp"></a>
-
-        <%
-            String id_host = "";
-            if(session.getAttribute("user")==null){
-                id_host = "3";
-            }else{
-                Utente user = (Utente) session.getAttribute("user");
-                id_host = user.getId_utente();
-            }
-
-            ClassiDB db = new ClassiDB();
-            ArrayList<EventoFeed> feed = db.GetEventFeed(id_host);
-        %>
         <%for (EventoFeed eventoFeed : feed) { %>
         <div class="event-block">
             Nome: <%=eventoFeed.GetEvento().getNome()%><br>
