@@ -1,4 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="javaDB.ClassiDB"%>
+<%@page import="javaDB.Evento"%>
+<%@page import="javaDB.Utente"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.SQLException" %>
+
+
+<%
+    String id_host = "";
+    if(session.getAttribute("user")==null){
+        id_host = "3";
+    }else{
+        Utente user = (Utente) session.getAttribute("user");
+        id_host = user.getId_utente();
+    }
+
+    ClassiDB db = new ClassiDB();
+
+%>
+
+
 <html>
 <head>
     <title>homepage</title>
@@ -67,10 +88,15 @@
 
         <div class="sidebar-right">
             <div class="navigation-contents">
-                <div class="navigation-element">Overview</div>
-                <div class="navigation-element">Reports</div>
-                <div class="navigation-element">Analytics</div>
-                <div class="navigation-element">Export</div>
+                <%ArrayList<Utente> feedUser = null;
+                    try {
+                        feedUser = db.GetFriendFeed(id_host);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }%>
+                <%for (Utente utente : feedUser) { %>
+                <div class="navigation-element"><%=utente.getUsername()%></div>
+                <%}%>
             </div>
         </div>
     </div>
