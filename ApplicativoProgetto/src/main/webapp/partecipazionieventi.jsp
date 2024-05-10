@@ -1,26 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: falz
-  Date: 4/12/24
-  Time: 11:33 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="connessione.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="javaDB.ClassiDB"%>
+<%@page import="javaDB.EventoFeed"%>
 <%@page import="javaDB.Utente"%>
-<%@page import="java.io.*"%>
-<%@page import="java.util.*"%>
-<%@ page import="javaDB.Evento"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page import="java.sql.SQLException" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>I Tuoi Eventi</title>
-</head>
-<body>
-<h1>Lista Tuoi Eventi</h1>
-
 
 
 <%
@@ -31,23 +14,118 @@
         Utente user = (Utente) session.getAttribute("user");
         id_host = user.getId_utente();
     }
-    ArrayList<Evento> eventoList = null;
+
+    ClassiDB db = new ClassiDB();
+    ArrayList<EventoFeed> eventoList = null;
     try {
-        eventoList = conn.getPartecipazioniList(id_host);
+        eventoList = db.getPartecipazioniList(id_host);
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
 
     if(eventoList.isEmpty()){%>
-        Non partecipi a nessun evento!
-    <%}%>
+Non hai creato nessun evento!
+<%}else{%>
 
-    <%for (Evento evento : eventoList) {
-%>
-<a href="dettaglievento.jsp?IdEvento=<%= evento.getId_evento() %>"><%= evento.getNome() %></a>
-<br>
-<% } %>
-<br>
-<a href="homepage.jsp">Torna Indietro</a>
+
+<html>
+<head>
+    <title>homepage</title>
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="homepage-body">
+<header>
+    <div class="hcenter-div">
+        <div class="vcenter-div">
+            <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="search in KAMI!">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="cancel-icon">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<script>
+    window.onload = function() {
+        // Ottieni tutti gli elementi di navigazione
+        var navigationElements = document.querySelectorAll('.navigation-element');
+
+        // Aggiungi un evento di click a ciascun elemento di navigazione
+        navigationElements.forEach(function(element) {
+            element.addEventListener('click', function() {
+                // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
+                if (element.textContent.trim() === "i tuoi eventi") {
+                    // Esegui il redirect a eventicreati.jsp
+                    window.location.href = 'eventicreati.jsp';
+                }else{
+                    if (element.textContent.trim() === "nuovo evento") {
+                        // Esegui il redirect a provacreaevento.jsp
+                        window.location.href = 'provacreaevento.jsp';
+                    }else{
+                        if(element.textContent.trim() === "partecipazioni"){
+                            // Esegui il redirect a partecipazionieventi.jsp
+                            window.location.href = 'partecipazionieventi.jsp';
+                        }
+
+                    }
+                }
+            });
+        });
+    };
+</script>
+
+
+<div>
+    <div class="sidebar">
+        <div class="navigation-contents">
+            <div class="navigation-element">nuovo evento</div>
+            <div class="navigation-element">i tuoi eventi</div>
+            <div class="navigation-element">partecipazioni</div>
+            <div class="navigation-element">Export</div>
+        </div>
+    </div>
+
+    <div class="sidebar-right">
+        <div class="navigation-contents">
+            <%ArrayList<Utente> feedUser = null;
+                try {
+                    feedUser = db.GetFriendFeed(id_host);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }%>
+            <%for (Utente utente : feedUser) { %>
+            <div class="navigation-element"><%=utente.getUsername()%></div>
+            <%}%>
+        </div>
+    </div>
+</div>
+<div class="homepage-flow">
+    <a href="feedrefresh.jsp"></a>
+    <%for (EventoFeed eventoFeed : eventoList) { %>
+    <div class="event-block">
+        Nome: <%=eventoFeed.GetEvento().getNome()%><br>
+        Luogo: <%=eventoFeed.GetEvento().getLuogo()%><br>
+        Indirizzo: <%=eventoFeed.GetEvento().getIndirizzo()%><br>
+        Città: <%=eventoFeed.GetEvento().getCitta()%><br>
+        Data: <%=eventoFeed.GetEvento().getData()%><br>
+        Ora: <%=eventoFeed.GetEvento().getOra()%><br>
+        Informazioni sul luogo: <%=eventoFeed.GetEvento().getInformazioniLuogo()%><br>
+        Descrizione: <%=eventoFeed.GetEvento().getDescrizione()%><br>
+        Tipo: <%=eventoFeed.GetEvento().getTipo()%><br>
+        ID Host: <%=eventoFeed.GetEvento().getIdHost()%><br>
+        Nome Host: <%=eventoFeed.GetHost()%><br>
+    </div>
+    <%}%>
+</div>
 </body>
 </html>
+<%}%>
