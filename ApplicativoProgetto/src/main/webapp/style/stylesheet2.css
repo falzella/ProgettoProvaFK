@@ -306,7 +306,7 @@ label {
     min-height: 270px;
     margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     color: white;
     background-color: red;
@@ -393,4 +393,70 @@ label {
 }
 .search-box .search-data.active{
     display: none;
+}
+
+/* event feed components */
+
+.evf-event-identity {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-left: 20px;
+}
+
+.evf-event-details {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.evf-profilepic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.evf-host {
+    height: 20px;
+    width: 100%;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.evf-name {
+    height: 30px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.evf-description {
+    margin-top: 20px;
+    display: inline-block;
+    height: 100px;
+    width: 100%;
+}
+
+.evf-photobox {
+    color: black;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    background-color: var(--not-so-super-soft-red);
 }

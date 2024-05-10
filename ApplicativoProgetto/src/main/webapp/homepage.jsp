@@ -117,17 +117,16 @@
             Nome Host: <%=eventoFeed.GetHost()%><br>
         </div>
         <div class="event-block">
-            Nome: <%=eventoFeed.GetEvento().getNome()%><br> 
-            Luogo: <%=eventoFeed.GetEvento().getLuogo()%><br>
-            Indirizzo: <%=eventoFeed.GetEvento().getIndirizzo()%><br>
-            Città: <%=eventoFeed.GetEvento().getCitta()%><br>
-            Data: <%=eventoFeed.GetEvento().getData()%><br>
-            Ora: <%=eventoFeed.GetEvento().getOra()%><br>
-            Informazioni sul luogo: <%=eventoFeed.GetEvento().getInformazioniLuogo()%><br>
-            Descrizione: <%=eventoFeed.GetEvento().getDescrizione()%><br>
-            Tipo: <%=eventoFeed.GetEvento().getTipo()%><br>
-            ID Host: <%=eventoFeed.GetEvento().getIdHost()%><br>
-            Nome Host: <%=eventoFeed.GetHost()%><br>
+            <div class="evf-event-details">
+                <div class="evf-profilepic">pic</div>
+                <div class="evf-event-identity">
+                    <div class="evf-host"><%=eventoFeed.GetHost()%></div>
+                    <div class="evf-name"><%=eventoFeed.GetEvento().getNome()%></div>
+                </div>
+                <hr>
+                <div class="evf-description"><%=eventoFeed.GetEvento().getDescrizione()%></div>
+            </div>
+            <div class="evf-photobox">img</div>
         </div>
         <%}%>
     </div>
