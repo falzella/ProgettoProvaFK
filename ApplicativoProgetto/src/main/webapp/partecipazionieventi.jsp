@@ -71,9 +71,9 @@ Non hai creato nessun evento!
                         // Esegui il redirect a provacreaevento.jsp
                         window.location.href = 'provacreaevento.jsp';
                     }else{
-                        if(element.textContent.trim() === "partecipazioni"){
+                        if(element.textContent.trim() === "homepage"){
                             // Esegui il redirect a partecipazionieventi.jsp
-                            window.location.href = 'partecipazionieventi.jsp';
+                            window.location.href = 'homepage.jsp';
                         }
 
                     }
@@ -87,9 +87,9 @@ Non hai creato nessun evento!
 <div>
     <div class="sidebar">
         <div class="navigation-contents">
+            <div class="navigation-element">homepage</div>
             <div class="navigation-element">nuovo evento</div>
             <div class="navigation-element">i tuoi eventi</div>
-            <div class="navigation-element">partecipazioni</div>
             <div class="navigation-element">Export</div>
         </div>
     </div>

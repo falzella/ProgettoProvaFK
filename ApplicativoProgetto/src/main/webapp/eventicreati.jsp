@@ -63,9 +63,9 @@
         navigationElements.forEach(function(element) {
             element.addEventListener('click', function() {
                 // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
-                if (element.textContent.trim() === "i tuoi eventi") {
+                if (element.textContent.trim() === "homepage") {
                     // Esegui il redirect a eventicreati.jsp
-                    window.location.href = 'eventicreati.jsp';
+                    window.location.href = 'homepage.jsp';
                 }else{
                     if (element.textContent.trim() === "nuovo evento") {
                         // Esegui il redirect a provacreaevento.jsp
@@ -87,8 +87,8 @@
 <div>
     <div class="sidebar">
         <div class="navigation-contents">
+            <div class="navigation-element">homepage</div>
             <div class="navigation-element">nuovo evento</div>
-            <div class="navigation-element">i tuoi eventi</div>
             <div class="navigation-element">partecipazioni</div>
             <div class="navigation-element">Export</div>
         </div>

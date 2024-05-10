@@ -21,6 +21,9 @@
 <%
 
     String id_evento = request.getParameter("IdEvento");
+    if(id_evento == null){
+        id_evento = "2";
+    }
     Evento evento = conn.getEventoFromHost(id_evento);
 %>
 

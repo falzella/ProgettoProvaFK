@@ -66,6 +66,14 @@
                             if(element.textContent.trim() === "partecipazioni"){
                                 // Esegui il redirect a partecipazionieventi.jsp
                                 window.location.href = 'partecipazionieventi.jsp';
+                            }else{
+                                if(element.textContent.trim() === "Export"){
+                                    // Esegui il redirect a export.jsp
+                                    window.location.href = 'homepage.jsp';
+                                }else{
+                                    // Mostro dettagli utente
+                                    window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
+                                }
                             }
 
                         }

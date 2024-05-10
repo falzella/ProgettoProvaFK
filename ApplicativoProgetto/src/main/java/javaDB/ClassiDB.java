@@ -12,7 +12,7 @@ public class ClassiDB {
         // caricamento driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // connessione database
-        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "grandesql");
+        this.cn = DriverManager.getConnection("jdbc:mysql://localhost/bellieventi", "root", "");
 
         this.stmt = cn.createStatement();
     }
@@ -31,6 +31,17 @@ public class ClassiDB {
     // da sostituire le throws con try catch
     public Utente GetUtenteFromId(int id) throws SQLException {
         String sql = "SELECT * FROM utenti WHERE Id_Utente='" + id + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        if (rs.next()) {
+            return getUtenteFromResultSet(rs);
+        } else {
+            return null;
+        }
+    }
+
+    public Utente getUtenteFromUsername(String username) throws SQLException {
+        String sql = "SELECT * FROM utenti WHERE Username='" + username + "'";
         ResultSet rs = stmt.executeQuery(sql);
 
         if (rs.next()) {
