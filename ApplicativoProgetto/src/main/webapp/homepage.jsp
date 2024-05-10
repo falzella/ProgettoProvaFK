@@ -1,9 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="javaDB.ClassiDB"%>
 <%@page import="javaDB.Evento"%>
-<%@page import="javaDB.EventoFeed"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.SQLException" %>
+
+
+<%
+    String id_host = "";
+    if(session.getAttribute("user")==null){
+        id_host = "3";
+    }else{
+        Utente user = (Utente) session.getAttribute("user");
+        id_host = user.getId_utente();
+    }
+
+    ClassiDB db = new ClassiDB();
+
+%>
+
+
 <html>
 <head>
     <title>homepage</title>
@@ -44,8 +60,14 @@
                         window.location.href = 'eventicreati.jsp';
                     }else{
                         if (element.textContent.trim() === "nuovo evento") {
-                            // Esegui il redirect a eventicreati.jsp
+                            // Esegui il redirect a provacreaevento.jsp
                             window.location.href = 'provacreaevento.jsp';
+                        }else{
+                            if(element.textContent.trim() === "partecipazioni"){
+                                // Esegui il redirect a partecipazionieventi.jsp
+                                window.location.href = 'partecipazionieventi.jsp';
+                            }
+
                         }
                     }
                 });
@@ -66,10 +88,15 @@
 
         <div class="sidebar-right">
             <div class="navigation-contents">
-                <div class="navigation-element">Overview</div>
-                <div class="navigation-element">Reports</div>
-                <div class="navigation-element">Analytics</div>
-                <div class="navigation-element">Export</div>
+                <%ArrayList<Utente> feedUser = null;
+                    try {
+                        feedUser = db.GetFriendFeed(id_host);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }%>
+                <%for (Utente utente : feedUser) { %>
+                <div class="navigation-element"><%=utente.getUsername()%></div>
+                <%}%>
             </div>
         </div>
     </div>
