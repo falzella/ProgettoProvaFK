@@ -75,6 +75,8 @@
         </div>
     </div>
     <div class="homepage-flow">
+        <a href="feedrefresh.jsp"></a>
+
         <div class="event-block">
             NEW EVENT
         </div>
