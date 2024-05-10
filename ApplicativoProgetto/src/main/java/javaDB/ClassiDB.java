@@ -270,4 +270,26 @@ public class ClassiDB {
             }
         return eventiList;
     }
+
+
+    public boolean mandarichiesta(String idrichiesta, String idrichiesto) {
+        try {
+            String sql = "INSERT INTO richiesteamicizia (idRichiedente, idRicevente) VALUES (?, ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idrichiesta);
+                preparedStatement.setString(2, idrichiesto);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+
+
 }
