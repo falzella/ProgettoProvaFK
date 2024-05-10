@@ -74,6 +74,14 @@
                         if(element.textContent.trim() === "partecipazioni"){
                             // Esegui il redirect a partecipazionieventi.jsp
                             window.location.href = 'partecipazionieventi.jsp';
+                        }else{
+                            if(element.textContent.trim() === "Export"){
+                                // Esegui il redirect a export.jsp
+                                window.location.href = 'homepage.jsp';
+                            }else{
+                                // Mostro dettagli utente
+                                window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
+                            }
                         }
 
                     }
@@ -83,6 +91,11 @@
     };
 </script>
 
+<script>
+    function redirectToDettaglio(eventoId) {
+        window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
+    }
+</script>
 
 <div>
     <div class="sidebar">
@@ -111,16 +124,15 @@
 <div class="homepage-flow">
     <a href="feedrefresh.jsp"></a>
     <%for (Evento evento : eventoList) { %>
-    <div class="event-block">
-        Nome: <%=evento.getNome()%><br>
-        Luogo: <%=evento.getLuogo()%><br>
-        Indirizzo: <%=evento.getIndirizzo()%><br>
-        Città: <%=evento.getCitta()%><br>
-        Data: <%=evento.getData()%><br>
-        Ora: <%=evento.getOra()%><br>
-        Informazioni sul luogo: <%=evento.getInformazioniLuogo()%><br>
-        Descrizione: <%=evento.getDescrizione()%><br>
-        Tipo: <%=evento.getTipo()%><br>
+    <div class="event-block" onclick="redirectToDettaglio('<%= evento.getId_evento() %>')">
+        <div class="evf-event-details">
+            <div class="evf-profilepic">pic</div>
+            <div class="evf-event-identity">
+                <div class="evf-name"><%=evento.getNome()%></div>
+            </div>
+            <div class="evf-description"><%=evento.getDescrizione()%></div>
+        </div>
+        <div class="evf-photobox">img</div>
     </div>
     <%}%>
 </div>

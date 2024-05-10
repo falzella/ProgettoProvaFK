@@ -62,20 +62,27 @@ Non hai creato nessun evento!
         // Aggiungi un evento di click a ciascun elemento di navigazione
         navigationElements.forEach(function(element) {
             element.addEventListener('click', function() {
-                // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
-                if (element.textContent.trim() === "i tuoi eventi") {
-                    // Esegui il redirect a eventicreati.jsp
-                    window.location.href = 'eventicreati.jsp';
-                }else{
-                    if (element.textContent.trim() === "nuovo evento") {
-                        // Esegui il redirect a provacreaevento.jsp
-                        window.location.href = 'provacreaevento.jsp';
-                    }else{
-                        if(element.textContent.trim() === "homepage"){
-                            // Esegui il redirect a partecipazionieventi.jsp
-                            window.location.href = 'homepage.jsp';
+                if(element.textContent.trim() === "homepage"){
+                    // Esegui il redirect a homepage.jsp
+                    window.location.href = 'homepage.jsp';
+                }else {
+                    // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
+                    if (element.textContent.trim() === "i tuoi eventi") {
+                        // Esegui il redirect a eventicreati.jsp
+                        window.location.href = 'eventicreati.jsp';
+                    } else {
+                        if (element.textContent.trim() === "nuovo evento") {
+                            // Esegui il redirect a provacreaevento.jsp
+                            window.location.href = 'provacreaevento.jsp';
+                        } else {
+                            if (element.textContent.trim() === "Export") {
+                                // Esegui il redirect a export.jsp
+                                window.location.href = 'homepage.jsp';
+                            } else {
+                                // Mostro dettagli utente
+                                window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
+                            }
                         }
-
                     }
                 }
             });
@@ -83,6 +90,11 @@ Non hai creato nessun evento!
     };
 </script>
 
+<script>
+    function redirectToDettaglio(eventoId) {
+        window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
+    }
+</script>
 
 <div>
     <div class="sidebar">
@@ -111,18 +123,16 @@ Non hai creato nessun evento!
 <div class="homepage-flow">
     <a href="feedrefresh.jsp"></a>
     <%for (EventoFeed eventoFeed : eventoList) { %>
-    <div class="event-block">
-        Nome: <%=eventoFeed.GetEvento().getNome()%><br>
-        Luogo: <%=eventoFeed.GetEvento().getLuogo()%><br>
-        Indirizzo: <%=eventoFeed.GetEvento().getIndirizzo()%><br>
-        Città: <%=eventoFeed.GetEvento().getCitta()%><br>
-        Data: <%=eventoFeed.GetEvento().getData()%><br>
-        Ora: <%=eventoFeed.GetEvento().getOra()%><br>
-        Informazioni sul luogo: <%=eventoFeed.GetEvento().getInformazioniLuogo()%><br>
-        Descrizione: <%=eventoFeed.GetEvento().getDescrizione()%><br>
-        Tipo: <%=eventoFeed.GetEvento().getTipo()%><br>
-        ID Host: <%=eventoFeed.GetEvento().getIdHost()%><br>
-        Nome Host: <%=eventoFeed.GetHost()%><br>
+    <div class="event-block" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
+        <div class="evf-event-details">
+            <div class="evf-profilepic">pic</div>
+            <div class="evf-event-identity">
+                <div class="evf-host"><%=eventoFeed.GetHost()%></div>
+                <div class="evf-name"><%=eventoFeed.GetEvento().getNome()%></div>
+            </div>
+            <div class="evf-description"><%=eventoFeed.GetEvento().getDescrizione()%></div>
+        </div>
+        <div class="evf-photobox">img</div>
     </div>
     <%}%>
 </div>

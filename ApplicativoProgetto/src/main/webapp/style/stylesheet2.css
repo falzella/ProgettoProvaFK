@@ -299,6 +299,7 @@ label {
 }
 
 .event-block {
+    cursor: pointer;
     border-color: transparent;
     border-radius: 15px;
     width: 95%;

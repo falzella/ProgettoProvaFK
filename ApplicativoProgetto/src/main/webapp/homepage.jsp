@@ -83,6 +83,13 @@
         };
     </script>
 
+    <script>
+        function redirectToDettaglio(eventoId) {
+            window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
+        }
+    </script>
+
+
 
     <div>
         <div class="sidebar">
@@ -124,14 +131,13 @@
             ID Host: <%=eventoFeed.GetEvento().getIdHost()%><br>
             Nome Host: <%=eventoFeed.GetHost()%><br>
         </div>
-        <div class="event-block">
+        <div class="event-block" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
             <div class="evf-event-details">
                 <div class="evf-profilepic">pic</div>
                 <div class="evf-event-identity">
                     <div class="evf-host"><%=eventoFeed.GetHost()%></div>
                     <div class="evf-name"><%=eventoFeed.GetEvento().getNome()%></div>
                 </div>
-                <hr>
                 <div class="evf-description"><%=eventoFeed.GetEvento().getDescrizione()%></div>
             </div>
             <div class="evf-photobox">img</div>
