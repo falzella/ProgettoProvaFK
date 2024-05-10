@@ -28,6 +28,18 @@ public class ClassiDB {
         }
     }
 
+    // da sostituire le throws con try catch
+    public Utente GetUtenteFromId(int id) throws SQLException {
+        String sql = "SELECT * FROM utenti WHERE Id_Utente='" + id + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        if (rs.next()) {
+            return getUtenteFromResultSet(rs);
+        } else {
+            return null;
+        }
+    }
+
     public Utente getUtenteFromResultSet(ResultSet rs) throws SQLException {
         String id_utente = rs.getString("Id_Utente");
         String username = rs.getString("Username");
@@ -106,10 +118,6 @@ public class ClassiDB {
         }
         return false; // In caso di errore, assume che l'email non esista
     }
-
-
-
-
 
     public void setIdUtente(Utente utente) {
         try {
@@ -203,8 +211,8 @@ public class ClassiDB {
         return eventiList;
     }
 
-    public ArrayList<Evento> GetEventFeed(String IdHost) throws SQLException {
-        ArrayList<Evento> eventiList = new ArrayList<>();
+    public ArrayList<EventoFeed> GetEventFeed(String IdHost) throws SQLException {
+        ArrayList<EventoFeed> eventiList = new ArrayList<>();
         String sql = "SELECT * FROM eventi WHERE eventi.Tipo = 'pubblico' AND eventi.ID_Host <> ?";
 
         try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
@@ -212,7 +220,9 @@ public class ClassiDB {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Evento evento = getEventoFromResultSet(rs);
-                eventiList.add(evento);
+                String host = GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername();
+                EventoFeed eventoFeed = new EventoFeed(evento, host);
+                eventiList.add(eventoFeed);
             }
         }
         return eventiList;
@@ -231,5 +241,4 @@ public class ClassiDB {
             }
         return eventiList;
     }
-
 }
