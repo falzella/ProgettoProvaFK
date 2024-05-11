@@ -118,6 +118,7 @@
 
         <div class="sidebar-right">
             <div class="navigation-contents">
+                <div class="navigation-header">i tuoi amici</div>
                 <%ArrayList<Utente> feedUser = null;
                     try {
                         feedUser = db.GetFriendFeed(id_host);
@@ -127,11 +128,13 @@
                 <%for (Utente utente : feedUser) { %>
                 <div class="navigation-element"><%=utente.getUsername()%></div>
                 <%}%>
+                <div class="navigation-header">consigliati</div>
             </div>
         </div>
     </div>
     <div class="homepage-flow">
         <%for (EventoFeed eventoFeed : feed) { %>
+    <!--
         <div class="event-block">
             Nome: <%=eventoFeed.GetEvento().getNome()%><br>
             Luogo: <%=eventoFeed.GetEvento().getLuogo()%><br>
@@ -144,10 +147,12 @@
             Tipo: <%=eventoFeed.GetEvento().getTipo()%><br>
             ID Host: <%=eventoFeed.GetEvento().getIdHost()%><br>
             Nome Host: <%=eventoFeed.GetHost()%><br>
-        </div>
+        </div> -->
         <div class="event-block" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
             <div class="evf-event-details">
-                <div class="evf-profilepic">pic</div>
+                <div class="evf-profilepic-space">
+                    <div class="evf-profilepic">pic</div>
+                </div>
                 <div class="evf-event-identity">
                     <div class="evf-host">
                         <img src="images/icons/crown.png" height="20px" width="20px">
