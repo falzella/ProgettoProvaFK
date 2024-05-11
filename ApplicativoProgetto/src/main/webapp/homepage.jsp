@@ -5,7 +5,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.sql.SQLException" %>
 
-
 <%
     String id_host = "";
     if(session.getAttribute("user")==null){
@@ -18,7 +17,6 @@
     ClassiDB db = new ClassiDB();
     ArrayList<EventoFeed> feed = db.GetEventFeed(id_host);
 %>
-
 
 <html>
 <head>
@@ -44,7 +42,6 @@
             </div>
         </div>
     </header>
-
 
     <script>
         window.onload = function() {
@@ -89,8 +86,6 @@
         }
     </script>
 
-
-
     <div>
         <div class="sidebar">
             <div class="navigation-contents">
@@ -116,7 +111,6 @@
         </div>
     </div>
     <div class="homepage-flow">
-        <a href="feedrefresh.jsp"></a>
         <%for (EventoFeed eventoFeed : feed) { %>
         <div class="event-block">
             Nome: <%=eventoFeed.GetEvento().getNome()%><br>
@@ -135,8 +129,28 @@
             <div class="evf-event-details">
                 <div class="evf-profilepic">pic</div>
                 <div class="evf-event-identity">
-                    <div class="evf-host"><%=eventoFeed.GetHost()%></div>
-                    <div class="evf-name"><%=eventoFeed.GetEvento().getNome()%></div>
+                    <div class="evf-host">
+                        <img src="images/icons/crown.png" height="20px" width="20px">
+                        <%=eventoFeed.GetHost()%>
+                    </div>
+                    <div class="evf-name">
+                        <img src="images/icons/event.png" height="20px" width="20px">
+                        <%=eventoFeed.GetEvento().getNome()%>
+                    </div>
+                </div>
+                <div class="evf-event-location">
+                    <div class="evf-location-detail">
+                        <img src="images/icons/calendar.png" height="15px" width="15px">
+                        <%=eventoFeed.GetEvento().getData()%>
+                    </div>
+                    <div class="evf-location-detail">
+                        <img src="images/icons/clock.png" height="15px" width="15px">
+                        <%=eventoFeed.GetEvento().getOra()%>
+                    </div>
+                    <div class="evf-location-detail">
+                        <img src="images/icons/location-pin.png" height="15px" width="15px">
+                        <%=eventoFeed.GetEvento().getLuogo()%>
+                    </div>
                 </div>
                 <div class="evf-description"><%=eventoFeed.GetEvento().getDescrizione()%></div>
             </div>
