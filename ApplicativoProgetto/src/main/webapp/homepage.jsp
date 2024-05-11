@@ -27,18 +27,38 @@
 <body class="homepage-body">
     <header>
         <div class="hcenter-div">
-            <div class="vcenter-div">
-                <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+            <div class="logo-space">
+                <div class="vcenter-div">
+                    <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+                </div>
             </div>
 
-            <div class="search-box">
-                <input type="text" placeholder="search in KAMI!">
-                <div class="search-icon">
-                <i class="fas fa-search"></i>
-            </div>
-                <div class="cancel-icon">
-                    <i class="fas fa-times"></i>
+            <div class="search-space">
+                <!--
+                <div class="search-box">
+                    <input type="text" placeholder="search in KAMI!">
+                    <div class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cancel-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div> -->
+
+                <div class="search-box-new">
+                    <input type="text" placeholder="search in KAMI!">
+                    <img src="images/icons/cancel-icon.png" height="15px" width="15px">
+                    <span style="min-width: 5px"></span>
+                    <img src="images/icons/search-icon.png" height="17px" width="17px">
                 </div>
+            </div>
+
+            <div class="profile-info-space">
+                <img src="images/icons/notifies.png" height="30px" width="30px">
+                <div class="space"></div>
+                <img src="images/icons/settings.png" height="30px" width="30px">
+                <div class="space"></div>
+                <div class="profile-picture"></div>
             </div>
         </div>
     </header>
@@ -52,6 +72,7 @@
             navigationElements.forEach(function(element) {
                 element.addEventListener('click', function() {
                     // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
+
                     if (element.textContent.trim() === "i tuoi eventi") {
                         // Esegui il redirect a eventicreati.jsp
                         window.location.href = 'eventicreati.jsp';
@@ -64,7 +85,7 @@
                                 // Esegui il redirect a partecipazionieventi.jsp
                                 window.location.href = 'partecipazionieventi.jsp';
                             }else{
-                                if(element.textContent.trim() === "Export"){
+                                if(element.textContent.trim() === "homepage"){
                                     // Esegui il redirect a export.jsp
                                     window.location.href = 'homepage.jsp';
                                 }else{
@@ -72,7 +93,6 @@
                                     window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
                                 }
                             }
-
                         }
                     }
                 });
@@ -89,10 +109,10 @@
     <div>
         <div class="sidebar">
             <div class="navigation-contents">
+                <div class="navigation-element">homepage</div>
                 <div class="navigation-element">nuovo evento</div>
                 <div class="navigation-element">i tuoi eventi</div>
                 <div class="navigation-element">partecipazioni</div>
-                <div class="navigation-element">Export</div>
             </div>
         </div>
 

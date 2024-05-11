@@ -195,6 +195,49 @@ label {
     color: white;
 }
 
+/* utility */
+.space {
+    margin: 10px;
+    color: red;
+}
+
+/* header stuff */
+.logo-space {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-space {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-info-space {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-picture {
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+/* sidebar */
 .sidebar {
     position: fixed;
     top: 11%;
@@ -263,7 +306,6 @@ label {
     transition: 0.2s ease-in-out;
 }
 
-
 /* homepage flow*/
 .homepage-flow {
     margin-left: 15.5%;
@@ -325,7 +367,6 @@ label {
     height: 50px;
     width: 500px;
     border-radius: 20px;
-    border:1px solid blue;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .search-box.active{
@@ -401,8 +442,31 @@ label {
     display: none;
 }
 
-/* event feed components */
+/* search box new */
+.search-box-new {
+    background-color: white;
+    padding-left: 20px;
+    color: red !important;
+    height: 40px;
+    width: 70%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+.search-box-new input{
+    width: 90%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font: inherit;
+    color: inherit;
+}
+.search-box-new input::placeholder{
+    color: inherit;
+    font: inherit;
+}
 
+/* event feed components */
 .evf-event-identity {
     color: white;
     display: flex;
