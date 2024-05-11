@@ -185,7 +185,7 @@ label {
 
 .img-round {
     border-radius: 10px;
-    margin-left: 1%;
+    margin-left: 10%;
 }
 
 .homepage-body {
@@ -206,7 +206,7 @@ label {
 .logo-space {
     width: 20%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -305,6 +305,12 @@ label {
     background-color: var(--soft-red);
     color: var(--kami-red);
     transition: 0.2s ease-in-out;
+}
+
+.navigation-element-onpage {
+    border: 2px solid red;
+    color: var(--kami-text-color);
+
 }
 
 .navigation-header {
@@ -480,6 +486,12 @@ label {
     font: inherit;
 }
 
+.search-box-new-img-container {
+    width: 7%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* event feed components */
 .evf-profilepic-space {
     width: 10%;
@@ -510,7 +522,7 @@ label {
     width: 50px;
     border-radius: 50%;
     background-color: white;
-    color: black;
+    color: var(--kami-text-color);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -553,7 +565,7 @@ label {
 }
 
 .evf-photobox {
-    color: black;
+    color: var(--kami-text-color);
     width: 400px;
     height: 200px;
     margin-right: 25px;

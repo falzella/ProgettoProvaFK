@@ -408,6 +408,3 @@ p {
 .toggle-switch__checkbox:checked + .toggle-switch__label .toggle-switch__switch {
     left: 30px;
 }
-
-
-

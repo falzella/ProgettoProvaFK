@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="javaDB.ClassiDB"%>
+<%@page import="javaDB.Utente"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.sql.SQLException" %>
 <html lang="en">
 <head>
     <title>Registra Evento</title>
@@ -7,7 +11,6 @@
 <body>
 <!-- partial:index.partial.html -->
 <body class="align body-creaevento">
-
 <div class="whiteboardlong-horizontal">
     <div class="grid-kami">
         <div class="form__field">
