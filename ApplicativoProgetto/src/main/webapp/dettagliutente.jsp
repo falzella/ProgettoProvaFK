@@ -43,12 +43,17 @@ Cognome: <%=friend.getCognome()%><br>
 Mail: <%=friend.getMail()%><br>
 
 <% if(!conn.checkAmicizia(id_host, friend.getId_utente())){%>
+      <div class="navigation-element" onclick="inviaRichiesta('<%=friend.getId_utente()%>')">Richiedi amicizia</div>
+<%}%>
 
-      <div class="navigation-element" onclick="inviaRichiesta('<%=id_host%>', '<%=friend.getId_utente()%>')">Richiedi amicizia</div>
-
+<%
+  boolean friendReq = request.getParameter("friendReq") != null;
+  if(friendReq){%>
+    <script>
+      alert("Richiesta inviata")
+      RedirectTo("dettagliutente.jsp?UserFriend=<%=friend.getUsername()%>")
+    </script>
   <%}%>
-
-
 
 <a href="homepage.jsp">Torna Indietro</a>
 
