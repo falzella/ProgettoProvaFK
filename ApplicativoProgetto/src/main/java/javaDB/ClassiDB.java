@@ -385,6 +385,44 @@ public class ClassiDB {
         return false;
     }
 
+    public boolean eseguiRichiesta(String idrichiesta, String idrichiesto, String esito) {
+
+        if(esito.equals("true")){
+
+            try {
+                String sql = "INSERT INTO amicizieutenti (Id_Utente1, Id_Utente2) VALUES (?, ?)";
+
+                try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                    preparedStatement.setString(1,idrichiesto);
+                    preparedStatement.setString(2, idrichiesta);
+
+                    preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+        }
+
+        try {
+            String sql = "DELETE FROM richiesteamicizia WHERE (IDRichiedente = ? AND IDRicevente = ?) OR (IDRichiedente = ? AND IDRicevente = ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idrichiesta);
+                preparedStatement.setString(2, idrichiesto);
+                preparedStatement.setString(3, idrichiesto);
+                preparedStatement.setString(4, idrichiesta);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 
 
 

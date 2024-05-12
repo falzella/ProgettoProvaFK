@@ -889,3 +889,19 @@ label {
     border: 2px solid white;
     background-color: var(--not-so-soft-red);
 }
+
+.slide-in-from-top {
+    animation: slideInFromTop 0.5s ease-in-out;
+}
+
+/* Definizione dell'animazione */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

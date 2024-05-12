@@ -16,6 +16,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Richieste</title>
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body>
 <h1>Lista Richieste</h1>
@@ -34,9 +36,30 @@
 
     for (Utente utente : richiesteList) {
 %>
-<a href="dettagliutente.jsp?UserFriend=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
+<a href="richieste.jsp?UserFriend=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
+<div class="navigation-element" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">Accetta</div>
+<div class="navigation-element" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">Rifiuta</div>
 <br>
 <% }%>
+
+<%
+    boolean esitoReq = request.getParameter("esitoReq") != null;
+    if(esitoReq){
+        String scelta = request.getParameter("scelta");
+        if(scelta.equals("true")){
+%>
+
+<script>
+    alert("Richiesta Accettata")
+</script>
+        <%}else{
+            
+        %>
+<script>
+    alert("Richiesta Rifiutata")
+</script> 
+        <%}%>
+<%}%>
 
 <br>
 <a href="homepage.jsp">Torna Indietro</a>
