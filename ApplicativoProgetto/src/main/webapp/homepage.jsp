@@ -91,8 +91,13 @@
                                     // Esegui il redirect a export.jsp
                                     window.location.href = 'homepage.jsp';
                                 }else{
-                                    // Mostro dettagli utente
-                                    window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
+                                    if(element.textContent.trim() === "richieste amicizia"){
+                                        // Esegui il redirect a export.jsp
+                                        window.location.href = 'richieste.jsp';
+                                    }else{
+                                        // Mostro dettagli utente
+                                        window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
+                                    }
                                 }
                             }
                         }
@@ -115,6 +120,7 @@
                 <div class="navigation-element">nuovo evento</div>
                 <div class="navigation-element">i tuoi eventi</div>
                 <div class="navigation-element">partecipazioni</div>
+                <div class="navigation-element">richieste amicizia</div>
             </div>
         </div>
 

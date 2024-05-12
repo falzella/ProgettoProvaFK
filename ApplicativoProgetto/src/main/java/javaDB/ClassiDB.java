@@ -289,7 +289,20 @@ public class ClassiDB {
         return true;
     }
 
+    public ArrayList<Utente> getRichieste(String IdHost) throws SQLException {
+        ArrayList<Utente> utentiList = new ArrayList<>();
+        String sql = "SELECT utenti.* FROM  utenti INNER JOIN richiesteamicizia ON utenti.Id_Utente = richiesteamicizia.IdRichiedente WHERE richiesteamicizia.IdRicevente = ?";
 
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, IdHost);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Utente utente = getUtenteFromResultSet(rs);
+                utentiList.add(utente);
+            }
+        }
+        return utentiList;
+    }
 
 
 }
