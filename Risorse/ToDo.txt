@@ -6,3 +6,7 @@ COSE DA FARE:
 DA FARE:
 - non è IdRicevente al posto di IdRichiedente in ClassiDB.GetRiechieste(IdHost)?
 - homepage feed non riceve i dati giusti
+
+API
+- per crop circolare: https://bumptech.github.io/glide/javadocs/470/com/bumptech/glide/load/resource/bitmap/CircleCrop.html
+- per IlovePDF: https://developer.iloveimg.com/docs/guides
