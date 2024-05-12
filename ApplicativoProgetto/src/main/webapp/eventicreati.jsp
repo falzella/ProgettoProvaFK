@@ -79,57 +79,14 @@
     </div>
 </header>
 
-
-<script>
-    window.onload = function() {
-        // Ottieni tutti gli elementi di navigazione
-        var navigationElements = document.querySelectorAll('.navigation-element');
-
-        // Aggiungi un evento di click a ciascun elemento di navigazione
-        navigationElements.forEach(function(element) {
-            element.addEventListener('click', function() {
-                // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
-                if (element.textContent.trim() === "homepage") {
-                    // Esegui il redirect a eventicreati.jsp
-                    window.location.href = 'homepage.jsp';
-                }else{
-                    if (element.textContent.trim() === "nuovo evento") {
-                        // Esegui il redirect a provacreaevento.jsp
-                        window.location.href = 'provacreaevento.jsp';
-                    }else{
-                        if(element.textContent.trim() === "partecipazioni"){
-                            // Esegui il redirect a partecipazionieventi.jsp
-                            window.location.href = 'partecipazionieventi.jsp';
-                        }else{
-                            if(element.textContent.trim() === "Export"){
-                                // Esegui il redirect a export.jsp
-                                window.location.href = 'homepage.jsp';
-                            }else{
-                                // Mostro dettagli utente
-                                window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
-                            }
-                        }
-
-                    }
-                }
-            });
-        });
-    };
-</script>
-
-<script>
-    function redirectToDettaglio(eventoId) {
-        window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
-    }
-</script>
-
 <div>
     <div class="sidebar">
         <div class="navigation-contents">
-            <div class="navigation-element">homepage</div>
-            <div class="navigation-element">nuovo evento</div>
-            <div class="navigation-element">partecipazioni</div>
-            <div class="navigation-element">Export</div>
+            <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
+            <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+            <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
+            <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
+            <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
         </div>
     </div>
 
