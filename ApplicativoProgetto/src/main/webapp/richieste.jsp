@@ -59,11 +59,6 @@
     alert("Richiesta Rifiutata")
 </script> 
         <%}%>
-%>
-<script>
-    alert("Richiesta inviata")
-    RedirectTo("richieste.jsp")
-</script>
 <%}%>
 
 <br>

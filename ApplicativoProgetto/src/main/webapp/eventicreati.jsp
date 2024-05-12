@@ -70,7 +70,7 @@
                 <%
                 } else {
                 %>
-                <img src="profilepic/default.png" alt="i" width="60" height="60">
+                <img src="imagetree/profilepic/default.png" alt="i" width="60" height="60">
                 <%
                     }
                 %>
