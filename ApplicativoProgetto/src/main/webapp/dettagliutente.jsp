@@ -42,7 +42,7 @@ Nome: <%=friend.getNome()%><br>
 Cognome: <%=friend.getCognome()%><br>
 Mail: <%=friend.getMail()%><br>
 
-<% if(!conn.checkAmicizia(id_host, friend.getId_utente())){%>
+<% if(!(conn.checkAmicizia(id_host, friend.getId_utente()) || conn.checkRichiesta(id_host, friend.getId_utente()))){%>
       <div class="navigation-element" onclick="inviaRichiesta('<%=friend.getId_utente()%>')">Richiedi amicizia</div>
 <%}%>
 

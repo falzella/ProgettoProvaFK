@@ -361,6 +361,30 @@ public class ClassiDB {
         return false;
     }
 
+    public boolean checkRichiesta(String idUtente1, String idUtente2) {
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM richiesteamicizia WHERE (IDRichiedente = ? AND IDRicevente = ?) OR (IDRichiedente = ? AND IDRicevente = ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idUtente1);
+                preparedStatement.setString(2, idUtente2);
+                preparedStatement.setString(3, idUtente2);
+                preparedStatement.setString(4, idUtente1);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
 
 
 

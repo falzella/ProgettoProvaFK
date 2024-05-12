@@ -34,7 +34,7 @@
 
     for (Utente utente : richiesteList) {
 %>
-<a href="dettagliutente.jsp?IdEvento=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
+<a href="dettagliutente.jsp?UserFriend=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
 <br>
 <% }%>
 
