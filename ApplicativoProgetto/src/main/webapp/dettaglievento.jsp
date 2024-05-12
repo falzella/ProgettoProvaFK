@@ -52,7 +52,7 @@
             <div class="space"></div>
             <div class="profile-picture">
                 <%
-                    String imagePfp = "imagetree/profilepic/" + id_host + ".jpg"; // Percorso dell'immagine desiderata
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".png"; // Percorso dell'immagine desiderata
                     java.io.File imgFilepfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
                     if (imgFilepfp.exists()) {
@@ -61,7 +61,7 @@
                 <%
                 } else {
                 %>
-                <img src="imagetree/profilepic/default.jpg" alt="img" width="50" height="50">
+                <img src="imagetree/profilepic/default.png" alt="img" width="50" height="50">
                 <%
                     }
                 %>
@@ -86,7 +86,7 @@
                 <div class="evd-profilepic-space">
                     <div class="evd-profilepic">
                         <%
-                            String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".jpg"; // Percorso dell'immagine desiderata
+                            String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".png"; // Percorso dell'immagine desiderata
                             java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
                             if (imgFile.exists()) {
@@ -95,7 +95,7 @@
                         <%
                         } else {
                         %>
-                        <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                        <img src="profilepic/default.png" alt="i" width="50" height="50">
                         <%
                             }
                         %>

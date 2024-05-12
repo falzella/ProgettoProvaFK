@@ -51,16 +51,16 @@
                 <div class="space"></div>
                 <div class="profile-picture">
                     <%
-                        String imagePfp = "imagetree/profilepic/" + id_host + ".jpg"; // Percorso dell'immagine desiderata
+                        String imagePfp = "imagetree/profilepic/" + id_host + ".png"; // Percorso dell'immagine desiderata
                         java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
                         if (imageFilePfp.exists()) {
                     %>
-                    <img src="<%= imagePfp %>" alt="i" width="70" height="70">
+                    <img src="<%= imagePfp %>" alt="i" width="50" height="50">
                     <%
                     } else {
                     %>
-                    <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                    <img src="profilepic/default.png" alt="i" width="50" height="50">
                     <%
                         }
                     %>
@@ -126,16 +126,16 @@
                     <div class="evf-profilepic-space">
                         <div class="evf-profilepic">
                             <%
-                                String imagePath = "imagetree/profilepic/" + db.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".jpg"; // Percorso dell'immagine desiderata
+                                String imagePath = "imagetree/profilepic/" + db.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".png"; // Percorso dell'immagine desiderata
                                 java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
                                 if (imgFile.exists()) {
                             %>
-                            <img src="<%= imagePath %>" alt="i" width="50" height="50">
+                            <img src="<%= imagePath %>" alt="i" width="50px" height="50px">
                             <%
                             } else {
                             %>
-                            <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                            <img src="profilepic/default.png" alt="i" width="50px" height="50px">
                             <%
                                 }
                             %>

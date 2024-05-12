@@ -61,16 +61,16 @@
             <div class="space"></div>
             <div class="profile-picture">
                 <%
-                    String imagePfp = "imagetree/profilepic/" + id_host + ".jpg"; // Percorso dell'immagine desiderata
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".png"; // Percorso dell'immagine desiderata
                     java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
                     if (imageFilePfp.exists()) {
                 %>
-                <img src="<%= imagePfp %>" alt="i" width="70" height="70">
+                <img src="<%= imagePfp %>" alt="i" width="60" height="60">
                 <%
                 } else {
                 %>
-                <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                <img src="profilepic/default.png" alt="i" width="60" height="60">
                 <%
                     }
                 %>
@@ -120,30 +120,7 @@
     <%for (Evento evento : eventoList) { %>
     <div class="event-block" onclick="redirectToDettaglio('<%= evento.getId_evento() %>')">
         <div class="evf-event-details">
-            <div class="evf-profilepic-space">
-                <div class="evf-profilepic">
-                    <%
-                        String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".jpg";
-                        java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
-
-                        if (imgFile.exists()) {
-                    %>
-                    <img src="<%= imagePath %>" alt="i" width="50" height="50">
-                    <%
-                    } else {
-                    %>
-                    <img src="profilepic/default.jpg" alt="i" width="50" height="50">
-                    <%
-                        }
-                    %>
-                </div>
-            </div>
-
-            <div class="evf-event-identity">
-                <div class="evf-host">
-                    <img src="images/icons/crown.png" height="20px" width="20px">
-                    host
-                </div>
+            <div class="evf-event-identity-ex">
                 <div class="evf-name">
                     <% if(evento.getTipo().equals("privato")){%>
                     <img src="images/icons/event-private.png" height="20px" width="20px">

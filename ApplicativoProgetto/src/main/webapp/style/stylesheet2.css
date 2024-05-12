@@ -327,6 +327,11 @@ label {
     transition: 0.2s ease-in-out;
 }
 
+.ne-active {
+    background-color: var(--soft-red);
+    color: var(--kami-red);
+}
+
 .navigation-element-onpage {
     border: 2px solid red;
     color: var(--kami-text-color);
@@ -545,7 +550,19 @@ label {
     margin-left: 20px;
 }
 
+.evf-event-identity-ex {
+    color: white;
+    width: 45%;
+    max-width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-left: 20px;
+}
+
 .evf-event-details {
+    width: 100%;
     color: white;
     display: flex;
     flex-wrap: wrap;
