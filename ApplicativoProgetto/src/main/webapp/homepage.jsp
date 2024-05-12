@@ -167,7 +167,11 @@
                             <%=eventoFeed.GetHost()%>
                         </div>
                         <div class="evf-name">
+                            <% if(eventoFeed.GetEvento().getTipo().equals("privato")){%>
+                            <img src="images/icons/event-private.png" height="20px" width="20px">
+                            <%}else{%>
                             <img src="images/icons/event.png" height="20px" width="20px">
+                            <%}%>
                             <%=eventoFeed.GetEvento().getNome()%>
                         </div>
                     </div>
@@ -179,7 +183,7 @@
                         <div class="evf-location-detail">
                             <img src="images/icons/clock.png" height="15px" width="15px">
                             <%=eventoFeed.GetEvento().getOra()%>
-                        </div>  
+                        </div>
                         <div class="evf-location-detail-pin">
                             <img src="images/icons/location-pin.png" height="15px" width="15px">
                             <%=eventoFeed.GetEvento().getLuogo()%>

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="connessione.jsp"%>
 <%@page import="javaDB.ClassiDB"%>
-<%@ page import="javaDB.Evento"%>
+<%@page import="javaDB.Evento"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="java.sql.SQLException" %>
+<%@page import="java.sql.SQLException" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,38 +54,74 @@
                 Evento evento = conn.getEventoFromHost(id_evento);
             %>
 
-            <div class="evd-event-details">
+            <div class="evd-identity-block">
                 <div class="evd-profilepic-space">
                     <div class="evd-profilepic">pic</div>
                 </div>
                 <div class="evd-event-identity">
                     <div class="evd-host">
-                        <img src="images/icons/crown.png" height="20px" width="20px">
+                        <img src="images/icons/crown.png" height="30px" width="30px">
                         hostname here
                     </div>
+                    <div class="evd-horizontal-line"></div>
                     <div class="evd-name">
-                        <img src="images/icons/event.png" height="20px" width="20px">
+                        <% if(evento.getTipo().equals("privato")){%>
+                        <img src="images/icons/event-private.png" height="30px" width="30px">
+                        <%}else{%>
+                        <img src="images/icons/event.png" height="30px" width="30px">
+                        <%}%>
                         <%=evento.getNome()%>
                     </div>
                 </div>
+            </div>
+            <div class="evd-location-block">
                 <div class="evd-event-location">
                     <div class="evd-location-detail">
-                        <img src="images/icons/calendar.png" height="15px" width="15px">
+                        <img src="images/icons/calendar.png">
                         <%=evento.getData()%>
                     </div>
                     <div class="evd-location-detail">
-                        <img src="images/icons/clock.png" height="15px" width="15px">
+                        <img src="images/icons/clock.png">
                         <%=evento.getOra()%>
                     </div>
                     <div class="evd-location-detail">
-                        <img src="images/icons/location-pin.png" height="15px" width="15px">
+                        <img src="images/icons/location-pin.png">
                         <%=evento.getLuogo()%>
                     </div>
+                    <div class="evd-location-detail">
+                        <img src="images/icons/address-pin.png">
+                        <%=evento.getIndirizzo()%>
+                    </div>
+                    <div class="evd-location-detail">
+                        <img src="images/icons/city.png">
+                        <%=evento.getCitta()%>
+                    </div>
                 </div>
-                <div class="evf-description"><%=evento.getDescrizione()%></div>
+                <div class="evd-maps-api-container">
+                    <div class="evd-maps-api">maps api</div>
+                </div>
+                <div class="evd-location-info">
+                    <%=evento.getInformazioniLuogo()%>
+                </div>
             </div>
-            <div class="evf-photobox">img</div>
-            <a href="eventicreati.jsp">Torna Indietro</a>
+            <div class="evd-description-block">
+                <div class="evd-description"><%=evento.getDescrizione()%></div>
+            </div>
+            <div class="evd-photobox-block">
+                <div class="evd-photobox">
+                    <div class="evd-photobox-img">img</div>
+                </div>
+            </div>
+            <div class="evd-buttons-block">
+                <div class="evd-buttons">
+                    <div class="evd-button">
+                        <a href="eventicreati.jsp">eventi creati</a>
+                    </div>
+                    <div class="evd-button">partecipa</div>
+                    <div class="evd-button">modifica</div>
+                    <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
+                </div>
+            </div>
         </div>
     </div>
 </div>
