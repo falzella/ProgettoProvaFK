@@ -241,10 +241,43 @@ public class ClassiDB {
 
     public ArrayList<Utente> GetFriendFeed(String IdHost) throws SQLException {
         ArrayList<Utente> utentiList = new ArrayList<>();
-        String sql = "SELECT * FROM  utenti WHERE utenti.Id_Utente <> ?";
+        String sql = "SELECT utenti.*\n" +
+                "FROM amicizieutenti\n" +
+                "JOIN utenti ON (amicizieutenti.Id_Utente1 = utenti.Id_Utente OR amicizieutenti.Id_Utente2 = utenti.Id_Utente)\n" +
+                "WHERE (amicizieutenti.Id_Utente1 = ? OR amicizieutenti.Id_Utente2 = ?) AND utenti.Id_Utente <> ?;\n";
 
         try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
             preparedStatement.setString(1, IdHost);
+            preparedStatement.setString(2, IdHost);
+            preparedStatement.setString(3, IdHost);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Utente utente = getUtenteFromResultSet(rs);
+                utentiList.add(utente);
+            }
+        }
+        return utentiList;
+    }
+
+    public ArrayList<Utente> GetSuggestFeed(String IdHost) throws SQLException {
+        ArrayList<Utente> utentiList = new ArrayList<>();
+        String sql = "SELECT *\n" +
+                "FROM utenti\n" +
+                "WHERE Id_Utente NOT IN (\n" +
+                "    SELECT Id_Utente1\n" +
+                "    FROM amicizieutenti\n" +
+                "    WHERE Id_Utente2 = ?\n" +
+                "    UNION\n" +
+                "    SELECT Id_Utente2\n" +
+                "    FROM amicizieutenti\n" +
+                "    WHERE Id_Utente1 = ?\n" +
+                ") AND Id_Utente <> ?;\n";
+
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, IdHost);
+            preparedStatement.setString(2, IdHost);
+            preparedStatement.setString(3 , IdHost);
+
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Utente utente = getUtenteFromResultSet(rs);
@@ -302,6 +335,30 @@ public class ClassiDB {
             }
         }
         return utentiList;
+    }
+
+    public boolean checkAmicizia(String idUtente1, String idUtente2) {
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM amicizieutenti WHERE (Id_Utente1 = ? AND Id_Utente2 = ?) OR (Id_Utente1 = ? AND Id_Utente2 = ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idUtente1);
+                preparedStatement.setString(2, idUtente2);
+                preparedStatement.setString(3, idUtente2);
+                preparedStatement.setString(4, idUtente1);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
     }
 
 

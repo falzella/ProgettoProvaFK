@@ -78,6 +78,15 @@
                 <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
                 <%}%>
                 <div class="navigation-header">consigliati</div>
+                <%ArrayList<Utente> feedSuggest = null;
+                    try {
+                        feedSuggest = db.GetSuggestFeed(id_host);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }%>
+                <%for (Utente utente : feedSuggest) { %>
+                <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
+                <%}%>
             </div>
         </div>
     </div>
