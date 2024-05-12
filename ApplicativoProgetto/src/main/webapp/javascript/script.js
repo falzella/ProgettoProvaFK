@@ -23,3 +23,7 @@ function RedirectToDettagliUtente(username){
 function inviaRichiesta(id_friend) {
     window.location.href = 'inviarichiesta.jsp?id_friend=' + id_friend;
 }
+
+function eseguiRichiesta(id_friend, esito) {
+    window.location.href = 'eseguirichiesta.jsp?id_friend=' + id_friend + '&esito=' + esito;
+}
