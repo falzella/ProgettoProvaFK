@@ -109,6 +109,7 @@
 
     <div class="sidebar-right">
         <div class="navigation-contents">
+            <div class="navigation-header">i tuoi amici</div>
             <%ArrayList<Utente> feedUser = null;
                 try {
                     feedUser = db.GetFriendFeed(id_host);
@@ -118,6 +119,16 @@
             <%for (Utente utente : feedUser) { %>
             <div class="navigation-element"><%=utente.getUsername()%></div>
             <%}%>
+            <div class="navigation-header">consigliati</div>
+            <%ArrayList<Utente> feedSuggest = null;
+                try {
+                    feedSuggest = db.GetSuggestFeed(id_host);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }%>
+            <%for (Utente utente : feedSuggest) { %>
+            <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
+            <%}%>
         </div>
     </div>
 </div>
@@ -126,7 +137,21 @@
     <%for (Evento evento : eventoList) { %>
     <div class="event-block" onclick="redirectToDettaglio('<%= evento.getId_evento() %>')">
         <div class="evf-event-details">
-            <div class="evf-profilepic">pic</div>
+            <div class="evf-profilepic">
+                <%
+                String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".jpg"; // Percorso dell'immagine desiderata
+                java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
+
+                if (imgFile.exists()) {
+            %>
+                <img src="<%= imagePath %>" alt="i" width="50" height="50">
+                <%
+                } else {
+                %>
+                <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                <%
+                    }
+                %></div>
             <div class="evf-event-identity">
                 <div class="evf-name"><%=evento.getNome()%></div>
             </div>

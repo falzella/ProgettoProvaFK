@@ -49,7 +49,22 @@
                 <div class="space"></div>
                 <img src="images/icons/settings.png" height="30px" width="30px">
                 <div class="space"></div>
-                <div class="profile-picture"></div>
+                <div class="profile-picture">
+                    <%
+                        String imagePfp = "imagetree/profilepic/" + id_host + ".jpg"; // Percorso dell'immagine desiderata
+                        java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
+
+                        if (imageFilePfp.exists()) {
+                    %>
+                    <img src="<%= imagePfp %>" alt="i" width="70" height="70">
+                    <%
+                    } else {
+                    %>
+                    <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                    <%
+                        }
+                    %>
+                </div>
             </div>
         </div>
     </header>
@@ -109,8 +124,24 @@
             <div class="event-block" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
                 <div class="evf-event-details">
                     <div class="evf-profilepic-space">
-                        <div class="evf-profilepic">pic</div>
+                        <div class="evf-profilepic">
+                            <%
+                                String imagePath = "imagetree/profilepic/" + db.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".jpg"; // Percorso dell'immagine desiderata
+                                java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
+
+                                if (imgFile.exists()) {
+                            %>
+                            <img src="<%= imagePath %>" alt="i" width="50" height="50">
+                            <%
+                            } else {
+                            %>
+                            <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                            <%
+                                }
+                            %>
+                        </div>
                     </div>
+
                     <div class="evf-event-identity">
                         <div class="evf-host">
                             <img src="images/icons/crown.png" height="20px" width="20px">
