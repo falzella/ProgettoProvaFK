@@ -14,6 +14,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Dettaglio Utente</title>
+  <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+  <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body>
 <h1>Dettaglio Utente</h1>
@@ -40,19 +42,13 @@ Nome: <%=friend.getNome()%><br>
 Cognome: <%=friend.getCognome()%><br>
 Mail: <%=friend.getMail()%><br>
 
-<button onclick="inviaRichiesta()">Richiedi amicizia</button>
+<% if(!conn.checkAmicizia(id_host, friend.getId_utente())){%>
 
-<script>
-  function inviaRichiesta() {
-    // Esegui qui la logica per inviare la richiesta di amicizia
-    <% if(conn.mandarichiesta(id_host, friend.getId_utente())){%>
-      alert("Richiesta di amicizia inviata!");
-    <%}else{ %>
-    alert("Errore durante richiesta!");
-    <%} %>
+      <div class="navigation-element" onclick="inviaRichiesta('<%=id_host%>', '<%=friend.getId_utente()%>')">Richiedi amicizia</div>
 
-  }
-</script>
+  <%}%>
+
+
 
 <a href="homepage.jsp">Torna Indietro</a>
 
