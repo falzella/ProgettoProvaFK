@@ -27,3 +27,10 @@ function inviaRichiesta(id_friend) {
 function eseguiRichiesta(id_friend, esito) {
     window.location.href = 'eseguirichiesta.jsp?id_friend=' + id_friend + '&esito=' + esito;
 }
+
+window.onload = function() {
+    var eventBlocks = document.querySelectorAll('.event-block');
+    eventBlocks.forEach(function(block) {
+        block.classList.add('slide-in-from-top');
+    });
+};
