@@ -210,6 +210,7 @@ input {
     margin: 0;
     outline: 0;
     padding: 0;
+    padding: 0;
     -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
@@ -407,4 +408,9 @@ p {
 
 .toggle-switch__checkbox:checked + .toggle-switch__label .toggle-switch__switch {
     left: 30px;
+}
+
+/* utility */
+.input-padding-left {
+    padding-left: 15px;
 }

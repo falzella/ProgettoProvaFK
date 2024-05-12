@@ -210,6 +210,10 @@ label {
     color: red;
 }
 
+.input-left-padding {
+    padding-left: 15px;
+}
+
 /* header stuff */
 .logo-space {
     width: 20%;

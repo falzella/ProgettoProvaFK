@@ -57,11 +57,11 @@
 
                     if (imgFilepfp.exists()) {
                 %>
-                <img src="<%= imagePfp %>" alt="i" width="50" height="50">
+                <img src="<%= imagePfp %>" alt="img" width="50" height="50">
                 <%
                 } else {
                 %>
-                <img src="imagetree/profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                <img src="imagetree/profilepic/default.jpg" alt="img" width="50" height="50">
                 <%
                     }
                 %>

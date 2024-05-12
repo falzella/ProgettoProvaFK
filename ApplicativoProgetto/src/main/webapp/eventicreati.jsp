@@ -32,22 +32,48 @@
 <head>
     <title>homepage</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
-
+    <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
 <header>
     <div class="hcenter-div">
-        <div class="vcenter-div">
-            <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+        <div class="logo-space" onclick="RedirectTo('homepage.jsp')">
+            <div class="vcenter-div">
+                <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+            </div>
         </div>
 
-        <div class="search-box">
-            <input type="text" placeholder="search in KAMI!">
-            <div class="search-icon">
-                <i class="fas fa-search"></i>
+        <div class="search-space">
+            <div class="search-box-new">
+                <input type="text" placeholder="search in KAMI!">
+                <div class="search-box-new-img-container">
+                    <img src="images/icons/cancel-icon.png" height="15px" width="15px">
+                    <span style="min-width: 5px"></span>
+                    <img src="images/icons/search-icon.png" height="17px" width="17px">
+                </div>
             </div>
-            <div class="cancel-icon">
-                <i class="fas fa-times"></i>
+        </div>
+
+        <div class="profile-info-space">
+            <img src="images/icons/notifies.png" height="30px" width="30px">
+            <div class="space"></div>
+            <img src="images/icons/settings.png" height="30px" width="30px">
+            <div class="space"></div>
+            <div class="profile-picture">
+                <%
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".jpg"; // Percorso dell'immagine desiderata
+                    java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
+
+                    if (imageFilePfp.exists()) {
+                %>
+                <img src="<%= imagePfp %>" alt="i" width="70" height="70">
+                <%
+                } else {
+                %>
+                <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>
@@ -132,28 +158,57 @@
         </div>
     </div>
 </div>
+
 <div class="homepage-flow">
-    <a href="feedrefresh.jsp"></a>
     <%for (Evento evento : eventoList) { %>
     <div class="event-block" onclick="redirectToDettaglio('<%= evento.getId_evento() %>')">
         <div class="evf-event-details">
-            <div class="evf-profilepic">
-                <%
-                String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".jpg"; // Percorso dell'immagine desiderata
-                java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
+            <div class="evf-profilepic-space">
+                <div class="evf-profilepic">
+                    <%
+                        String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".jpg";
+                        java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
-                if (imgFile.exists()) {
-            %>
-                <img src="<%= imagePath %>" alt="i" width="50" height="50">
-                <%
-                } else {
-                %>
-                <img src="profilepic/Default_pfp.jpg" alt="i" width="50" height="50">
-                <%
-                    }
-                %></div>
+                        if (imgFile.exists()) {
+                    %>
+                    <img src="<%= imagePath %>" alt="i" width="50" height="50">
+                    <%
+                    } else {
+                    %>
+                    <img src="profilepic/default.jpg" alt="i" width="50" height="50">
+                    <%
+                        }
+                    %>
+                </div>
+            </div>
+
             <div class="evf-event-identity">
-                <div class="evf-name"><%=evento.getNome()%></div>
+                <div class="evf-host">
+                    <img src="images/icons/crown.png" height="20px" width="20px">
+                    host
+                </div>
+                <div class="evf-name">
+                    <% if(evento.getTipo().equals("privato")){%>
+                    <img src="images/icons/event-private.png" height="20px" width="20px">
+                    <%}else{%>
+                    <img src="images/icons/event.png" height="20px" width="20px">
+                    <%}%>
+                    <%=evento.getNome()%>
+                </div>
+            </div>
+            <div class="evf-event-location">
+                <div class="evf-location-detail">
+                    <img src="images/icons/calendar.png" height="15px" width="15px">
+                    <%=evento.getData()%>
+                </div>
+                <div class="evf-location-detail">
+                    <img src="images/icons/clock.png" height="15px" width="15px">
+                    <%=evento.getOra()%>
+                </div>
+                <div class="evf-location-detail-pin">
+                    <img src="images/icons/location-pin.png" height="15px" width="15px">
+                    <%=evento.getLuogo()%>
+                </div>
             </div>
             <div class="evf-description"><%=evento.getDescrizione()%></div>
         </div>
