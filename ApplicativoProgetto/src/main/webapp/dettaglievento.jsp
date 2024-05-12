@@ -52,16 +52,16 @@
             <div class="space"></div>
             <div class="profile-picture">
                 <%
-                    String imagePfp = "imagetree/profilepic/" + id_host + ".png"; // Percorso dell'immagine desiderata
-                    java.io.File imgFilepfp = new java.io.File(application.getRealPath("/") + imagePfp);
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".png";
+                    java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
-                    if (imgFilepfp.exists()) {
+                    if (imageFilePfp.exists()) {
                 %>
-                <img src="<%= imagePfp %>" alt="img" width="50" height="50">
+                <img src="<%= imagePfp %>" alt="i" width="50" height="50">
                 <%
                 } else {
                 %>
-                <img src="imagetree/profilepic/default.png" alt="img" width="50" height="50">
+                <img src="imagetree/profilepic/default.png" alt="i" width="50" height="50">
                 <%
                     }
                 %>
@@ -74,7 +74,6 @@
     <div class="event-details-block">
         <div class="evd-container">
             <%
-
                 String id_evento = request.getParameter("IdEvento");
                 if(id_evento == null){
                     id_evento = "2";
@@ -85,20 +84,7 @@
             <div class="evd-identity-block">
                 <div class="evd-profilepic-space">
                     <div class="evd-profilepic">
-                        <%
-                            String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".png"; // Percorso dell'immagine desiderata
-                            java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
-
-                            if (imgFile.exists()) {
-                        %>
-                        <img src="<%= imagePath %>" alt="i" width="70" height="70">
-                        <%
-                        } else {
-                        %>
-                        <img src="profilepic/default.png" alt="i" width="50" height="50">
-                        <%
-                            }
-                        %>
+                        <img src="<%="imagetree/profilepic/" + evento.getIdHost() + ".png"%>" alt="404">
                     </div>
                 </div>
                 <div class="evd-event-identity">

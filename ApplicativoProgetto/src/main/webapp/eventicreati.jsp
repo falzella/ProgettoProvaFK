@@ -61,16 +61,16 @@
             <div class="space"></div>
             <div class="profile-picture">
                 <%
-                    String imagePfp = "imagetree/profilepic/" + id_host + ".png"; // Percorso dell'immagine desiderata
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".png";
                     java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
                     if (imageFilePfp.exists()) {
                 %>
-                <img src="<%= imagePfp %>" alt="i" width="60" height="60">
+                <img src="<%= imagePfp %>" alt="i">
                 <%
                 } else {
                 %>
-                <img src="profilepic/default.png" alt="i" width="60" height="60">
+                <img src="imagetree/profilepic/default.png" alt="i">
                 <%
                     }
                 %>
@@ -128,6 +128,15 @@
                     <img src="images/icons/event.png" height="20px" width="20px">
                     <%}%>
                     <%=evento.getNome()%>
+                </div>
+                <div class="evf-host">
+                    <% if(evento.getTipo().equals("privato")){%>
+                    <img src="images/icons/private.png" height="20px" width="20px">
+                    privato
+                    <%}else{%>
+                    <img src="images/icons/public.png" height="20px" width="20px">
+                    pubblico
+                    <%}%>
                 </div>
             </div>
             <div class="evf-event-location">

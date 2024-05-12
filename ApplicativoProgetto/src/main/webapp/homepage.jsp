@@ -51,7 +51,7 @@
                 <div class="space"></div>
                 <div class="profile-picture">
                     <%
-                        String imagePfp = "imagetree/profilepic/" + id_host + ".png"; // Percorso dell'immagine desiderata
+                        String imagePfp = "imagetree/profilepic/" + id_host + ".png";
                         java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
                         if (imageFilePfp.exists()) {
@@ -60,7 +60,7 @@
                     <%
                     } else {
                     %>
-                    <img src="profilepic/default.png" alt="i" width="50" height="50">
+                    <img src="imagetree/profilepic/default.png" alt="i" width="50" height="50">
                     <%
                         }
                     %>
@@ -131,11 +131,11 @@
 
                                 if (imgFile.exists()) {
                             %>
-                            <img src="<%= imagePath %>" alt="i" width="50px" height="50px">
+                            <img src="<%= imagePath %>" alt="i">
                             <%
                             } else {
                             %>
-                            <img src="profilepic/default.png" alt="i" width="50px" height="50px">
+                            <img src="imagetree/profilepic/default.png" alt="i">
                             <%
                                 }
                             %>

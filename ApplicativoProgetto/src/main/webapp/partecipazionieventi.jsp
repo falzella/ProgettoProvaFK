@@ -96,16 +96,16 @@ Non hai creato nessun evento!
         <div class="evf-event-details">
             <div class="evf-profilepic">
                 <%
-                    String imagePath = "imagetree/profilepic/" + eventoFeed.GetEvento().getIdHost() + ".png"; // Percorso dell'immagine desiderata
+                    String imagePath = "imagetree/profilepic/" + db.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".png"; // Percorso dell'immagine desiderata
                     java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
                     if (imgFile.exists()) {
                 %>
-                <img src="<%= imagePath %>" alt="i" width="60" height="60">
+                <img src="<%= imagePath %>" alt="i">
                 <%
                 } else {
                 %>
-                <img src="profilepic/default.png" alt="i" width="60" height="60">
+                <img src="imagetree/profilepic/default.png" alt="i">
                 <%
                     }
                 %>
