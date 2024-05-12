@@ -22,7 +22,7 @@
 <head>
     <title>homepage</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
-
+    <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
     <header>
@@ -34,17 +34,6 @@
             </div>
 
             <div class="search-space">
-                <!--
-                <div class="search-box">
-                    <input type="text" placeholder="search in KAMI!">
-                    <div class="search-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="cancel-icon">
-                        <i class="fas fa-times"></i>
-                    </div>
-                </div> -->
-
                 <div class="search-box-new">
                     <input type="text" placeholder="search in KAMI!">
                     <div class="search-box-new-img-container">
@@ -65,62 +54,14 @@
         </div>
     </header>
 
-    <script>
-        window.onload = function() {
-            // Ottieni tutti gli elementi di navigazione
-            var navigationElements = document.querySelectorAll('.navigation-element');
-
-            // Aggiungi un evento di click a ciascun elemento di navigazione
-            navigationElements.forEach(function(element) {
-                element.addEventListener('click', function() {
-                    // Verifica se il testo dell'elemento cliccato è "i tuoi eventi"
-
-                    if (element.textContent.trim() === "i tuoi eventi") {
-                        // Esegui il redirect a eventicreati.jsp
-                        window.location.href = 'eventicreati.jsp';
-                    }else{
-                        if (element.textContent.trim() === "nuovo evento") {
-                            // Esegui il redirect a provacreaevento.jsp
-                            window.location.href = 'provacreaevento.jsp';
-                        }else{
-                            if(element.textContent.trim() === "partecipazioni"){
-                                // Esegui il redirect a partecipazionieventi.jsp
-                                window.location.href = 'partecipazionieventi.jsp';
-                            }else{
-                                if(element.textContent.trim() === "homepage"){
-                                    // Esegui il redirect a export.jsp
-                                    window.location.href = 'homepage.jsp';
-                                }else{
-                                    if(element.textContent.trim() === "richieste amicizia"){
-                                        // Esegui il redirect a export.jsp
-                                        window.location.href = 'richieste.jsp';
-                                    }else{
-                                        // Mostro dettagli utente
-                                        window.location.href = 'dettagliutente.jsp?UserFriend=' + element.textContent.trim();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            });
-        };
-    </script>
-
-    <script>
-        function redirectToDettaglio(eventoId) {
-            window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
-        }
-    </script>
-
     <div>
         <div class="sidebar">
             <div class="navigation-contents">
-                <div class="navigation-element">homepage</div>
-                <div class="navigation-element">nuovo evento</div>
-                <div class="navigation-element">i tuoi eventi</div>
-                <div class="navigation-element">partecipazioni</div>
-                <div class="navigation-element">richieste amicizia</div>
+                <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
+                <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+                <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
+                <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
+                <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
             </div>
         </div>
 
@@ -134,7 +75,7 @@
                         throw new RuntimeException(e);
                     }%>
                 <%for (Utente utente : feedUser) { %>
-                <div class="navigation-element"><%=utente.getUsername()%></div>
+                <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
                 <%}%>
                 <div class="navigation-header">consigliati</div>
             </div>

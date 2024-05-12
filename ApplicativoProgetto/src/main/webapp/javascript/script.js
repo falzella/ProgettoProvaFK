@@ -1,26 +1,22 @@
-const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
 
+/* Dettagli Evento */
+function PartecitaDisiscriviEvento(id) {
 
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
+}
 
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
+function Modifica(id) {
 
-modeSwitch.addEventListener("click" , () =>{
-    body.classList.toggle("dark");
-    
-    if(body.classList.contains("dark")){
-        modeText.innerText = "Light mode";
-    }else{
-        modeText.innerText = "Dark mode";
-        
-    }
-});
+}
+
+/* Redirects */
+function RedirectTo(path) {
+    window.location.href = path;
+}
+
+function redirectToDettaglio(eventoId) {
+    window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
+}
+
+function RedirectToDettagliUtente(username){
+    window.location.href = 'dettagliutente.jsp?UserFriend=' + username;
+}

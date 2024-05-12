@@ -217,6 +217,9 @@ label {
     justify-content: flex-start;
     align-items: center;
 }
+.logo-space img{
+    cursor: pointer;
+}
 
 .search-space {
     width: 60%;
@@ -232,6 +235,9 @@ label {
     flex-direction: row;
     align-items: center;
 }
+.profile-info-space img{
+    cursor: pointer;
+}
 
 .profile-picture {
     height: 50px;
@@ -244,6 +250,7 @@ label {
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 /* sidebar */
@@ -310,6 +317,7 @@ label {
     transition: 0.2s ease-in-out;
 }
 .navigation-element:hover{
+    cursor: pointer;
     background-color: var(--soft-red);
     color: var(--kami-red);
     transition: 0.2s ease-in-out;
@@ -385,7 +393,7 @@ label {
 }
 .event-block:hover {
     border: 5px solid red;
-    transition-delay: 0.3s;
+    transition-delay: 0.3s !important;
     transition: 0.2s ease-in-out;
 }
 
@@ -512,6 +520,9 @@ label {
     width: 7%;
     display: flex;
     justify-content: flex-end;
+}
+.search-box-new-img-container img{
+    cursor: pointer;
 }
 
 /* event feed components */
@@ -823,16 +834,15 @@ label {
 .evd-buttons {
     width: 92%;
     height: 100%;
-    border-radius: 15px;
-    border: 2px solid white;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .evd-button {
-    width: 100px;
-    height: 40px;
+    height: 85%;
+    padding-left: 50px;
+    padding-right: 50px;
     border-radius: 15px;
     background-color: white;
     color: red;
@@ -840,4 +850,9 @@ label {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+.evd-button:hover {
+    color: white;
+    border: 2px solid white;
+    background-color: var(--not-so-soft-red);
 }

@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <title>Dettaglio Evento</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="ev-dettagli-body">
 <header>
@@ -114,9 +115,7 @@
             </div>
             <div class="evd-buttons-block">
                 <div class="evd-buttons">
-                    <div class="evd-button">
-                        <a href="eventicreati.jsp">eventi creati</a>
-                    </div>
+                    <div class="evd-button" onclick="RedirectTo('eventicreati.jsp')">eventi creati</div>
                     <div class="evd-button">partecipa</div>
                     <div class="evd-button">modifica</div>
                     <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
@@ -129,11 +128,11 @@
 <div>
     <div class="sidebar">
         <div class="navigation-contents">
-            <div class="navigation-element">homepage</div>
-            <div class="navigation-element">nuovo evento</div>
-            <div class="navigation-element">i tuoi eventi</div>
-            <div class="navigation-element">partecipazioni</div>
-            <div class="navigation-element">richieste amicizia</div>
+            <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
+            <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+            <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
+            <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
+            <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
         </div>
     </div>
 
@@ -157,7 +156,7 @@
                     throw new RuntimeException(e);
                 }%>
             <%for (Utente utente : feedUser) { %>
-            <div class="navigation-element"><%=utente.getUsername()%></div>
+            <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
             <%}%>
             <div class="navigation-header">consigliati</div>
         </div>
