@@ -138,7 +138,37 @@
             </div>
             <div class="evd-photobox-block">
                 <div class="evd-photobox">
-                    <div class="evd-photobox-img">img</div>
+                    <div class="evd-photobox-img">
+
+                        <%
+                            String eventFolderPath =application.getRealPath("/") + "imagetree/eventspic/" + evento.getId_evento();
+                            java.io.File eventFolder = new java.io.File(eventFolderPath);
+
+                            // Controlla se la cartella esiste
+                            if (!eventFolder.exists()) {
+                        %>
+                        <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
+                        <%
+                        } else {
+                            String EventimagePath = eventFolderPath + "/1.png"; // Percorso dell'immagine desiderata
+                            java.io.File EventimgFile = new java.io.File(EventimagePath);
+
+                            // Verifica se il file specifico esiste
+                            if (EventimgFile.exists()) {
+                        %>
+                        <img src="<%= EventimagePath %>"   >
+                        <%
+                         } else {
+                            // Se il file specifico non esiste, mostra un'immagine predefinita
+                        %>
+                        <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
+                        <%
+                                }
+                            }
+                        %>
+
+
+                    </div>
                 </div>
             </div>
             <div class="evd-buttons-block">
