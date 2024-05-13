@@ -179,6 +179,24 @@
                     <figure class="card">
                         <img src="<%= EventimagePath %>">
                     </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
                     <%
                     } else {
                         // Se il file specifico non esiste, mostra un'immagine predefinita

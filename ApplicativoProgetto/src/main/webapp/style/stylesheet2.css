@@ -214,6 +214,14 @@ label {
     padding-left: 15px;
 }
 
+.margin-top-5p {
+    margin-top: 5%;
+}
+
+.margin-bottom-5p {
+    margin-bottom: 5%;
+}
+
 /* header stuff */
 .logo-space {
     width: 20%;
@@ -894,11 +902,90 @@ label {
     background-color: var(--not-so-soft-red);
 }
 
+/* user detail block */
+.ud-identity-block {
+    width: 100%;
+    height: 20%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ud-details-block {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.ud-buttons-block {
+    width: 100%;
+    height: 10%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ud-straight-line {
+    width: 80%;
+    margin-left: 10%;
+    height: 2px;
+    background-color: white;
+}
+
+.ud-profilepic-space {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.ud-username-space {
+    height: 80%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.ud-profilepic {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: white;
+    color: var(--kami-text-color);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.ud-profilepic img{
+    height: 90px;
+    width: 90px;
+}
+
+.ud-user-info-space {
+    font-size: 30px;
+}
+.ud-user-info-space img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.ud-user-info {
+    display: flex;
+    align-items: center;
+}
+
+/* Definizione dell'animazione */
 .slide-in-from-top {
     animation: slideInFromTop 0.5s ease-in-out;
 }
 
-/* Definizione dell'animazione */
 @keyframes slideInFromTop {
     0% {
         transform: translateY(-100%);
@@ -941,4 +1028,4 @@ label {
     font-weight: bold;
     cursor: pointer;
     border-radius: 1rem;
-}	
+}
