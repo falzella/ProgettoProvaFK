@@ -25,6 +25,26 @@
 
     ClassiDB db = new ClassiDB();%>
 
+
+<%
+    String id_evento = request.getParameter("IdEvento");
+    if(id_evento == null){
+        id_evento = "2";
+    }
+    Evento evento = conn.getEventoFromHost(id_evento);
+%>
+
+
+
+<%
+    boolean partecipazione = request.getParameter("partecipazione") != null;
+    if(partecipazione){%>
+<script>
+    alert("Adesso partecipi a questo evento")
+    RedirectTo("dettaglievento.jsp?IdEvento=<%=evento.getId_evento()%>")
+</script>
+<%}%>
+
 <body class="ev-dettagli-body">
 <header>
     <div class="hcenter-div">
@@ -73,13 +93,6 @@
 <div class="homepage-flow">
     <div class="event-details-block">
         <div class="evd-container">
-            <%
-                String id_evento = request.getParameter("IdEvento");
-                if(id_evento == null){
-                    id_evento = "2";
-                }
-                Evento evento = conn.getEventoFromHost(id_evento);
-            %>
 
             <div class="evd-identity-block">
                 <div class="evd-profilepic-space">
@@ -180,12 +193,26 @@
             <div class="evd-buttons-block">
                 <div class="evd-buttons">
                     <%
-                        if(id_host.equals(evento.getIdHost())){
+                        if(evento.getTipo().equals("pubblico")){
+                            if(id_host.equals(evento.getIdHost())){
                     %>
-                    <div class="evd-button">modifica</div>
-                    <%}else{
-                    %><div class="evd-button">partecipa</div>
+                        <div class="evd-button">modifica</div>
+                        <div class="evd-button">visualizza partecipanti</div>
+                        <%}else{
+                                if(!db.checkPartecipazione(id_host,evento.getId_evento())){
+
+                        %>
+                            <div class="evd-button" onclick="inviaPartecipazione('<%=evento.getId_evento()%>')">partecipa</div>
+
+                            <%}else{
+
+                            %><div class="evd-button">partecipi a questo evento!</div><%}%>
+
+                    <div class="evd-button">visualizza partecipanti</div>
                     <%}%>
+                    <%}else{
+                            //pulsanti diversi per evento privato
+                    }%>
                     <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
                 </div>
             </div>

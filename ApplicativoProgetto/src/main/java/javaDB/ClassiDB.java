@@ -423,6 +423,34 @@ public class ClassiDB {
         return true;
     }
 
+    public boolean partecipaEventoPubblico(String idPartecipante, String idEvento) {
+        try {
+            String sql = "INSERT INTO partecipazioni (ID_Utente, ID_Evento) VALUES (?, ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idPartecipante);
+                preparedStatement.setString(2, idEvento);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public Boolean checkPartecipazione(String idutente, String idevento) throws SQLException {
+        String sql = "SELECT * FROM partecipazioni WHERE ID_Utente='" + idutente + "' AND ID_Evento='" + idevento + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        if (rs.next()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 

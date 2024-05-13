@@ -28,6 +28,10 @@ function eseguiRichiesta(id_friend, esito) {
     window.location.href = 'eseguirichiesta.jsp?id_friend=' + id_friend + '&esito=' + esito;
 }
 
+function inviaPartecipazione(id_evento) {
+    window.location.href = 'inviapartecipazione.jsp?idEvento=' + id_evento;
+}
+
 window.onload = function() {
     var eventBlocks = document.querySelectorAll('.event-block');
     eventBlocks.forEach(function(block) {
