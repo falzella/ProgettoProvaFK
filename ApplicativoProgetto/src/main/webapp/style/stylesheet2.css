@@ -825,8 +825,8 @@ label {
 
 .evd-photobox-img{
     color: var(--kami-text-color);
-    width: 360px;
-    height: 180px;
+    width: 100%;
+    height: 100%;
     border-radius: 15px;
     border: 2px solid white;
     display: flex;
@@ -834,6 +834,9 @@ label {
     align-content: center;
     flex-wrap: wrap;
     background-color: var(--not-so-super-soft-red);
+}
+.homepage-flow img {
+    border: 5px solid green;
 }
 
 .evd-maps-api-container {
@@ -904,4 +907,54 @@ label {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* media photobox */
+.gallery {
+    display: flex;
+    gap: 1rem;
+    max-width: 80rem;
+}
+
+.card {
+    position: relative;
+    left: 0;
+    width: 6rem;
+    border-radius: 1.2rem;
+    height: 20rem;
+    overflow: hidden;
+    background-color: var(--background);
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+    flex: 0.25;
+}
+
+.card img {
+    position: relative;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.card:hover {
+    flex: 2;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+/* polish images center */
+.card:nth-child(1) img {
+    left: -8rem;
+}
+
+.card:nth-child(2) img {
+    left: -6rem;
+}
+
+.card:nth-child(3) img {
+    left: -14rem;
+}
+
+.card:nth-child(4) img {
+    left: -8rem;
 }

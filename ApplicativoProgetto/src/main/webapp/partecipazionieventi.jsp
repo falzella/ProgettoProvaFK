@@ -37,17 +37,43 @@ Non hai creato nessun evento!
 <body class="homepage-body">
 <header>
     <div class="hcenter-div">
-        <div class="vcenter-div">
-            <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+        <div class="logo-space">
+            <div class="vcenter-div">
+                <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+            </div>
         </div>
 
-        <div class="search-box">
-            <input type="text" placeholder="search in KAMI!">
-            <div class="search-icon">
-                <i class="fas fa-search"></i>
+        <div class="search-space">
+            <div class="search-box-new">
+                <input type="text" placeholder="search in KAMI!">
+                <div class="search-box-new-img-container">
+                    <img src="images/icons/cancel-icon.png" height="15px" width="15px">
+                    <span style="min-width: 5px"></span>
+                    <img src="images/icons/search-icon.png" height="17px" width="17px">
+                </div>
             </div>
-            <div class="cancel-icon">
-                <i class="fas fa-times"></i>
+        </div>
+
+        <div class="profile-info-space">
+            <img src="images/icons/notifies.png" height="30px" width="30px">
+            <div class="space"></div>
+            <img src="images/icons/settings.png" height="30px" width="30px">
+            <div class="space"></div>
+            <div class="profile-picture">
+                <%
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".png";
+                    java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
+
+                    if (imageFilePfp.exists()) {
+                %>
+                <img src="<%= imagePfp %>" alt="i" width="50" height="50">
+                <%
+                } else {
+                %>
+                <img src="imagetree/profilepic/default.png" alt="i" width="50" height="50">
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>
