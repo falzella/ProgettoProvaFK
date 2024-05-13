@@ -48,7 +48,7 @@
 <body class="ev-dettagli-body">
 <header>
     <div class="hcenter-div">
-        <div class="logo-space">
+        <div class="logo-space" onclick="RedirectTo('homepage.jsp')">
             <div class="vcenter-div">
                 <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
             </div>

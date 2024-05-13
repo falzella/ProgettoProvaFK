@@ -37,7 +37,7 @@
   </head>
   <header>
     <div class="hcenter-div">
-      <div class="logo-space">
+      <div class="logo-space" onclick="RedirectTo('homepage.jsp')">
         <div class="vcenter-div">
           <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
         </div>
@@ -59,6 +59,7 @@
         <div class="space"></div>
         <img src="images/icons/settings.png" height="30px" width="30px">
         <div class="space"></div>
+        <!-- <div class="profile-picture" onclick="RedirectToDettagliUtente('((Utente) session.getAttribute("user")).getUsername()%>')" -->
         <div class="profile-picture">
           <%
             String imagePfp = "imagetree/profilepic/" + id_host + ".png";
