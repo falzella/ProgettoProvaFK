@@ -267,6 +267,8 @@ label {
 .profile-picture img {
     width: 50px;
     height: 50px;
+    border-radius: 50%; /* Rende l'immagine circolare */
+    overflow: hidden; /* Nasconde le parti dell'immagine che vanno oltre il bordo circolare */
 }
 
 /* sidebar */
@@ -597,6 +599,8 @@ label {
 .evf-profilepic img {
     height: 50px;
     width: 50px;
+    border-radius: 50%; /* Rende l'immagine circolare */
+    overflow: hidden; /* Nasconde le parti dell'immagine che vanno oltre il bordo circolare */
 }
 
 .evf-host {
@@ -759,6 +763,8 @@ label {
 .evd-profilepic img{
     width: 70px;
     height: 70px;
+    border-radius: 50%; /* Rende l'immagine circolare */
+    overflow: hidden; /* Nasconde le parti dell'immagine che vanno oltre il bordo circolare */
 }
 
 .evd-host {
@@ -965,6 +971,8 @@ label {
 .ud-profilepic img{
     height: 90px;
     width: 90px;
+    border-radius: 50%; /* Rende l'immagine circolare */
+    overflow: hidden; /* Nasconde le parti dell'immagine che vanno oltre il bordo circolare */
 }
 
 .ud-user-info-space {
