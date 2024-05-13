@@ -16,6 +16,10 @@ function redirectToDettaglio(eventoId) {
     window.location.href = 'dettaglievento.jsp?IdEvento=' + eventoId;
 }
 
+function redirectToListaPartecipazione(eventoId) {
+    window.location.href = 'listapartecipanti.jsp?IdEvento=' + eventoId;
+}
+
 function RedirectToDettagliUtente(username){
     window.location.href = 'dettagliutente.jsp?UserFriend=' + username;
 }

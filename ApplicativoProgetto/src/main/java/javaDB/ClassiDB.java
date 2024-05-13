@@ -451,6 +451,22 @@ public class ClassiDB {
         }
     }
 
+    public ArrayList<Utente> getListaPartecipanti(String idEvento, String idHost) throws SQLException {
+        ArrayList<Utente> utentiList = new ArrayList<>();
+        String sql = "SELECT utenti.* FROM partecipazioni INNER JOIN utenti ON utenti.Id_Utente = partecipazioni.ID_Utente WHERE partecipazioni.ID_Evento = ? AND utenti.Id_Utente <> ?";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, idEvento);
+            preparedStatement.setString(2, idHost);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Utente user = getUtenteFromResultSet(rs);
+                utentiList.add(user);
+            }
+        }
+
+        return utentiList;
+    }
+
 
 
 

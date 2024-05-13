@@ -197,7 +197,7 @@
                             if(id_host.equals(evento.getIdHost())){
                     %>
                         <div class="evd-button">modifica</div>
-                        <div class="evd-button">visualizza partecipanti</div>
+                        <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
                         <%}else{
                                 if(!db.checkPartecipazione(id_host,evento.getId_evento())){
 
@@ -208,7 +208,7 @@
 
                             %><div class="evd-button">partecipi a questo evento!</div><%}%>
 
-                    <div class="evd-button">visualizza partecipanti</div>
+                    <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
                     <%}%>
                     <%}else{
                             //pulsanti diversi per evento privato
