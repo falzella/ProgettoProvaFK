@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="javaDB.ClassiDB"%>
+<%@include file="connessione.jsp"%>
+<%@include file="getidhost.jsp"%>
 <%@page import="javaDB.EventoFeed"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,18 +8,9 @@
 
 
 <%
-    String id_host = "";
-    if(session.getAttribute("user")==null){
-        id_host = "2";
-    }else{
-        Utente user = (Utente) session.getAttribute("user");
-        id_host = user.getId_utente();
-    }
-
-    ClassiDB db = new ClassiDB();
     ArrayList<EventoFeed> eventoList = null;
     try {
-        eventoList = db.getPartecipazioniList(id_host);
+        eventoList = conn.getPartecipazioniList(id_host);
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
@@ -95,7 +87,7 @@ Non hai creato nessun evento!
             <div class="navigation-header">i tuoi amici</div>
             <%ArrayList<Utente> feedUser = null;
                 try {
-                    feedUser = db.GetFriendFeed(id_host);
+                    feedUser = conn.GetFriendFeed(id_host);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }%>
@@ -105,7 +97,7 @@ Non hai creato nessun evento!
             <div class="navigation-header">consigliati</div>
             <%ArrayList<Utente> feedSuggest = null;
                 try {
-                    feedSuggest = db.GetSuggestFeed(id_host);
+                    feedSuggest = conn.GetSuggestFeed(id_host);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }%>
@@ -122,7 +114,7 @@ Non hai creato nessun evento!
         <div class="evf-event-details">
             <div class="evf-profilepic">
                 <%
-                    String imagePath = "imagetree/profilepic/" + db.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".png"; // Percorso dell'immagine desiderata
+                    String imagePath = "imagetree/profilepic/" + conn.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".png"; // Percorso dell'immagine desiderata
                     java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
                     if (imgFile.exists()) {

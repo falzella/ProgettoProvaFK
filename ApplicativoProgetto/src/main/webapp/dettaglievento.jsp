@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="connessione.jsp"%>
+<%@include file="getidevento.jsp"%>
+<%@include file="getidhost.jsp"%>
 <%@page import="javaDB.ClassiDB"%>
 <%@page import="javaDB.Evento"%>
 <%@page import="javaDB.Utente"%>
@@ -13,26 +14,6 @@
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
-
-<%
-    String id_host = "";
-    if(session.getAttribute("user")==null){
-        id_host = "3";
-    }else{
-        Utente user = (Utente) session.getAttribute("user");
-        id_host = user.getId_utente();
-    }
-
-    ClassiDB db = new ClassiDB();%>
-
-
-<%
-    String id_evento = request.getParameter("IdEvento");
-    if(id_evento == null){
-        id_evento = "2";
-    }
-    Evento evento = conn.getEventoFromHost(id_evento);
-%>
 
 
 
@@ -103,7 +84,7 @@
                 <div class="evd-event-identity">
                     <div class="evd-host">
                         <img src="images/icons/crown.png" height="30px" width="30px">
-                        <%=db.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername()%>
+                        <%=conn.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername()%>
                     </div>
                     <div class="evd-horizontal-line"></div>
                     <div class="evd-name">
@@ -217,7 +198,7 @@
                         <div class="evd-button">modifica</div>
                         <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
                         <%}else{
-                                if(!db.checkPartecipazione(id_host,evento.getId_evento())){
+                                if(!conn.checkPartecipazione(id_host,evento.getId_evento())){
 
                         %>
                             <div class="evd-button" onclick="inviaPartecipazione('<%=evento.getId_evento()%>')">partecipa</div>
@@ -256,7 +237,7 @@
             <%
                 ArrayList<Utente> feedUser = null;
                 try {
-                    feedUser = db.GetFriendFeed(id_host);
+                    feedUser = conn.GetFriendFeed(id_host);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }%>
@@ -266,7 +247,7 @@
             <div class="navigation-header">consigliati</div>
             <%ArrayList<Utente> feedSuggest = null;
                 try {
-                    feedSuggest = db.GetSuggestFeed(id_host);
+                    feedSuggest = conn.GetSuggestFeed(id_host);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }%>

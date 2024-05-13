@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="javaDB.ClassiDB"%>
+<%@include file="connessione.jsp"%>
+<%@include file="getidhost.jsp"%>
 <%@page import="javaDB.Evento"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,18 +8,9 @@
 
 
 <%
-    String id_host = "";
-    if(session.getAttribute("user")==null){
-        id_host = "3";
-    }else{
-        Utente user = (Utente) session.getAttribute("user");
-        id_host = user.getId_utente();
-    }
-
-    ClassiDB db = new ClassiDB();
     ArrayList<Evento> eventoList = null;
     try {
-        eventoList = db.getEventList(id_host);
+        eventoList = conn.getEventList(id_host);
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
@@ -95,7 +87,7 @@
             <div class="navigation-header">i tuoi amici</div>
             <%ArrayList<Utente> feedUser = null;
                 try {
-                    feedUser = db.GetFriendFeed(id_host);
+                    feedUser = conn.GetFriendFeed(id_host);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }%>
@@ -105,7 +97,7 @@
             <div class="navigation-header">consigliati</div>
             <%ArrayList<Utente> feedSuggest = null;
                 try {
-                    feedSuggest = db.GetSuggestFeed(id_host);
+                    feedSuggest = conn.GetSuggestFeed(id_host);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }%>

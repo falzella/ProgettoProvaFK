@@ -11,6 +11,7 @@
 <%@page import="java.util.*"%>
 <%@ page import="javaDB.Evento"%>
 <%@ page import="javaDB.Utente"%>
+<%@include file="getidhost.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,18 +26,11 @@
 
 
 <%
-    String id_host = "";
-    if(session.getAttribute("user")==null){
-        id_host = "2";
-    }else{
-        Utente user = (Utente) session.getAttribute("user");
-        id_host = user.getId_utente();
-    }
     ArrayList<Utente> richiesteList = conn.getRichieste(id_host);
 
     for (Utente utente : richiesteList) {
 %>
-<a href="richieste.jsp?UserFriend=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
+<a href="dettagliutente.jsp?UserFriend=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
 <div class="navigation-element" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">Accetta</div>
 <div class="navigation-element" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">Rifiuta</div>
 <br>

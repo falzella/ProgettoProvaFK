@@ -9,6 +9,7 @@
 <%@page import="javaDB.ClassiDB"%>
 <%@page import="java.io.*"%>
 <%@include file="connessione.jsp"%>
+<%@include file="getidhost.jsp"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -30,14 +31,7 @@
     String descrizione = request.getParameter("descrizione");
     String tipo = request.getParameter("tipo");
     //String tipo = "privato";
-    String id_host = "";
 
-    if(session.getAttribute("user")==null){
-        id_host = "2";
-    }else{
-            Utente user = (Utente) session.getAttribute("user");
-            id_host = user.getId_utente();
-    }
 
 
 

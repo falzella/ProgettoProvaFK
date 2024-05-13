@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="javaDB.Utente"%>
-<%@page import="javaDB.ClassiDB"%>
 <%@page import="java.io.*"%>
 <%@include file="connessione.jsp"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>

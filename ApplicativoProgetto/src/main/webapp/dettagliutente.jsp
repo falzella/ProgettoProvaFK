@@ -130,7 +130,7 @@
 
                   if (profilePicFile.exists()) {
                 %>
-                <img src="<%= profilePicFile %>" alt="404" width="50" height="50">
+                <img src="<%= profilePic %>" alt="404" width="50" height="50">
                 <%
                 } else {
                 %>
