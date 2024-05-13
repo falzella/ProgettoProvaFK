@@ -16,7 +16,7 @@
 <%
     String id_host = "";
     if(session.getAttribute("user")==null){
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("login.jsp?messaggio=prima devi accedere!");
     }else{
         Utente user = (Utente) session.getAttribute("user");
         id_host = user.getId_utente();
