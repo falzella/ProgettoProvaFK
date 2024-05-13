@@ -90,7 +90,7 @@
                 <div class="evd-event-identity">
                     <div class="evd-host">
                         <img src="images/icons/crown.png" height="30px" width="30px">
-                        hostname here
+                        <%=db.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername()%>
                     </div>
                     <div class="evd-horizontal-line"></div>
                     <div class="evd-name">
