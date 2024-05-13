@@ -138,33 +138,43 @@
             </div>
             <div class="evd-photobox-block">
                 <div class="evd-photobox">
-                    <div class="evd-photobox-img">
-                        <%
-                            String eventFolderPath ="imagetree/eventspic/" + evento.getId_evento();
-                            java.io.File eventFolder = new java.io.File(application.getRealPath("/") + eventFolderPath);
+                    <%
+                        String eventFolderPath ="imagetree/eventspic/" + evento.getId_evento();
+                        java.io.File eventFolder = new java.io.File(application.getRealPath("/") + eventFolderPath);
 
-                            if (!eventFolder.exists()) {
-                        %>
-                        <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
-                        <%
-                        } else {
-                            String EventimagePath = eventFolderPath + "/1.png"; // Percorso dell'immagine desiderata
-                            java.io.File EventimgFile = new java.io.File(application.getRealPath("/") + EventimagePath);
+                        if (!eventFolder.exists()) {
+                    %>
+                    <figure class="card">
+                        <img src="imagetree/eventspic/default.png" alt="i">
+                    </figure>
+                    <%
+                    } else {
+                        String EventimagePath = eventFolderPath + "/1.png"; // Percorso dell'immagine desiderata
+                        java.io.File EventimgFile = new java.io.File(application.getRealPath("/") + EventimagePath);
 
-                            if (EventimgFile.exists()) {
-                        %>
-                        <img class="evd-photobox-img img" src="<%= EventimagePath %>" >
-                        <%
-                         } else {
-                            // Se il file specifico non esiste, mostra un'immagine predefinita
-                        %>
-                        <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
-                        <%
-                                }
+                        if (EventimgFile.exists()) {
+                    %>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <figure class="card">
+                        <img src="<%= EventimagePath %>">
+                    </figure>
+                    <%
+                    } else {
+                        // Se il file specifico non esiste, mostra un'immagine predefinita
+                    %>
+                    <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
+                    <%
                             }
-                        %>
-                    </div>
-                    <div class="evd-photobox-img"></div>
+                        }
+                    %>
                 </div>
             </div>
             <div class="evd-buttons-block">
@@ -194,7 +204,7 @@
         <div class="navigation-contents">
             <div class="navigation-header">i tuoi amici</div>
 
-        <%
+            <%
                 ArrayList<Utente> feedUser = null;
                 try {
                     feedUser = db.GetFriendFeed(id_host);
@@ -205,14 +215,14 @@
             <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
             <%}%>
             <div class="navigation-header">consigliati</div>
-                <%ArrayList<Utente> feedSuggest = null;
-                    try {
-                        feedSuggest = db.GetSuggestFeed(id_host);
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }%>
-                <%for (Utente utente : feedSuggest) { %>
-                <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
+            <%ArrayList<Utente> feedSuggest = null;
+                try {
+                    feedSuggest = db.GetSuggestFeed(id_host);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }%>
+            <%for (Utente utente : feedSuggest) { %>
+            <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
             <%}%>
         </div>
     </div>

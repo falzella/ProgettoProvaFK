@@ -818,6 +818,7 @@ label {
     height: 100%;
     border-radius: 15px;
     border: 2px solid white;
+    background-color: black;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -835,8 +836,8 @@ label {
     flex-wrap: wrap;
     background-color: var(--not-so-super-soft-red);
 }
-.homepage-flow img {
-    border: 5px solid green;
+.evd-photobox-img img {
+
 }
 
 .evd-maps-api-container {
@@ -908,3 +909,36 @@ label {
         opacity: 1;
     }
 }
+
+/* media photobox */
+.gallery {
+    display: flex;
+    gap: 1rem;
+    max-width: 80rem;
+}
+
+.card {
+    position: relative;
+    margin: 0;
+    height: 100%;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    background-color: white;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+    flex: 0.3;
+}
+
+.card img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card:hover {
+    flex: 0.7;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 1rem;
+}	
