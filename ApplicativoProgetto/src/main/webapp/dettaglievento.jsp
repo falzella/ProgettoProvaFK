@@ -179,9 +179,13 @@
             </div>
             <div class="evd-buttons-block">
                 <div class="evd-buttons">
-                    <div class="evd-button" onclick="RedirectTo('eventicreati.jsp')">eventi creati</div>
-                    <div class="evd-button">partecipa</div>
+                    <%
+                        if(id_host.equals(evento.getIdHost())){
+                    %>
                     <div class="evd-button">modifica</div>
+                    <%}else{
+                    %><div class="evd-button">partecipa</div>
+                    <%}%>
                     <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
                 </div>
             </div>
