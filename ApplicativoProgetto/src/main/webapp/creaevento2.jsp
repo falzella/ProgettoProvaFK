@@ -125,11 +125,11 @@
                             </div>
                             <input type="text" name="citta" class="ce-input-box" placeholder="Città" required>
                         </div>
-                        <div class="ce-input">
+                        <div class="ce-input" onclick="changeEventType()">
                             <div class="ce-input-label">
-                                <img src="images/icons/private.png" onclick="changeEventTypeImg(this)">
+                                <img id="NewEventImg" src="images/icons/private.png">
                             </div>
-                            <input type="text" name="tipo" class="ce-input-box" placeholder="Tipo" required>
+                            <input id="NewEventInput" type="text" name="tipo" value="privato" class="ce-input-box ce-checkbox" placeholder="Tipo" readonly required>
                         </div>
                     </div>
                     <div class="ce-half-section">

@@ -1049,8 +1049,16 @@ header {
     font-family: 'Sniglet', cursive;
     padding-left: 10px;
     overflow-y: hidden;
+    resize: none;
 }
 
 .ce-textarea-label {
     height: 50px;
+}
+
+.ce-checkbox {
+    cursor: pointer;
+}
+.ce-checkbox:focus {
+    outline: none;
 }
