@@ -96,13 +96,27 @@
 </div>
 <div class="homepage-flow">
     <div class="ce-block">
-        <form action="registraEvento.jsp" method="POST" class="form login">
-            <input id="evento__nome" type="text" name="nome" class="" placeholder="Nome" required>
-            <input id="evento__luogo" type="text" name="luogo" class="" placeholder="Luogo" required>
-            <input id="evento__indirizzo" type="text" name="indirizzo" class="" placeholder="Indirizzo" required>
-            <input id="evento__citta" type="text" name="citta" class="" placeholder="Città" required>
-            <input type="submit" value="CREA EVENTO">
-        </form>
+        <div class="ce-input-section">
+            <form action="registraEvento.jsp" method="POST" class="ce-form">
+                <div class="ce-column-division">
+                    <div class="ce-half-section">
+                        <input id="evento__nome" type="text" name="nome" class="ce-input" placeholder="Nome" required>
+                        <input id="evento__luogo" type="text" name="luogo" class="ce-input" placeholder="Luogo" required>
+                        <input id="evento__indirizzo" type="text" name="indirizzo" class="ce-input" placeholder="Indirizzo" required>
+                        <input id="evento__citta" type="text" name="citta" class="ce-input" placeholder="Città" required>
+                    </div>
+                    <div class="ce-half-section">
+                        <input id="evento__data" type="date" name="data" class="ce-input" required>
+                        <input id="evento__ora" type="time" value="00:00" name="ora" class="ce-input" required>
+                        <textarea id="evento__informazioni_luogo" name="informazioni_luogo" class="ce-input" placeholder="Informazioni Luogo" required></textarea>
+                        <textarea id="evento__descrizione" name="descrizione" class="ce-input" placeholder="Descrizione" required></textarea>
+                    </div>
+                </div>
+                <div class="ce-button-section">
+                    <input type="submit" value="CREA EVENTO" class="evd-button">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 </body>
