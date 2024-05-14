@@ -7,16 +7,17 @@
 
 <%
   String id_host = "";
+  Utente user = null;
   if(session.getAttribute("user")==null){
     id_host = "2";
   }else{
-    Utente user = (Utente) session.getAttribute("user");
+    user = (Utente) session.getAttribute("user");
     id_host = user.getId_utente();
   }
 
   String userFriend = request.getParameter("UserFriend");
   if(userFriend == null){
-    userFriend = "falz";
+    userFriend = "dancequeen";
   }
   Utente friend = conn.getUtenteFromUsername(userFriend);
 
