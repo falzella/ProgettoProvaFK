@@ -5,7 +5,8 @@
 <%@page import="javaDB.EventoFeed"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="java.sql.SQLException" %>
+<%@page import="java.sql.SQLException"%>
+
 
 <html>
 <head>
@@ -125,11 +126,11 @@
                             </div>
                             <input type="text" name="citta" class="ce-input-box" placeholder="Città" required>
                         </div>
-                        <div class="ce-input" onclick="changeEventType()">
+                        <div id="NewEventDiv" class="ce-input">
                             <div class="ce-input-label">
                                 <img id="NewEventImg" src="images/icons/private.png">
                             </div>
-                            <input id="NewEventInput" type="text" name="tipo" value="privato" class="ce-input-box ce-checkbox" placeholder="Tipo" readonly required>
+                            <input id="NewEventInput" type="text" name="tipo" value="Privato" class="ce-input-box ce-checkbox" placeholder="Tipo" readonly required>
                         </div>
                     </div>
                     <div class="ce-half-section">
@@ -168,3 +169,19 @@
 </div>
 </body>
 </html>
+<script>
+    function ChangeEventType() {
+        var img = document.getElementById("NewEventImg");
+        var input = document.getElementById("NewEventInput");
+        if(img.src.endsWith("private.png")) {
+            img.src = img.src.replace("private.png", "public.png");
+            input.value = "Pubblico";
+        }
+        else {
+            img.src = img.src.replace("public.png", "private.png");
+            input.value = "Privato";
+        }
+    }
+    var NewEventDiv = document.getElementById("NewEventDiv");
+    NewEventDiv.addEventListener("click", ChangeEventType);
+</script>
