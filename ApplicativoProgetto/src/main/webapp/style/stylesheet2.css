@@ -1039,125 +1039,14 @@ label {
 }
 
 /* crea evento */
-.body-creaevento {
-    background-color: #bebffd;
-    color: #606468;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    height: 100%;
-    line-height: 1.5;
-    margin: 0;
-    min-height: 100vh;
-}
-
-.whiteboardlong-horizontal {
-    background-color: white;
-    height: 80%;
-    width: 60%;
+.ce-block {
+    border-color: transparent;
     border-radius: 15px;
-    min-width: 700px;
-}
-
-.grid {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 320px;
-    width: 90%;
-}
-
-.grid-kami {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 250px;
-    width: 90%;
-}
-
-.grid-split {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 320px;
-    width: 90%;
-}
-
-.grid-split-container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-}
-
-.grid-button {
-    margin: 25px auto -10px auto;
-    max-width: 320px;
-    width: 90%;
-}
-
-.center-text {
-    text-align: center;
-    margin-top: -30px;
-    margin-bottom: 20px;
-}
-
-.creaevento-btn {
-    max-width: 300px;
-}
-
-/* switch */
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.toggle-switch__checkbox {
-    display: none;
-}
-
-.toggle-switch__label {
-    display: block;
-    width: 100%;
+    width: 95%;
     height: 100%;
-    border-radius: 34px;
-    background-color: #ccc;
-    cursor: pointer;
-    position: relative;
-}
-
-.toggle-switch__inner {
-    display: block;
-    width: 26px;
-    height: 26px;
-    margin: 4px;
-    border-radius: 50%;
-    background-color: white;
-    transition: margin-left 0.3s ease;
-}
-
-.toggle-switch__checkbox:checked + .toggle-switch__label .toggle-switch__inner {
-    margin-left: 30px;
-}
-
-.toggle-switch__switch {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: #999;
-    transition: left 0.3s ease;
-}
-
-.toggle-switch__checkbox:checked + .toggle-switch__label .toggle-switch__switch {
-    left: 30px;
-}
-
-/* utility */
-.input-padding-left {
-    padding-left: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    background-color: red;
 }
