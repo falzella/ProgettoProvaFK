@@ -103,7 +103,7 @@
                     <div class="ce-half-section">
                         <div class="ce-input">
                             <div class="ce-input-label">
-                                <img src="images/icons/user.png">
+                                <img src="images/icons/event.png">
                             </div>
                             <input type="text" name="nome" class="ce-input-box" placeholder="Nome" required>
                         </div>
@@ -124,6 +124,12 @@
                                 <img src="images/icons/city.png">
                             </div>
                             <input type="text" name="citta" class="ce-input-box" placeholder="Città" required>
+                        </div>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/private.png" onclick="changeEventTypeImg(this)">
+                            </div>
+                            <input type="text" name="tipo" class="ce-input-box" placeholder="Tipo" required>
                         </div>
                     </div>
                     <div class="ce-half-section">
