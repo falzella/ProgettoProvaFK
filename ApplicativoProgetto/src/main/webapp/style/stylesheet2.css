@@ -47,117 +47,10 @@ body, html, header {
     }
 }
 
-.fish {
-    background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
-    width: 235px;
-    height: 104px;
-    margin-left: -235px;
-    position: absolute;
-    animation: myfirst 24s;
-    -webkit-animation: myfirst 24s;
-    animation-iteration-count: infinite;
-    -webkit-animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    -webkit-animation-timing-function: linear;
-}
-
-#fish {
-    top: 120px;
-}
-
-#fish2 {
-    top: 260px;
-}
-
-
 header {
     height: 10%;
     background-color: var(--not-so-super-soft-red);
     border-radius: 0;
-}
-
-#form {
-    height: 100%;
-    background-color: #98d4f3;
-    overflow: hidden;
-    position: relative;
-
-}
-
-form {
-    margin: 0 auto;
-    width: 500px;
-    padding-top: 40px;
-    color: white;
-    position: relative;
-}
-
-label, input, textarea {
-    display: block;
-}
-
-input, textarea {
-    width: 500px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    padding: 10px;
-    font-family: 'Sniglet', cursive;
-    font-size: 1em;
-    color: #676767;
-    border: solid 3px #98d4f3;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-input:focus, textarea:focus {
-}
-
-textarea {
-    height: 100px;
-    resize: none;
-    overflow: auto;
-}
-
-input[type="submit"] {
-    background-color: #F90;
-    color: white;
-    height: 50px;
-    cursor: pointer;
-    margin-top: 30px;
-    font-size: 1.29em;
-    font-family: 'Sniglet', cursive;
-}
-input[type="submit"]:hover {
-    background-color: #e58f0e;
-}
-
-label {
-    font-size: 1.5em;
-    margin-top: 20px;
-    padding-left: 20px;
-}
-
-.formgroup, .formgroup-active, .formgroup-error {
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 10.5%;
-    width: 500px;
-    padding-top: 2px;
-}
-
-.formgroup {
-    background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');
-}
-
-.formgroup-active {
-    background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
-}
-
-.formgroup-error {
-    background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
-    color: red;
 }
 
 .center-div {
@@ -893,7 +786,10 @@ label {
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 15px;
+    border: 2px solid white;
     background-color: white;
+    font-family: inherit;
+    font-size: 20px;
     color: red;
     display: flex;
     justify-content: center;
@@ -1046,7 +942,7 @@ label {
     justify-content: space-evenly;
     align-items: center;
     color: white;
-    background-color: red;
+    background-color: var(--soft-red);
 }
 
 .ce-input-section {
@@ -1057,10 +953,23 @@ label {
     justify-content: center;
 }
 
-.ce-column-division {
+.ce-title-block {
+    width: 100%;
+    height: 10%;
+    font-size: 40px;
+    color: red;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ce-column-division-block {
     width: 100%;
     height: 80%;
-    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ce-form {
@@ -1072,20 +981,76 @@ label {
     align-items: center;
     flex-wrap: wrap;
     align-content: center;
-    background-color: yellow;
 }
 
 .ce-half-section {
     width: 50%;
-    background-color: grey;
-}
-
-.ce-input {
-    width: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .ce-button-section {
     width: 100%;
     height: 10%;
-    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* input classes */
+.ce-input {
+    width: 80%;
+    height: 50px;
+    margin-bottom: 20px;
+    font-family: 'Sniglet', cursive;
+    display: flex;
+}
+
+.ce-input-box {
+    width: 90%;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
+    padding-left: 10px;
+    vertical-align: center;
+    line-height: 50px;
+    border-radius: 0 15px 15px 0;
+    border: 2px solid white;
+    font-family: 'Sniglet', cursive;
+    font-size: 20px;
+    color: grey;
+    overflow-y: hidden;
+}
+
+.ce-input-label {
+    width: 15%;
+    height: 50px;
+    border-radius: 15px 0 0 15px;
+    border: 2px solid red;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ce-input-label img {
+    width: 30px;
+    height: 30px;
+}
+
+.ce-textarea {
+    width: 90%;
+    height: 50px;
+    border-radius: 0 15px 15px 0;
+    border: 2px solid white;
+    font-family: 'Sniglet', cursive;
+    padding-left: 10px;
+    overflow-y: hidden;
+}
+
+.ce-textarea-label {
+    height: 50px;
 }

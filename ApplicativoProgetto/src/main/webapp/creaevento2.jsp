@@ -98,18 +98,59 @@
     <div class="ce-block">
         <div class="ce-input-section">
             <form action="registraEvento.jsp" method="POST" class="ce-form">
-                <div class="ce-column-division">
+                <div class="ce-title-block">CREA IL NUOVO EVENTO!</div>
+                <div class="ce-column-division-block">
                     <div class="ce-half-section">
-                        <input id="evento__nome" type="text" name="nome" class="ce-input" placeholder="Nome" required>
-                        <input id="evento__luogo" type="text" name="luogo" class="ce-input" placeholder="Luogo" required>
-                        <input id="evento__indirizzo" type="text" name="indirizzo" class="ce-input" placeholder="Indirizzo" required>
-                        <input id="evento__citta" type="text" name="citta" class="ce-input" placeholder="Città" required>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/user.png">
+                            </div>
+                            <input type="text" name="nome" class="ce-input-box" placeholder="Nome" required>
+                        </div>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/location-pin.png">
+                            </div>
+                            <input type="text" name="luogo" class="ce-input-box" placeholder="Luogo" required>
+                        </div>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/address-pin.png">
+                            </div>
+                            <input type="text" name="indirizzo" class="ce-input-box" placeholder="Indirizzo" required>
+                        </div>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/city.png">
+                            </div>
+                            <input type="text" name="citta" class="ce-input-box" placeholder="Città" required>
+                        </div>
                     </div>
                     <div class="ce-half-section">
-                        <input id="evento__data" type="date" name="data" class="ce-input" required>
-                        <input id="evento__ora" type="time" value="00:00" name="ora" class="ce-input" required>
-                        <textarea id="evento__informazioni_luogo" name="informazioni_luogo" class="ce-input" placeholder="Informazioni Luogo" required></textarea>
-                        <textarea id="evento__descrizione" name="descrizione" class="ce-input" placeholder="Descrizione" required></textarea>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/calendar.png">
+                            </div>
+                            <input type="date" name="data" class="ce-input-box" required>
+                        </div>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/clock.png">
+                            </div>
+                            <input type="time" value="00:00" name="ora" class="ce-input-box" required>
+                        </div>
+                        <div class="ce-input ce-textarea-label">
+                            <div class="ce-input-label">
+                                <img src="images/icons/location-info.png">
+                            </div>
+                            <textarea name="informazioni_luogo" class="ce-input-box ce-textarea" placeholder="Informazioni Luogo" required></textarea>
+                        </div>
+                        <div class="ce-input ce-textarea-label">
+                            <div class="ce-input-label">
+                                <img src="images/icons/info.png">
+                            </div>
+                            <textarea name="descrizione" class="ce-input-box ce-textarea" placeholder="Descrizione" required></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="ce-button-section">
