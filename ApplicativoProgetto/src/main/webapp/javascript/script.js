@@ -42,3 +42,17 @@ window.onload = function() {
         block.classList.add('slide-in-from-top');
     });
 };
+
+/* Crea Evento Script */
+function changeEventType() {
+    var img = document.getElementById("NewEventImg");
+    var input = document.getElementById("NewEventInput");
+    if(img.src.endsWith("private.png")) {
+        img.src = img.src.replace("private.png", "public.png");
+        input.value = "public";
+    }
+    else {
+        img.src = img.src.replace("public.png", "private.png");
+        input.value = "private";
+    }
+}
