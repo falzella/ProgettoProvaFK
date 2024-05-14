@@ -339,26 +339,29 @@ public class ClassiDB {
 
     public boolean checkAmicizia(String idUtente1, String idUtente2) {
         try {
-            String sql = "SELECT COUNT(*) AS count FROM amicizieutenti WHERE (Id_Utente1 = ? AND Id_Utente2 = ?) OR (Id_Utente1 = ? AND Id_Utente2 = ?)";
+            if(!idUtente1.equals(idUtente2)){
+                String sql = "SELECT COUNT(*) AS count FROM amicizieutenti WHERE (Id_Utente1 = ? AND Id_Utente2 = ?) OR (Id_Utente1 = ? AND Id_Utente2 = ?)";
 
-            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
-                preparedStatement.setString(1, idUtente1);
-                preparedStatement.setString(2, idUtente2);
-                preparedStatement.setString(3, idUtente2);
-                preparedStatement.setString(4, idUtente1);
+                try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                    preparedStatement.setString(1, idUtente1);
+                    preparedStatement.setString(2, idUtente2);
+                    preparedStatement.setString(3, idUtente2);
+                    preparedStatement.setString(4, idUtente1);
 
-                ResultSet rs = preparedStatement.executeQuery();
+                    ResultSet rs = preparedStatement.executeQuery();
 
-                if (rs.next()) {
-                    int count = rs.getInt("count");
-                    return count > 0;
+                    if (rs.next()) {
+                        int count = rs.getInt("count");
+                        return count > 0;
+                    }
                 }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return true;
         }
-        return false;
+        return true;
     }
 
     public boolean checkRichiesta(String idUtente1, String idUtente2) {

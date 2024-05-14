@@ -13,6 +13,16 @@
     <title>Dettaglio Evento</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+    <link
+            rel='stylesheet'
+            href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
+            type='text/css'
+    />
+
+
 </head>
 
 
@@ -51,7 +61,7 @@
             <div class="space"></div>
             <img src="images/icons/settings.png" height="30px" width="30px">
             <div class="space"></div>
-            <div class="profile-picture">
+            <div class="profile-picture" onclick=RedirectToDettagliUtente('<%=conn.GetUtenteFromId(Integer.parseInt(id_host)).getUsername()%>')>
                 <%
                     String imagePfp = "imagetree/profilepic/" + id_host + ".png";
                     java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
@@ -121,7 +131,34 @@
                     </div>
                 </div>
                 <div class="evd-maps-api-container">
-                    <div class="evd-maps-api">maps api</div>
+                    <div class="evd-maps-api" id="map"></div>
+
+                    <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiZmFsenp6IiwiYSI6ImNsdzZ2enB2aTE5eGYydHJ6cnpnZ2RrZzUifQ.rC62okllepNFI_ilD72vNg';
+                        var map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v11', // puoi scegliere uno stile differente qui
+                            center: [0, 0], // Longitudine e latitudine del centro della mappa
+                            zoom: 1 // Livello di zoom iniziale
+                        });
+
+                        // Ottieni le coordinate dall'indirizzo e dalla città
+                        var address = "<%=evento.getIndirizzo()%>, <%=evento.getCitta()%>";
+                        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json?access_token=' + mapboxgl.accessToken)
+                            .then(response => response.json())
+                            .then(data => {
+                                var coordinates = data.features[0].center;
+                                map.setCenter(coordinates); // Imposta il centro della mappa sulle coordinate ottenute
+                                var marker = new mapboxgl.Marker()
+                                    .setLngLat(coordinates)
+                                    .addTo(map); // Aggiungi il marker alla mappa
+                                map.easeTo({ zoom: 15, duration: 4000 }); // Gradualmente imposta lo zoom a 11
+                            });
+                    </script>
+
+
+
+
                 </div>
                 <div class="evd-location-info">
                     <%=evento.getInformazioniLuogo()%>

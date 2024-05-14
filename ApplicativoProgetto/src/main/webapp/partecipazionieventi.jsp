@@ -51,7 +51,7 @@ Non hai creato nessun evento!
             <div class="space"></div>
             <img src="images/icons/settings.png" height="30px" width="30px">
             <div class="space"></div>
-            <div class="profile-picture">
+            <div class="profile-picture" onclick=RedirectToDettagliUtente('<%=conn.GetUtenteFromId(Integer.parseInt(id_host)).getUsername()%>')>
                 <%
                     String imagePfp = "imagetree/profilepic/" + id_host + ".png";
                     java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
