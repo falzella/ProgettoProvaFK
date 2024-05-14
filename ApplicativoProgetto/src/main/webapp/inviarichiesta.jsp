@@ -9,13 +9,11 @@
 <%
     try{
         String id_friend = request.getParameter("id_friend");
-<<<<<<< Updated upstream
         if(conn.mandarichiesta(id_host, id_friend)) {
             response.sendRedirect("dettagliutente.jsp?friendReq=" + true);
-=======
-        if(db.mandarichiesta(id_host, id_friend)) {
-            response.sendRedirect("dettagliutente.jsp?friendReq=" + true + "&userFriend=" + );
->>>>>>> Stashed changes
+        }
+        if(conn.mandarichiesta(id_host, id_friend)) {
+            response.sendRedirect("dettagliutente.jsp?friendReq=" + true + "&UserFriend=" + conn.GetUtenteFromId(Integer.parseInt(id_friend)).getUsername());
         } else {
             response.sendRedirect("dettagliutente.jsp?friendReq=" + false);
         }
