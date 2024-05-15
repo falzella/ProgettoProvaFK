@@ -143,11 +143,11 @@ header {
 }
 
 .profile-picture {
-    height: 62px;
-    width: 62px;
+    height: 58px;
+    width: 58px;
     margin-right: 20px;
     border-radius: 50%;
-    background-color: var(--ultra-soft-red);
+    background-color: red;
     color: black;
     display: flex;
     justify-content: center;
@@ -317,11 +317,10 @@ header {
     justify-content: space-evenly;
     align-items: center;
     color: white;
-    background-color: red;
+    background-color: var(--ultra-soft-red);
 }
 .event-block:hover {
     border: 5px solid red;
-    transition-delay: 0.3s !important;
     transition: 0.2s ease-in-out;
 }
 
@@ -335,7 +334,7 @@ header {
     justify-content: space-evenly;
     align-items: center;
     color: white;
-    background-color: red;
+    background-color: var(--ultra-soft-red);
 }
 
 
@@ -470,7 +469,7 @@ header {
 }
 
 .evf-event-identity-ex {
-    color: white;
+    color: red;
     width: 45%;
     max-width: 40%;
     display: flex;
@@ -482,7 +481,7 @@ header {
 
 .evf-event-details {
     width: 100%;
-    color: white;
+    color: red;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -491,10 +490,10 @@ header {
 }
 
 .evf-profilepic {
-    height: 70px !important;
-    width: 70px !important;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
-    background-color: var(--ultra-soft-red);
+    background-color: red;
     color: var(--kami-text-color);
     display: flex;
     justify-content: center;
@@ -503,8 +502,8 @@ header {
 }
 .evf-profilepic img {
     cursor: pointer;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -563,7 +562,9 @@ header {
     vertical-align: middle;
     line-height: 100px;
     text-align: center;
-    border: 2px solid white;
+    border: 2px solid black;
+    color: white;
+    background-color: var(--sidebar-color);
     border-radius: 15px;
 }
 
@@ -638,7 +639,7 @@ header {
 }
 
 .evd-event-identity {
-    color: white;
+    color: red;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -647,7 +648,7 @@ header {
 }
 
 .evd-event-details {
-    color: white;
+    color: red;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -656,10 +657,10 @@ header {
 }
 
 .evd-profilepic {
-    height: 73px;
-    width: 73px;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
-    background-color: var(--ultra-soft-red);
+    background-color: red;
     color: var(--kami-text-color);
     display: flex;
     justify-content: center;
@@ -716,6 +717,7 @@ header {
 .evd-location-detail {
     height: 30px;
     font-size: 20px;
+    color: red;
 }
 .evd-location-detail img {
     width: 20px;
@@ -729,7 +731,8 @@ header {
     vertical-align: middle;
     line-height: 80px;
     text-align: center;
-    border: 2px solid white;
+    border: 2px solid red;
+    background-color: black;
     border-radius: 15px;
 }
 
@@ -737,7 +740,7 @@ header {
     width: 92%;
     height: 100%;
     border-radius: 15px;
-    border: 2px solid white;
+    border: 2px solid red;
     background-color: black;
     display: flex;
     justify-content: space-evenly;
@@ -763,11 +766,12 @@ header {
 .evd-maps-api-container {
     width: 35%;
     border-radius: 15px;
-    border: 2px solid white;
+    border: 2px solid red;
+    background-color: black;
 }
 
 .evd-maps-api {
-    color: darkgreen;
+    color: red;
     height: 180px;
     display: flex;
     justify-content: center;
@@ -785,7 +789,8 @@ header {
     line-height: 170px;
     color: white;
     border-radius: 15px;
-    border: 2px solid white;
+    border: 2px solid red;
+    background-color: black;
 }
 
 .evd-buttons {
@@ -849,7 +854,7 @@ header {
     width: 80%;
     margin-left: 10%;
     height: 2px;
-    background-color: white;
+    background-color: red;
 }
 
 .ud-profilepic-space {
@@ -861,6 +866,7 @@ header {
 .ud-username-space {
     height: 80%;
     font-size: 40px;
+    color: red;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -870,7 +876,7 @@ header {
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    background-color: var(--ultra-soft-red);
+    background-color: red;
     color: var(--kami-text-color);
     display: flex;
     justify-content: center;
@@ -886,6 +892,7 @@ header {
 
 .ud-user-info-space {
     font-size: 30px;
+    color: red;
 }
 .ud-user-info-space img{
     width: 30px;
@@ -1091,7 +1098,7 @@ header {
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: red;
+    background-color: var(--ultra-soft-red);
 }
 
 .ul-user-container {
@@ -1125,6 +1132,25 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.ul-profilepic {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background-color: red;
+    color: var(--kami-text-color);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.ul-profilepic img {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .ul-button {

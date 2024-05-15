@@ -672,8 +672,8 @@ header {
 }
 
 .evd-profilepic {
-    height: 73px;
-    width: 73px;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     background-color: white;
     color: var(--kami-text-color);
@@ -1138,6 +1138,25 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.ul-profilepic {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background-color: var(--super-soft-red);
+    color: var(--kami-text-color);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.ul-profilepic img {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .ul-button {
