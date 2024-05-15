@@ -650,6 +650,7 @@ header {
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 .evd-profilepic img{
     width: 70px;

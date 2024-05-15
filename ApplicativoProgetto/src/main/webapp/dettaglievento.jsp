@@ -83,8 +83,21 @@
 
             <div class="evd-identity-block">
                 <div class="evd-profilepic-space">
-                    <div class="evd-profilepic">
-                        <img src="<%="imagetree/profilepic/" + evento.getIdHost() + ".png"%>" alt="404">
+                    <div class="evd-profilepic" onclick=RedirectToDettagliUtente('<%=conn.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername()%>')>
+                        <%
+                            String imagehostPfp = "imagetree/profilepic/" + evento.getIdHost() + ".png";
+                            java.io.File imagehostFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
+
+                            if (imagehostFilePfp.exists()) {
+                        %>
+                        <img src="<%= imagehostPfp %>" alt="i" width="50" height="50">
+                        <%
+                        } else {
+                        %>
+                        <img src="imagetree/profilepic/default.png" alt="i" width="50" height="50">
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
                 <div class="evd-event-identity">
@@ -150,6 +163,7 @@
                                 map.easeTo({ zoom: 15, duration: 4000 }); // Gradualmente imposta lo zoom a 11
                             });
                     </script>
+
                 </div>
                 <div class="evd-location-info">
                     <%=evento.getInformazioniLuogo()%>
