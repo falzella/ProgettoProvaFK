@@ -79,6 +79,7 @@ Non hai creato nessun evento!
             <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
             <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
             <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
+            <div class="navigation-element" onclick="RedirectTo('inviti.jsp')">inviti ricevuti</div>
         </div>
     </div>
 
