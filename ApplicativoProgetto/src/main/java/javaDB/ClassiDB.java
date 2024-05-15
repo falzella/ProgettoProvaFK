@@ -485,5 +485,56 @@ public class ClassiDB {
         }
     }
 
+    public ArrayList<Evento> getInviti(String IdHost) throws SQLException {
+        ArrayList<Evento> eventiList = new ArrayList<>();
+        String sql = "SELECT eventi.* FROM  eventi INNER JOIN inviti ON eventi.ID_Evento = inviti.ID_Evento WHERE inviti.Id_Invitato = ?";
+
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, IdHost);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Evento evento = getEventoFromResultSet(rs);
+                eventiList.add(evento);
+            }
+        }
+        return eventiList;
+    }
+
+    public boolean eseguiInvito(String idhost, String idevento, String esito) {
+
+        if(esito.equals("true")){
+
+            try {
+                String sql = "INSERT INTO partecipazioni (Id_Utente, Id_Evento) VALUES (?, ?)";
+
+                try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                    preparedStatement.setString(1,idhost);
+                    preparedStatement.setString(2, idevento);
+
+                    preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+        }
+
+        try {
+            String sql = "DELETE FROM inviti WHERE (Id_Invitato = ? AND Id_Evento = ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idhost);
+                preparedStatement.setString(2, idevento);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 
 }

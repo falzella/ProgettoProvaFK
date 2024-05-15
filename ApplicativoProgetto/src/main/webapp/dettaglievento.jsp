@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dettaglio Evento</title>
-    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
@@ -83,8 +83,21 @@
 
             <div class="evd-identity-block">
                 <div class="evd-profilepic-space">
-                    <div class="evd-profilepic">
-                        <img src="<%="imagetree/profilepic/" + evento.getIdHost() + ".png"%>" alt="404">
+                    <div class="evd-profilepic" onclick=RedirectToDettagliUtente('<%=conn.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername()%>')>
+                        <%
+                            String imagehostPfp = "imagetree/profilepic/" + evento.getIdHost() + ".png";
+                            java.io.File imagehostFilePfp = new java.io.File(application.getRealPath("/") + imagehostPfp);
+
+                            if (imagehostFilePfp.exists()) {
+                        %>
+                        <img src="<%= imagehostPfp %>" alt="i" width="50" height="50">
+                        <%
+                        } else {
+                        %>
+                        <img src="imagetree/profilepic/default.png" alt="i" width="50" height="50">
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
                 <div class="evd-event-identity">
@@ -150,6 +163,7 @@
                                 map.easeTo({ zoom: 15, duration: 4000 }); // Gradualmente imposta lo zoom a 11
                             });
                     </script>
+
                 </div>
                 <div class="evd-location-info">
                     <%=evento.getInformazioniLuogo()%>
@@ -266,6 +280,7 @@
             <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
             <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
             <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
+            <div class="navigation-element" onclick="RedirectTo('inviti.jsp')">inviti ricevuti</div>
         </div>
     </div>
 

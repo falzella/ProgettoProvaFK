@@ -32,6 +32,10 @@ function eseguiRichiesta(id_friend, esito) {
     window.location.href = 'eseguirichiesta.jsp?id_friend=' + id_friend + '&esito=' + esito;
 }
 
+function eseguiInvito(id_evento, esito) {
+    window.location.href = 'eseguiinvito.jsp?id_evento=' + id_evento + '&esito=' + esito;
+}
+
 function inviaPartecipazione(id_evento) {
     window.location.href = 'inviapartecipazione.jsp?idEvento=' + id_evento;
 }
