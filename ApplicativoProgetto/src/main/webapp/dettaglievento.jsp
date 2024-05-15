@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dettaglio Evento</title>
-    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />

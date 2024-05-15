@@ -26,7 +26,7 @@
 <head>
     <meta charset="UTF-8">
     <title>visualizza utente</title>
-    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <header>
@@ -113,11 +113,11 @@
 </div>
 
 <div class="homepage-flow">
-    <div class="ul-user-block">
-        <%for (Utente utente : partecipazioniList) { %>
+    <%for (Utente utente : partecipazioniList) { %>
+        <div class="ul-user-block">
             <div class="ul-user-container">
                 <div class="ul-profilepic-space">
-                    <div class="evf-profilepic">
+                    <div class="evf-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
                         <%
                             String imagePath = "imagetree/profilepic/" + conn.getUtenteFromUsername(utente.getId_utente()) + ".png"; // Percorso dell'immagine desiderata
                             java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
@@ -141,8 +141,8 @@
                     <div class="evd-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
                 </div>
             </div>
-        <%}%>
-    </div>
+        </div>
+    <%}%>
 </div>
 </body>
 </html>

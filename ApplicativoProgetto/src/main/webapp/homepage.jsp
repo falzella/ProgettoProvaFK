@@ -14,7 +14,7 @@
 <html>
 <head>
     <title>homepage</title>
-    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
@@ -70,6 +70,10 @@
                 <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
                 <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
                 <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
+            </div>
+            <div class="navigation-options-box">
+                <div id="darkmode-switch" class="navigation-switch" onclick="switchMode(this)">darkmode</div>
+                <div class="navigation-element" onclick="RedirectTo('login.jsp')">logout</div>
             </div>
         </div>
 
@@ -157,3 +161,15 @@
     </div>
 </body>
 </html>
+<script>
+    // no worka da capire perchè
+    function switchMode(id) {
+        var switchmodebutton = document.getElementById(id);
+        if(window.CSSStyleSheet.name.endsWith("-dark")) {
+            window.CSSStyleSheet.name.replace("-dark","");
+        }
+        else {
+            window.CSSStyleSheet.name.replace(".css","-dark.css");
+        }
+    }
+</script>

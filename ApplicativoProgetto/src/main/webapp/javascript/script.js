@@ -42,6 +42,3 @@ window.onload = function() {
         block.classList.add('slide-in-from-top');
     });
 };
-
-/* Crea Evento Script */
-
