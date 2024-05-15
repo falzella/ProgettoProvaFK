@@ -75,7 +75,7 @@ Non hai creato nessun evento!
     <div class="sidebar">
         <div class="navigation-contents">
             <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
-            <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+            <div class="navigation-element" onclick="RedirectTo('creaevento2.jsp')">nuovo evento</div>
             <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
             <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
             <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>

@@ -21,11 +21,7 @@
             href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
             type='text/css'
     />
-
-
 </head>
-
-
 
 <%
     boolean partecipazione = request.getParameter("partecipazione") != null;
@@ -132,7 +128,6 @@
                 </div>
                 <div class="evd-maps-api-container">
                     <div class="evd-maps-api" id="map"></div>
-
                     <script>
                         mapboxgl.accessToken = 'pk.eyJ1IjoiZmFsenp6IiwiYSI6ImNsdzZ2enB2aTE5eGYydHJ6cnpnZ2RrZzUifQ.rC62okllepNFI_ilD72vNg';
                         var map = new mapboxgl.Map({
@@ -155,10 +150,6 @@
                                 map.easeTo({ zoom: 15, duration: 4000 }); // Gradualmente imposta lo zoom a 11
                             });
                     </script>
-
-
-
-
                 </div>
                 <div class="evd-location-info">
                     <%=evento.getInformazioniLuogo()%>
@@ -248,8 +239,19 @@
                     <%}%>
                     <%}else{
                             //pulsanti diversi per evento privato
+                            // <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
+                        if(id_host.equals(evento.getIdHost())){%>
+                            <div class="evd-button">modifica</div>
+                            <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
+                        <%}else{
+                            if(!conn.checkPartecipazione(id_host,evento.getId_evento())){
+                        %>
+                        <div class="evd-button" onclick="inviaPartecipazione('<%=evento.getId_evento()%>')">partecipa</div>
+                        <%}else{
+                            %><div class="evd-button">partecipi a questo evento!</div><%}%>
+                            <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
+                        <%}
                     }%>
-                    <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
                 </div>
             </div>
         </div>
@@ -260,7 +262,7 @@
     <div class="sidebar">
         <div class="navigation-contents">
             <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
-            <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+            <div class="navigation-element" onclick="RedirectTo('creaevento2.jsp')">nuovo evento</div>
             <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
             <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
             <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>

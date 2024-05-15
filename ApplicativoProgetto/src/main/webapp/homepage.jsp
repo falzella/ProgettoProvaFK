@@ -66,7 +66,7 @@
         <div class="sidebar">
             <div class="navigation-contents">
                 <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
-                <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+                <div class="navigation-element" onclick="RedirectTo('creaevento2.jsp')">nuovo evento</div>
                 <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
                 <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
                 <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
@@ -100,24 +100,10 @@
     </div>
     <div class="homepage-flow">
         <%for (EventoFeed eventoFeed : feed) { %>
-            <!--
-            <div class="event-block">
-                Nome: <%=eventoFeed.GetEvento().getNome()%><br>
-                Luogo: <%=eventoFeed.GetEvento().getLuogo()%><br>
-                Indirizzo: <%=eventoFeed.GetEvento().getIndirizzo()%><br>
-                Città: <%=eventoFeed.GetEvento().getCitta()%><br>
-                Data: <%=eventoFeed.GetEvento().getData()%><br>
-                Ora: <%=eventoFeed.GetEvento().getOra()%><br>
-                Informazioni sul luogo: <%=eventoFeed.GetEvento().getInformazioniLuogo()%><br>
-                Descrizione: <%=eventoFeed.GetEvento().getDescrizione()%><br>
-                Tipo: <%=eventoFeed.GetEvento().getTipo()%><br>
-                ID Host: <%=eventoFeed.GetEvento().getIdHost()%><br>
-                Nome Host: <%=eventoFeed.GetHost()%><br>
-            </div> -->
             <div class="event-block" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
                 <div class="evf-event-details">
                     <div class="evf-profilepic-space">
-                        <div class="evf-profilepic">
+                        <div class="evf-profilepic" onclick=RedirectToDettagliUtente('<%=eventoFeed.GetHost()%>')>
                             <%
                                 String imagePath = "imagetree/profilepic/" + conn.getUtenteFromUsername(eventoFeed.GetHost()).getId_utente() + ".png"; // Percorso dell'immagine desiderata
                                 java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);

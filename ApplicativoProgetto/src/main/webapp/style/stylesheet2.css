@@ -477,8 +477,8 @@ header {
 }
 
 .evf-profilepic {
-    height: 50px;
-    width: 50px;
+    height: 70px !important;
+    width: 70px !important;
     border-radius: 50%;
     background-color: white;
     color: var(--kami-text-color);
@@ -488,10 +488,10 @@ header {
     flex-wrap: wrap;
 }
 .evf-profilepic img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%; /* Rende l'immagine circolare */
-    overflow: hidden; /* Nasconde le parti dell'immagine che vanno oltre il bordo circolare */
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .evf-host {
@@ -1061,4 +1061,69 @@ header {
 }
 .ce-checkbox:focus {
     outline: none;
+}
+
+/* lista utenti partecipanti */
+.ul-user-block {
+    border-color: transparent;
+    border-radius: 15px;
+    width: 95%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: red;
+}
+
+.ul-user-container {
+    width: 95%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ul-profilepic-space {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ul-username-space {
+    width: 40%;
+    height: 100%;
+    font-size: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ul-buttons-space {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ul-button {
+    height: 85%;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 15px;
+    background-color: white;
+    font-family: inherit;
+    font-size: 20px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.ul-button:hover {
+    color: var(--kami-red);
+    background-color: var(--soft-red);
 }

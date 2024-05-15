@@ -1,28 +1,27 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="connessione.jsp"%>
+<%@include file="getidhost.jsp"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.SQLException" %>
 
 
 <%
-  String id_host = "";
-  Utente user = null;
-  if(session.getAttribute("user")==null){
-    id_host = "2";
-  }else{
-    user = (Utente) session.getAttribute("user");
-    id_host = user.getId_utente();
-  }
+    String userFriend = request.getParameter("UserFriend");
+    Utente friend = null;
+    if(userFriend == null){
+      response.sendRedirect("homepage.jsp?messaggio=nessun utente selezionato");
+      return;
+    }else {
+      friend = conn.getUtenteFromUsername(userFriend);
+      if(friend == null){
+        response.sendRedirect("homepage.jsp?messaggio=questo utente non esiste!");
+        return;
+      }
+    }
 
-  String userFriend = request.getParameter("UserFriend");
-  if(userFriend == null){
-    userFriend = "dancequeen";
-  }
-  Utente friend = conn.getUtenteFromUsername(userFriend);
-
-  boolean friendReq = request.getParameter("friendReq") != null;
-  if(friendReq){%>
+    boolean friendReq = request.getParameter("friendReq") != null;
+    if(friendReq){%>
   <script>
     alert("Richiesta inviata")
     RedirectTo("dettagliutente.jsp?UserFriend=<%=friend.getUsername()%>")
@@ -86,7 +85,7 @@
       <div class="sidebar">
         <div class="navigation-contents">
           <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
-          <div class="navigation-element" onclick="RedirectTo('provacreaevento.jsp')">nuovo evento</div>
+          <div class="navigation-element" onclick="RedirectTo('creaevento2.jsp')">nuovo evento</div>
           <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
           <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
           <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>

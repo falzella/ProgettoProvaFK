@@ -470,7 +470,20 @@ public class ClassiDB {
         return utentiList;
     }
 
-
+    public Evento getLastEventoHost(String id_host) {
+        String sql = "SELECT * FROM eventi WHERE ID_Host ='" + id_host + "' AND ID_Evento= (SELECT MAX(ID_Evento) FROM eventi WHERE ID_Host ='" + id_host + "')";
+        try {
+            ResultSet rs = null;
+            rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                return getEventoFromResultSet(rs);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+    }
 
 
 }

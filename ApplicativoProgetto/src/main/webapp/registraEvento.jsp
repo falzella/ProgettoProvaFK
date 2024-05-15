@@ -44,7 +44,12 @@
 
         // Salvataggio dell'evento nel database
         if (conn.inserisciEvento(evento)) {
-            response.sendRedirect("homepage.jsp?messaggio=Evento+creato+con+successo%21");
+            Evento eventoCreato = conn.getLastEventoHost(id_host);
+            if(eventoCreato == null){
+                response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
+            }else{
+                response.sendRedirect("dettaglievento.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Evento registrato con successo!");
+            }
         } else {
             response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
         }

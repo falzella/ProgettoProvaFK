@@ -16,7 +16,8 @@
 <%
     String id_evento = request.getParameter("IdEvento");
     if(id_evento == null){
-        id_evento = "2";
+        response.sendRedirect("login.jsp?messaggio=prima devi accedere!");
+        return;
     }
     Evento evento = conn.getEventoFromHost(id_evento);
 %>
