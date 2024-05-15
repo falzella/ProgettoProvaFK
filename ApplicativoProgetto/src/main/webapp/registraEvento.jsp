@@ -48,7 +48,12 @@
             if(eventoCreato == null){
                 response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
             }else{
-                response.sendRedirect("dettaglievento.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Evento registrato con successo!");
+                if(tipo.equals("pubblico")){
+                    response.sendRedirect("dettaglievento.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Evento registrato con successo!");
+                }else{
+                    response.sendRedirect("listaamiciinvitare.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Invita i tuoi amici!");
+                }
+
             }
         } else {
             response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");

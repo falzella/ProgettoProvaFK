@@ -536,5 +536,44 @@ public class ClassiDB {
         return true;
     }
 
+    public boolean checkInvito(String idUtente, String idEvento) {
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM inviti WHERE (ID_Invitato = ? AND ID_Evento = ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, idUtente);
+                preparedStatement.setString(2, idEvento);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean mandaInvito(String id_host, String id_evento) {
+        try {
+            String sql = "INSERT INTO inviti (ID_Invitato, ID_Evento) VALUES (?, ?)";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, id_host);
+                preparedStatement.setString(2, id_evento);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 
 }

@@ -40,6 +40,10 @@ function inviaPartecipazione(id_evento) {
     window.location.href = 'inviapartecipazione.jsp?idEvento=' + id_evento;
 }
 
+function inviaInvito(id_evento, id_invitato) {
+    window.location.href = 'inviainvito.jsp?idEvento=' + id_evento + '&idInvitato=' + id_invitato;
+}
+
 window.onload = function() {
     var eventBlocks = document.querySelectorAll('.event-block');
     eventBlocks.forEach(function(block) {

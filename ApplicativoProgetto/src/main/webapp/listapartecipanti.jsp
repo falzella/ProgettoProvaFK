@@ -125,7 +125,7 @@
                 <div class="ul-profilepic-space">
                     <div class="ul-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
                         <%
-                            String imagePath = "imagetree/profilepic/" + conn.getUtenteFromUsername(utente.getId_utente()) + ".png"; // Percorso dell'immagine desiderata
+                            String imagePath = "imagetree/profilepic/" + utente.getId_utente()  + ".png"; // Percorso dell'immagine desiderata
                             java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
                             if (imgFile.exists()) {
