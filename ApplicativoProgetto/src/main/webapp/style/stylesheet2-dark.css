@@ -2,12 +2,12 @@
 
 :root {
     --kami-red: #D40707;
-    --super-soft-red: #fff6f6;
-    --ultra-soft-red: #fffbfb;
-    --not-so-super-soft-red: #ffefef;
-    --soft-red: #FFB2B2FF;
+    --super-soft-red: black;
+    --ultra-soft-red: #171717;
+    --not-so-super-soft-red: #000000;
+    --soft-red: black;
     --not-so-soft-red: #ff3737;
-    --element-header-soft-red: #ffd1d1;
+    --element-header-soft-red: #130000;
     --sidebar-color: var(--soft-red);
     --kami-text-color: #8d8d8d
 }
@@ -147,7 +147,7 @@ header {
     width: 62px;
     margin-right: 20px;
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     color: black;
     display: flex;
     justify-content: center;
@@ -267,23 +267,7 @@ header {
 }
 
 .navigation-switch {
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    margin-top: 10px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    color: var(--kami-text-color);
-    background-color: transparent;
-    transition: 0.2s ease-in-out;
-}
-.navigation-switch:hover {
-    cursor: pointer;
-    background-color: var(--soft-red);
-    color: var(--kami-red);
-    transition: 0.2s ease-in-out;
+
 }
 
 /* homepage flow*/
@@ -438,7 +422,7 @@ header {
 
 /* search box new */
 .search-box-new {
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     padding-left: 20px;
     color: red !important;
     height: 40px;
@@ -510,7 +494,7 @@ header {
     height: 70px !important;
     width: 70px !important;
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     color: var(--kami-text-color);
     display: flex;
     justify-content: center;
@@ -675,7 +659,7 @@ header {
     height: 73px;
     width: 73px;
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     color: var(--kami-text-color);
     display: flex;
     justify-content: center;
@@ -817,8 +801,8 @@ header {
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 15px;
-    border: 2px solid white;
-    background-color: white;
+    border: 2px solid black;
+    background-color: black;
     font-family: inherit;
     font-size: 20px;
     color: red;
@@ -829,8 +813,8 @@ header {
 }
 .evd-button:hover {
     color: white;
-    border: 2px solid white;
-    background-color: var(--not-so-soft-red);
+    border: 2px solid red;
+    background-color: red;
 }
 
 /* user detail block */
@@ -886,7 +870,7 @@ header {
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     color: var(--kami-text-color);
     display: flex;
     justify-content: center;
@@ -943,7 +927,7 @@ header {
     height: 100%;
     border-radius: 1.2rem;
     overflow: hidden;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     transition: 0.4s ease-in-out;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
     flex: 0.3;
@@ -973,7 +957,7 @@ header {
     justify-content: space-evenly;
     align-items: center;
     color: white;
-    background-color: var(--soft-red);
+    background-color: var(--ultra-soft-red);
 }
 
 .ce-input-section {
@@ -1043,18 +1027,20 @@ header {
 
 .ce-input-box {
     width: 90%;
-    height: 50px;
-    min-height: 50px;
-    max-height: 50px;
+    height: 54px;
+    min-height: 54px;
+    max-height: 54px;
     padding-left: 10px;
     vertical-align: center;
     line-height: 50px;
     border-radius: 0 15px 15px 0;
-    border: 2px solid white;
+    border: 2px solid black;
     font-family: 'Sniglet', cursive;
     font-size: 20px;
     color: grey;
+    background-color: black;
     overflow-y: hidden;
+    outline: none;
 }
 
 .ce-input-label {
@@ -1076,11 +1062,12 @@ header {
     width: 90%;
     height: 50px;
     border-radius: 0 15px 15px 0;
-    border: 2px solid white;
+    border: 2px solid black;
     font-family: 'Sniglet', cursive;
     padding-left: 10px;
     overflow-y: hidden;
     resize: none;
+    outline: none;
 }
 
 .ce-textarea-label {
@@ -1145,7 +1132,7 @@ header {
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 15px;
-    background-color: white;
+    background-color: var(--ultra-soft-red);
     font-family: inherit;
     font-size: 20px;
     color: red;

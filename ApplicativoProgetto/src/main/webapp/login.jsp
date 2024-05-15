@@ -1,4 +1,11 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+<%
+    // serve fare il logout della pagina
+    session.setAttribute("p", null);
+%>
+
 <html lang="en">
 <head>
     <title>login</title>
