@@ -17,9 +17,9 @@
 
 <%
 
-    ArrayList<Utente> richiesteList = null;
+    ArrayList<Evento> invitiList = null;
     try {
-        richiesteList = conn.getRichieste(id_host);
+        invitiList = conn.getInviti(id_host);
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }%>
@@ -27,7 +27,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>visualizza utente</title>
+    <title>visualizza inviti</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
@@ -115,13 +115,13 @@
 </div>
 
 <div class="homepage-flow">
-    <%for (Utente utente : richiesteList) { %>
+    <%for (Evento evento : invitiList) { %>
     <div class="ul-user-block">
         <div class="ul-user-container">
             <div class="ul-profilepic-space">
-                <div class="evf-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
+                <div class="evf-profilepic" onclick="RedirectToDettagliUtente('<%= conn.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername() %>')">
                     <%
-                        String imagePath = "imagetree/profilepic/" + utente.getId_utente() + ".png"; // Percorso dell'immagine desiderata
+                        String imagePath = "imagetree/profilepic/" + evento.getIdHost() + ".png"; // Percorso dell'immagine desiderata
                         java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
                         if (imgFile.exists()) {
@@ -137,36 +137,40 @@
                 </div>
             </div>
             <div class="ul-username-space">
-                <%=utente.getUsername()%>
+                <%=evento.getNome()%>
             </div>
             <div class="ul-buttons-space">
-                <div class="evd-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
-                <div class="evd-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">✔</div>
-                <div class="evd-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">X</div>
+                <div class="evd-button" onclick="redirectToDettaglio('<%=evento.getId_evento()%>')">dettagli</div>
+                <div class="evd-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', true)">✔</div>
+                <div class="evd-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', false)">X</div>
             </div>
         </div>
     </div>
     <br>
-    <%
-        boolean esitoReq = request.getParameter("esitoReq") != null;
-        if(esitoReq){
-            String scelta = request.getParameter("scelta");
-            if(scelta.equals("true")){
-    %>
-
-    <script>
-        alert("Richiesta Accettata")
-    </script>
-    <%}else{
-
-    %>
-    <script>
-        alert("Richiesta Rifiutata")
-    </script>
-    <%}%>
-    <%}%>
     <%}%>
 </div>
+
+
+<%
+    boolean esitoInv = request.getParameter("esitoInv") != null;
+    if(esitoInv){
+        String scelta = request.getParameter("scelta");
+        if(scelta.equals("true")){
+%>
+
+<script>
+    alert("Invito Accettato")
+</script>
+<%}else{
+
+%>
+<script>
+    alert("Invito Rifiutato")
+</script>
+<%}%>
+<%}%>
+
+
 </body>
 </html>
 

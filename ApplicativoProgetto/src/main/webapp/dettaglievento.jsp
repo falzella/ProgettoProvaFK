@@ -86,7 +86,7 @@
                     <div class="evd-profilepic" onclick=RedirectToDettagliUtente('<%=conn.GetUtenteFromId(Integer.parseInt(evento.getIdHost())).getUsername()%>')>
                         <%
                             String imagehostPfp = "imagetree/profilepic/" + evento.getIdHost() + ".png";
-                            java.io.File imagehostFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
+                            java.io.File imagehostFilePfp = new java.io.File(application.getRealPath("/") + imagehostPfp);
 
                             if (imagehostFilePfp.exists()) {
                         %>
