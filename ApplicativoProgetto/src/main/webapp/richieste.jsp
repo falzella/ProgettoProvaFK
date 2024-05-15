@@ -1,61 +1,172 @@
 <%--
   Created by IntelliJ IDEA.
-  User: falz
-  Date: 4/12/24
-  Time: 11:33 AM
+  User: Big Chungus
+  Date: 13/05/2024
+  Time: 18:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="getidhost.jsp"%>
 <%@include file="connessione.jsp"%>
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@ page import="javaDB.Evento"%>
 <%@ page import="javaDB.Utente"%>
-<%@include file="getidhost.jsp"%>
-<!DOCTYPE html>
+<%@ page import="java.sql.SQLException" %>
+
+
+<%
+
+    ArrayList<Utente> richiesteList = null;
+    try {
+        richiesteList = conn.getRichieste(id_host);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }%>
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Richieste</title>
+    <title>visualizza utente</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
-<body>
-<h1>Lista Richieste</h1>
+<header>
+    <div class="hcenter-div">
+        <div class="logo-space" onclick="RedirectTo('homepage.jsp')">
+            <div class="vcenter-div">
+                <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+            </div>
+        </div>
 
+        <div class="search-space">
+            <div class="search-box-new">
+                <input type="text" placeholder="search in KAMI!">
+                <div class="search-box-new-img-container">
+                    <img src="images/icons/cancel-icon.png" height="15px" width="15px">
+                    <span style="min-width: 5px"></span>
+                    <img src="images/icons/search-icon.png" height="17px" width="17px">
+                </div>
+            </div>
+        </div>
 
+        <div class="profile-info-space">
+            <img src="images/icons/notifies.png" height="30px" width="30px">
+            <div class="space"></div>
+            <img src="images/icons/settings.png" height="30px" width="30px">
+            <div class="space"></div>
+            <!-- <div class="profile-picture" onclick="RedirectToDettagliUtente('((Utente) session.getAttribute("user")).getUsername()%>')" -->
+            <div class="profile-picture" onclick=RedirectToDettagliUtente('<%=conn.GetUtenteFromId(Integer.parseInt(id_host)).getUsername()%>')>
+                <%
+                    String imagePfp = "imagetree/profilepic/" + id_host + ".png";
+                    java.io.File imageFilePfp = new java.io.File(application.getRealPath("/") + imagePfp);
 
-<%
-    ArrayList<Utente> richiesteList = conn.getRichieste(id_host);
+                    if (imageFilePfp.exists()) {
+                %>
+                <img src="<%= imagePfp %>" alt="i" width="50" height="50">
+                <%
+                } else {
+                %>
+                <img src="imagetree/profilepic/default.png" alt="i" width="50" height="50">
+                <%
+                    }
+                %>
+            </div>
+        </div>
+    </div>
+</header>
 
-    for (Utente utente : richiesteList) {
-%>
-<a href="dettagliutente.jsp?UserFriend=<%= utente.getUsername() %>"><%= utente.getUsername() %></a>
-<div class="navigation-element" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">Accetta</div>
-<div class="navigation-element" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">Rifiuta</div>
-<br>
-<% }%>
+<body class="homepage-body">
+<div>
+    <div class="sidebar">
+        <div class="navigation-contents">
+            <div class="navigation-element" onclick="RedirectTo('homepage.jsp')">homepage</div>
+            <div class="navigation-element" onclick="RedirectTo('creaevento2.jsp')">nuovo evento</div>
+            <div class="navigation-element" onclick="RedirectTo('eventicreati.jsp')">i tuoi eventi</div>
+            <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
+            <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
+        </div>
+    </div>
 
-<%
-    boolean esitoReq = request.getParameter("esitoReq") != null;
-    if(esitoReq){
-        String scelta = request.getParameter("scelta");
-        if(scelta.equals("true")){
-%>
+    <div class="sidebar-right">
+        <div class="navigation-contents">
+            <div class="navigation-header">i tuoi amici</div>
+            <%ArrayList<Utente> feedUser = null;
+                try {
+                    feedUser = conn.GetFriendFeed(id_host);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }%>
+            <%for (Utente utente : feedUser) { %>
+            <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
+            <%}%>
+            <div class="navigation-header">consigliati</div>
+            <%ArrayList<Utente> feedSuggest = null;
+                try {
+                    feedSuggest = conn.GetSuggestFeed(id_host);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }%>
+            <%for (Utente utente : feedSuggest) { %>
+            <div class="navigation-element" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')"><%=utente.getUsername()%></div>
+            <%}%>
+        </div>
+    </div>
+</div>
 
-<script>
-    alert("Richiesta Accettata")
-</script>
-        <%}else{
-            
-        %>
-<script>
-    alert("Richiesta Rifiutata")
-</script> 
-        <%}%>
-<%}%>
+<div class="homepage-flow">
+    <%for (Utente utente : richiesteList) { %>
+    <div class="ul-user-block">
+        <div class="ul-user-container">
+            <div class="ul-profilepic-space">
+                <div class="evf-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
+                    <%
+                        String imagePath = "imagetree/profilepic/" + conn.getUtenteFromUsername(utente.getId_utente()) + ".png"; // Percorso dell'immagine desiderata
+                        java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
 
-<br>
-<a href="homepage.jsp">Torna Indietro</a>
+                        if (imgFile.exists()) {
+                    %>
+                    <img src="<%= imagePath %>" alt="i">
+                    <%
+                    } else {
+                    %>
+                    <img src="imagetree/profilepic/default.png" alt="i">
+                    <%
+                        }
+                    %>
+                </div>
+            </div>
+            <div class="ul-username-space">
+                <%=utente.getUsername()%>
+            </div>
+            <div class="ul-buttons-space">
+                <div class="evd-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
+                <div class="evd-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">✔</div>
+                <div class="evd-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">X</div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <%
+        boolean esitoReq = request.getParameter("esitoReq") != null;
+        if(esitoReq){
+            String scelta = request.getParameter("scelta");
+            if(scelta.equals("true")){
+    %>
+
+    <script>
+        alert("Richiesta Accettata")
+    </script>
+    <%}else{
+
+    %>
+    <script>
+        alert("Richiesta Rifiutata")
+    </script>
+    <%}%>
+    <%}%>
+    <%}%>
+</div>
 </body>
 </html>
+

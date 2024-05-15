@@ -23,7 +23,7 @@ Non hai creato nessun evento!
 <html>
 <head>
     <title>homepage</title>
-    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
