@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title>Signup</title>
-    <link href="style/login.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css" id="lightmodeCSS">
+    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css" id="darkmodeCSS" disabled>
 </head>
 <body>
 <!-- partial:index.partial.html -->

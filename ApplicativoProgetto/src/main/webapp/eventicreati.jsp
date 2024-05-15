@@ -23,7 +23,8 @@
 <html>
 <head>
     <title>homepage</title>
-    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css" id="lightmodeCSS">
+    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css" id="darkmodeCSS" disabled>
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
@@ -80,6 +81,10 @@
             <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
             <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
             <div class="navigation-element" onclick="RedirectTo('inviti.jsp')">inviti ricevuti</div>
+        </div>
+        <div class="navigation-options-box">
+            <div id="darkmode-switch" class="navigation-switch" onclick="switchMode()">darkmode</div>
+            <div class="navigation-element" onclick="RedirectTo('login.jsp')">logout</div>
         </div>
     </div>
 

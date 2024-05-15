@@ -240,7 +240,6 @@ header {
 .navigation-element-onpage {
     border: 2px solid red;
     color: var(--kami-text-color);
-
 }
 
 .navigation-header {
@@ -1044,12 +1043,12 @@ header {
 
 .ce-input-box {
     width: 90%;
-    height: 50px;
-    min-height: 50px;
-    max-height: 50px;
+    height: 53px;
+    min-height: 53px;
+    max-height: 53px;
     padding-left: 10px;
     vertical-align: center;
-    line-height: 50px;
+    line-height: 53px;
     border-radius: 0 15px 15px 0;
     border: 2px solid white;
     font-family: 'Sniglet', cursive;

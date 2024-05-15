@@ -11,10 +11,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Dettaglio Evento</title>
-    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css">
+    <link href="style/stylesheet2.css" rel="stylesheet" type="text/css" id="lightmodeCSS">
+    <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css" id="darkmodeCSS" disabled>
     <script src="javascript/script.js" type="text/javascript"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
     <link
             rel='stylesheet'
@@ -281,6 +282,10 @@
             <div class="navigation-element" onclick="RedirectTo('partecipazionieventi.jsp')">partecipazioni</div>
             <div class="navigation-element" onclick="RedirectTo('richieste.jsp')">richieste amicizia</div>
             <div class="navigation-element" onclick="RedirectTo('inviti.jsp')">inviti ricevuti</div>
+        </div>
+        <div class="navigation-options-box">
+            <div id="darkmode-switch" class="navigation-switch" onclick="switchMode()">darkmode</div>
+            <div class="navigation-element" onclick="RedirectTo('login.jsp')">logout</div>
         </div>
     </div>
 
