@@ -46,17 +46,10 @@ window.onload = function() {
         block.classList.add('slide-in-from-top');
     });
 
-    var mode = getCookie("mode");
-    var lightmodeCSS = document.getElementById("lightmodeCSS");
-    var darkmodeCSS = document.getElementById("darkmodeCSS");
-
-    if (mode === "dark") {
-        lightmodeCSS.disabled = true;
-        darkmodeCSS.disabled = false;
-    } else {
-        lightmodeCSS.disabled = false;
-        darkmodeCSS.disabled = true;
-    }
+    var usrblocks = document.querySelectorAll('.ul-user-block');
+    usrblocks.forEach(function(block) {
+        block.classList.add('slide-in-from-top');
+    });
 };
 
 /* setting della mode */
@@ -68,25 +61,29 @@ function switchMode() {
     if (lightmodeCSS.disabled) {
         lightmodeCSS.disabled = false;
         darkmodeCSS.disabled = true;
+        document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     } else {
         lightmodeCSS.disabled = true;
         darkmodeCSS.disabled = false;
+        document.cookie = "mode=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     }
-    document.cookie = "mode=" + (lightmodeCSS.disabled ? "light" : "dark");
 }
 
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
+// Check for mode cookie when the page loads
+window.onload = function() {
+    var modeCookie = getCookie("mode");
+    if (modeCookie === "dark") {
+        switchMode(); // Apply dark mode if the cookie is set to "dark"
+    }
+};
+
+function getCookie(name) {
+    var cookieArr = document.cookie.split("; ");
+    for (var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        if (name === cookiePair[0]) {
+            return decodeURIComponent(cookiePair[1]);
         }
     }
-    return "";
+    return null;
 }
