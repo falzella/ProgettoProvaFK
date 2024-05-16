@@ -616,6 +616,11 @@ header {
     border-radius: 15px;
     background-color: var(--not-so-super-soft-red);
 }
+.evf-photobox img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
 
 /* event details blocks */
 .evd-container {

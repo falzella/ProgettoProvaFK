@@ -54,7 +54,33 @@
             </div>
             <div class="evf-description"><%=eventoFeed.GetEvento().getDescrizione()%></div>
         </div>
-        <div class="evf-photobox">img</div>
+        <div class="evf-photobox">
+            <%
+                String eventFolderPath ="imagetree/eventspic/" + eventoFeed.GetEvento().getId_evento();
+                java.io.File eventFolder = new java.io.File(application.getRealPath("/") + eventFolderPath);
+
+                if (!eventFolder.exists()) {
+            %>
+            <img src="imagetree/eventspic/default.png" alt="i">
+            <%} else {
+                String EventimagePath = eventFolderPath + "/1.png"; // Percorso dell'immagine desiderata
+                java.io.File EventimgFile = new java.io.File(application.getRealPath("/") + EventimagePath);
+
+                if (EventimgFile.exists()) {
+            %>
+
+            <img src="<%= EventimagePath %>">
+
+            <%
+            } else {
+                // Se il file specifico non esiste, mostra un'immagine predefinita
+            %>
+            <img src="imagetree/eventspic/default.png" alt="i">
+            <%
+                    }
+                }
+            %>
+        </div>
     </div>
     <%}%>
 </div>

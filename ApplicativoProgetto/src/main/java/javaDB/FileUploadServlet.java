@@ -1,9 +1,14 @@
 package javaDB;
-import java.io.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-/* The Java file upload Servlet example */
+
+import java.io.IOException;
+import java.io.File;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Part;
 
 @WebServlet(name = "FileUploadServlet", urlPatterns = { "/fileuploadservlet" })
 @MultipartConfig(
@@ -13,15 +18,54 @@ import jakarta.servlet.annotation.*;
 )
 public class FileUploadServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /* Receive file uploaded to the Servlet from the HTML5 form */
+        // Ottieni il nome del file caricato
         Part filePart = request.getPart("file");
-        String fileName = filePart.getSubmittedFileName();
-        for (Part part : request.getParts()) {
-            part.write("C:/Users/Big Chungus/Desktop/kami/" + fileName);
+        String fileName = getFileName(filePart);
+
+        // Ottieni il percorso del file di destinazione
+        String filePath = request.getParameter("filePath");
+
+        // Ottieni il nome del file host
+        String fileNamehost = request.getParameter("filehost");
+
+        // Ottieni il nome del file evento
+        String fileNameev = request.getParameter("fileev");
+
+        // Componi il percorso del file di destinazione
+        String destinationPath = filePath;
+        if (!fileNamehost.equals("null")) {
+            destinationPath += ("profilepic/");
+            fileName = fileNamehost + ".png";
+        } else {
+            destinationPath += ("eventspic/" + fileNameev + "/");
+            fileName = "1.png";
+
+            File directory = new File(destinationPath);
+            if (!directory.exists()) {
+                directory.mkdirs(); // Crea tutte le directory nel percorso specificato
+            }
+
         }
-        response.getWriter().print("The file uploaded sucessfully.");
+
+        // Scrivi il file nella directory di destinazione
+        filePart.write(destinationPath + fileName);
+
+        // Invia una risposta al client
+        response.getWriter().print("Il file stato caricato correttamente.");
     }
 
+    // Metodo ausiliario per ottenere il nome del file da un Part
+    private String getFileName(Part part) {
+        String contentDisposition = part.getHeader("content-disposition");
+        String[] elements = contentDisposition.split(";");
+        for (String element : elements) {
+            if (element.trim().startsWith("filename")) {
+                return element.substring(element.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
+    }
 }
