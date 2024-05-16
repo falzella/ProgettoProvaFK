@@ -21,6 +21,10 @@ body, html, header {
     color: white;
 }
 
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
 /* Animation webkit */
 @-webkit-keyframes myfirst {
     0% {
@@ -1054,7 +1058,7 @@ header {
     min-height: 53px;
     max-height: 53px;
     padding-left: 10px;
-    vertical-align: center;
+    vertical-align: middle;
     line-height: 53px;
     border-radius: 0 15px 15px 0;
     border: 2px solid black;

@@ -164,6 +164,12 @@
                             </div>
                             <textarea name="descrizione" class="ce-input-box ce-textarea" placeholder="Descrizione" required></textarea>
                         </div>
+                        <div class="ce-input">
+                            <div class="ce-input-label">
+                                <img src="images/icons/images.png">
+                            </div>
+                            <input type="file" name="media" class="ce-input-box">
+                        </div>
                     </div>
                 </div>
                 <div class="ce-button-section">

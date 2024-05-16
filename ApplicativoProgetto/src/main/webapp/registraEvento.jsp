@@ -8,6 +8,8 @@
 <%@page import="javaDB.Utente"%>
 <%@page import="javaDB.ClassiDB"%>
 <%@page import="java.io.*"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@include file="connessione.jsp"%>
 <%@include file="getidhost.jsp"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -32,8 +34,11 @@
     String tipo = request.getParameter("tipo");
     //String tipo = "privato";
 
-
-
+    /*
+    if (request.getParameter("media") != null) {
+        out.write("media: " + request.getParameter("media") + request.getAttribute("media"));
+    }
+    */
 
     // Validazione dei campi
     if (nome == null || luogo == null || indirizzo == null || citta == null || data == null || ora == null || informazioniLuogo == null || descrizione == null || tipo == null) {
@@ -53,7 +58,6 @@
                 }else{
                     response.sendRedirect("listaamiciinvitare.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Invita i tuoi amici!");
                 }
-
             }
         } else {
             response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");

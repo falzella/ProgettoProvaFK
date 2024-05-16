@@ -12,6 +12,10 @@
     --kami-text-color: #8d8d8d
 }
 
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
 body, html, header {
     height: 100%;
     padding: 0;
@@ -1047,7 +1051,7 @@ header {
     min-height: 53px;
     max-height: 53px;
     padding-left: 10px;
-    vertical-align: center;
+    vertical-align: middle;
     line-height: 53px;
     border-radius: 0 15px 15px 0;
     border: 2px solid white;
@@ -1055,6 +1059,15 @@ header {
     font-size: 20px;
     color: grey;
     overflow-y: hidden;
+}
+.ce-input-box button{
+    background-color: red;
+}
+
+#media  {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 .ce-input-label {
