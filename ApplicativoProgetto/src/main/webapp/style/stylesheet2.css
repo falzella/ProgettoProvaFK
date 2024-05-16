@@ -1112,6 +1112,27 @@ header {
     outline: none;
 }
 
+.ce-input-file-box {
+    width: 90%;
+    height: 53px;
+    min-height: 53px;
+    max-height: 53px;
+    padding-left: 10px;
+    vertical-align: middle;
+    line-height: 53px;
+    border-radius: 0 15px 15px 0;
+    border: 2px solid white;
+    font-family: 'Sniglet', cursive;
+    font-size: 20px;
+    text-align: left;
+    color: grey;
+    overflow-y: hidden;
+    outline: none;
+}
+.ce-input-file-box:hover {
+    cursor: pointer;
+}
+
 #media  {
     opacity: 0;
     position: absolute;
