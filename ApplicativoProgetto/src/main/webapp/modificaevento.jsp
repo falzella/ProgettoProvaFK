@@ -96,7 +96,7 @@
                             <div class="ce-input-label">
                                 <img src="images/icons/images.png">
                             </div>
-                            <input type="file" name="media" class="ce-input-box" multiple>
+                            <input type="button" class="ce-input-file-box" value="Carica immagine" onclick="redirectToAddImage('<%=id_evento%>')">
                         </div>
                     </div>
                 </div>
