@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="connessione.jsp"%>
 <%@include file="getidhost.jsp"%>
+<%@include file="getidevento.jsp"%>
 <%@page import="javaDB.Utente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.SQLException"%>
@@ -110,31 +111,31 @@
                             <div class="ce-input-label">
                                 <img src="images/icons/event.png">
                             </div>
-                            <input type="text" name="nome" class="ce-input-box" placeholder="Nome" required>
+                            <input type="text" name="nome" value="<%=evento.getNome()%>" class="ce-input-box" placeholder="Nome" required>
                         </div>
                         <div class="ce-input">
                             <div class="ce-input-label">
                                 <img src="images/icons/location-pin.png">
                             </div>
-                            <input type="text" name="luogo" class="ce-input-box" placeholder="Luogo" required>
+                            <input type="text" name="luogo" value="<%=evento.getLuogo()%>" class="ce-input-box" placeholder="Luogo" required>
                         </div>
                         <div class="ce-input">
                             <div class="ce-input-label">
                                 <img src="images/icons/address-pin.png">
                             </div>
-                            <input type="text" name="indirizzo" class="ce-input-box" placeholder="Indirizzo" required>
+                            <input type="text" name="indirizzo" value="<%=evento.getIndirizzo()%>" class="ce-input-box" placeholder="Indirizzo" required>
                         </div>
                         <div class="ce-input">
                             <div class="ce-input-label">
                                 <img src="images/icons/city.png">
                             </div>
-                            <input type="text" name="citta" class="ce-input-box" placeholder="Città" required>
+                            <input type="text" name="citta" value="<%=evento.getCitta()%>" class="ce-input-box" placeholder="Città" required>
                         </div>
                         <div id="NewEventDiv" class="ce-input">
                             <div class="ce-input-label">
                                 <img id="NewEventImg" src="images/icons/private.png">
                             </div>
-                            <input id="NewEventInput" type="text" name="tipo" value="privato" class="ce-input-box ce-checkbox" placeholder="Tipo" readonly required>
+                            <input id="NewEventInput" type="text" name="tipo" value="<%=evento.getTipo()%>" class="ce-input-box ce-checkbox" placeholder="Tipo" readonly required>
                         </div>
                     </div>
                     <div class="ce-half-section">
@@ -142,25 +143,25 @@
                             <div class="ce-input-label">
                                 <img src="images/icons/calendar.png">
                             </div>
-                            <input type="date" name="data" class="ce-input-box" required>
+                            <input type="date" name="data" value="<%=evento.getData()%>" class="ce-input-box" required>
                         </div>
                         <div class="ce-input">
                             <div class="ce-input-label">
                                 <img src="images/icons/clock.png">
                             </div>
-                            <input type="time" value="00:00" name="ora" class="ce-input-box" required>
+                            <input type="time" value="<%=evento.getOra()%>" name="ora" class="ce-input-box" required>
                         </div>
                         <div class="ce-input ce-textarea-label">
                             <div class="ce-input-label">
                                 <img src="images/icons/location-info.png">
                             </div>
-                            <textarea name="informazioni_luogo" class="ce-input-box ce-textarea" placeholder="Informazioni Luogo" required></textarea>
+                            <textarea name="informazioni_luogo" class="ce-input-box ce-textarea" placeholder="Informazioni Luogo" required>{{<%=evento.getInformazioniLuogo()%>}}</textarea>
                         </div>
                         <div class="ce-input ce-textarea-label">
                             <div class="ce-input-label">
                                 <img src="images/icons/info.png">
                             </div>
-                            <textarea name="descrizione" class="ce-input-box ce-textarea" placeholder="Descrizione" required></textarea>
+                            <textarea name="descrizione" class="ce-input-box ce-textarea" placeholder="Descrizione" required>{{<%=evento.getDescrizione()%>}}</textarea>
                         </div>
                         <div class="ce-input">
                             <div class="ce-input-label">

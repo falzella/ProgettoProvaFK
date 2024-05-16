@@ -32,6 +32,7 @@
     String informazioniLuogo = request.getParameter("informazioni_luogo");
     String descrizione = request.getParameter("descrizione");
     String tipo = request.getParameter("tipo");
+    String media = request.getParameter("media");
     //String tipo = "privato";
 
     /*
