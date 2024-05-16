@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>javaDB.FileUploadServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/fileuploadservlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>
