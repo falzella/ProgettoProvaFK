@@ -61,4 +61,16 @@ public class FileUploadServlet extends HttpServlet {
         response.getWriter().print("Il file stato caricato correttamente.");
     }
 
+    // Metodo ausiliario per ottenere il nome del file da un Part
+    private String getFileName(Part part) {
+        String contentDisposition = part.getHeader("content-disposition");
+        String[] elements = contentDisposition.split(";");
+        for (String element : elements) {
+            if (element.trim().startsWith("filename")) {
+                return element.substring(element.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
+    }
+
 }
