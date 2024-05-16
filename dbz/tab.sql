@@ -28,11 +28,21 @@ CREATE TABLE IF NOT EXISTS `amicizieutenti` (
   PRIMARY KEY (`Id_Amicizia`),
   KEY `Id_Utente1` (`Id_Utente1`),
   KEY `Id_Utente2` (`Id_Utente2`),
-  CONSTRAINT `Id_Utente1` FOREIGN KEY (`Id_Utente1`) REFERENCES `utenti` (`Id_Utente`),
-  CONSTRAINT `Id_Utente2` FOREIGN KEY (`Id_Utente2`) REFERENCES `utenti` (`Id_Utente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `Id_Utente1` FOREIGN KEY (`Id_Utente1`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Id_Utente2` FOREIGN KEY (`Id_Utente2`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella bellieventi.amicizieutenti: ~0 rows (circa)
+-- Dump dei dati della tabella bellieventi.amicizieutenti: ~9 rows (circa)
+INSERT INTO `amicizieutenti` (`Id_Amicizia`, `Id_Utente1`, `Id_Utente2`) VALUES
+	(1, 11, 3),
+	(3, 2, 3),
+	(7, 4, 2),
+	(9, 2, 11),
+	(10, 7, 1),
+	(11, 11, 1),
+	(12, 13, 11),
+	(14, 6, 2),
+	(16, 6, 11);
 
 -- Dump della struttura di tabella bellieventi.eventi
 CREATE TABLE IF NOT EXISTS `eventi` (
@@ -49,17 +59,21 @@ CREATE TABLE IF NOT EXISTS `eventi` (
   `ID_Host` int(11) NOT NULL,
   PRIMARY KEY (`ID_Evento`),
   KEY `ID_Host` (`ID_Host`),
-  CONSTRAINT `ID_Host` FOREIGN KEY (`ID_Host`) REFERENCES `utenti` (`Id_Utente`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `ID_Host` FOREIGN KEY (`ID_Host`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella bellieventi.eventi: ~6 rows (circa)
+-- Dump dei dati della tabella bellieventi.eventi: ~10 rows (circa)
 INSERT INTO `eventi` (`ID_Evento`, `Nome`, `Luogo`, `Indirizzo`, `Citta`, `Data`, `Ora`, `Informazioni_Luogo`, `Descrizione_Evento`, `Tipo`, `ID_Host`) VALUES
-	(1, 'm', 'm', 'm', 'm', '0012-12-12', '12:12:00', 'm', 'm', 'privato', 2),
-	(2, 'z', 'z', 'z', 'z', '0121-12-12', '12:12:00', 'ijiwj', 'ijij', 'privato', 2),
 	(3, 'Festa da me', 'Casa mia', 'via degli alfieri 1', 'Ballabio', '2024-04-27', '23:00:00', 'Si trova dietro la pizzeria', 'Spacchiamoci, niente di piu', 'privato', 2),
-	(4, 'Festa da me', 'casa tua', 'indirizzo', 'calolzio', '2024-04-29', '00:00:00', 'trovalo', 'si', 'privato', 11),
-	(5, 'after party', 'disco', 'via 1 maggio', 'caposile', '2024-04-30', '06:00:00', 'si trova sulla spiaggia', 'il costo sarà 10 euro a persona', 'pubblico', 11),
-	(6, 'grigliata', 'casa mia', 'via via', 'calolzio', '2024-04-28', '12:00:00', 'dietro la scuola', 'prendo tutto io, porta 5 euro e 2 patatina', 'privato', 11);
+	(5, 'after partyyy', 'disco', 'corso europa', 'calolziocorte', '2024-04-30', '06:00:00', 'si trova sulla spiaggia', 'il costo sarà 10 euro a persona', 'pubblico', 11),
+	(6, 'grigliata', 'casa mia', 'via via', 'calolzio', '2024-04-28', '12:00:00', 'dietro la scuola', 'prendo tutto io, porta 5 euro e 2 patatina', 'privato', 11),
+	(11, 'casa degli orrori', 'trovalo', 'via rivolta', 'lecco', '2024-05-23', '00:00:00', 'guarda foto', 'ci sono entrato per 5 anni, adesso tocca a te', 'pubblico', 11),
+	(16, 'rave', 'consonno', 'via', 'consonno', '2024-05-18', '03:00:00', 'lo sai', 'pure', 'privato', 2),
+	(21, 'school party', 'moregallo', 'lungolago', 'lecco', '2024-05-17', '12:00:00', 'ss', 'ss', 'privato', 11),
+	(25, 'Banda Musicale', 'Lavello', 'via lavello', 'calolziocorte', '2024-05-17', '04:00:00', 'piazza mercato', 'l\'evento si terrà mercoledi sera alle 21, suonerà la banda ci calolziocorte accompagnata dal coro degli alpini!', 'pubblico', 2),
+	(26, 'Beach Volley', 'vercurago', 'via venezia 30', 'vercurago', '2024-07-16', '14:00:00', 'si trova dietro al ristorante la Mela Verde.', 'Le iscrizioni sono aperte fino al 10 giugno ', 'pubblico', 1),
+	(27, 'Food-Challenge', 'mcdonald', 'via statale 884', 'garlate', '2024-05-18', '02:00:00', 'sai gia', 'una sfida solo io e te.', 'privato', 7),
+	(28, 'bolgiata', 'Bolgia', 'via vaccarezza 8', 'Osio Sopra', '2024-06-01', '01:00:00', 'questo è un invito per tutta la mia classe, prof compresi <3', 'martelletti', 'pubblico', 3);
 
 -- Dump della struttura di tabella bellieventi.inviti
 CREATE TABLE IF NOT EXISTS `inviti` (
@@ -69,11 +83,16 @@ CREATE TABLE IF NOT EXISTS `inviti` (
   PRIMARY KEY (`ID_Invito`),
   KEY `ID_Invitato` (`ID_Invitato`),
   KEY `ID_Event` (`ID_Evento`),
-  CONSTRAINT `ID_Event` FOREIGN KEY (`ID_Evento`) REFERENCES `eventi` (`ID_Evento`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `ID_Invitato` FOREIGN KEY (`ID_Invitato`) REFERENCES `utenti` (`Id_Utente`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `ID_Event` FOREIGN KEY (`ID_Evento`) REFERENCES `eventi` (`ID_Evento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ID_Invitato` FOREIGN KEY (`ID_Invitato`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella bellieventi.inviti: ~0 rows (circa)
+-- Dump dei dati della tabella bellieventi.inviti: ~3 rows (circa)
+INSERT INTO `inviti` (`ID_Invito`, `ID_Invitato`, `ID_Evento`) VALUES
+	(9, 1, 21),
+	(11, 11, 3),
+	(12, 6, 3),
+	(13, 1, 27);
 
 -- Dump della struttura di tabella bellieventi.partecipazioni
 CREATE TABLE IF NOT EXISTS `partecipazioni` (
@@ -83,28 +102,37 @@ CREATE TABLE IF NOT EXISTS `partecipazioni` (
   PRIMARY KEY (`ID_Partecipazione`),
   KEY `ID_Utente` (`ID_Utente`),
   KEY `ID_Evento` (`ID_Evento`),
-  CONSTRAINT `ID_Evento` FOREIGN KEY (`ID_Evento`) REFERENCES `eventi` (`ID_Evento`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `ID_Utente` FOREIGN KEY (`ID_Utente`) REFERENCES `utenti` (`Id_Utente`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `ID_Evento` FOREIGN KEY (`ID_Evento`) REFERENCES `eventi` (`ID_Evento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ID_Utente` FOREIGN KEY (`ID_Utente`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella bellieventi.partecipazioni: ~3 rows (circa)
+-- Dump dei dati della tabella bellieventi.partecipazioni: ~5 rows (circa)
 INSERT INTO `partecipazioni` (`ID_Partecipazione`, `ID_Utente`, `ID_Evento`) VALUES
-	(1, 2, 4),
 	(2, 2, 5),
-	(3, 11, 6);
+	(3, 11, 6),
+	(12, 3, 5),
+	(13, 1, 5),
+	(14, 13, 5);
 
 -- Dump della struttura di tabella bellieventi.richiesteamicizia
 CREATE TABLE IF NOT EXISTS `richiesteamicizia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idRichiedente` int(11) DEFAULT NULL,
   `idRicevente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `idRichiedente` (`idRichiedente`),
+  KEY `idRicevente` (`idRicevente`),
+  CONSTRAINT `idRicevente` FOREIGN KEY (`idRicevente`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `idRichiedente` FOREIGN KEY (`idRichiedente`) REFERENCES `utenti` (`Id_Utente`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella bellieventi.richiesteamicizia: ~2 rows (circa)
+-- Dump dei dati della tabella bellieventi.richiesteamicizia: ~5 rows (circa)
 INSERT INTO `richiesteamicizia` (`id`, `idRichiedente`, `idRicevente`) VALUES
-	(1, 2, 11),
-	(2, 11, 12);
+	(2, 11, 12),
+	(42, 11, 4),
+	(43, 11, 9),
+	(44, 2, 5),
+	(53, 5, 11);
 
 -- Dump della struttura di tabella bellieventi.utenti
 CREATE TABLE IF NOT EXISTS `utenti` (
@@ -116,9 +144,9 @@ CREATE TABLE IF NOT EXISTS `utenti` (
   `Cognome` varchar(50) DEFAULT NULL,
   `Data_Nascita` date DEFAULT NULL,
   PRIMARY KEY (`Id_Utente`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella bellieventi.utenti: ~12 rows (circa)
+-- Dump dei dati della tabella bellieventi.utenti: ~13 rows (circa)
 INSERT INTO `utenti` (`Id_Utente`, `Username`, `Password`, `Mail`, `Nome`, `Cognome`, `Data_Nascita`) VALUES
 	(1, 'sunnyday23', 'segreta', 'user1@example.com', 'John', 'Doe', '1990-01-01'),
 	(2, 'guitarlover', 'segreta', 'user2@example.com', 'Jane', 'Smith', '1985-03-15'),
@@ -131,7 +159,8 @@ INSERT INTO `utenti` (`Id_Utente`, `Username`, `Password`, `Mail`, `Nome`, `Cogn
 	(9, 'musicjunkie', 'segreta', 'user9@example.com', 'Olivia', 'Garcia', '1989-02-18'),
 	(10, 'photographylover', 'segreta', 'user10@example.com', 'Daniel', 'Lee', '1986-10-05'),
 	(11, 'falz', 'p', 'we@we', 'ciao', 'cognome', '2024-03-01'),
-	(12, 'katchhh', 'a', 'erkatch@gmail.com', 'Xhelian', 'kacaku', '2005-04-28');
+	(12, 'katchhh', 'a', 'erkatch@gmail.com', 'Xhelian', 'kacaku', '2005-04-28'),
+	(13, 'pestone', 'p', 'ppo@gmail.com', 'xapperi', 'amari', '2005-02-02');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
