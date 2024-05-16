@@ -27,7 +27,7 @@
     <div class="ul-user-block">
         <div class="ul-user-container">
             <div class="ul-profilepic-space">
-                <div class="evf-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
+                <div class="ul-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
                     <%
                         String imagePath = "imagetree/profilepic/" + utente.getId_utente() + ".png"; // Percorso dell'immagine desiderata
                         java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);
@@ -48,9 +48,9 @@
                 <%=utente.getUsername()%>
             </div>
             <div class="ul-buttons-space">
-                <div class="evd-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
-                <div class="evd-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">✔</div>
-                <div class="evd-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">X</div>
+                <div class="ul-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
+                <div class="ul-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">✔</div>
+                <div class="ul-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">X</div>
             </div>
         </div>
     </div>
