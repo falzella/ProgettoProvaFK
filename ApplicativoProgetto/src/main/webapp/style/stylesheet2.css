@@ -528,8 +528,8 @@ header {
 }
 
 .evf-profilepic {
-    height: 70px !important;
-    width: 70px !important;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     background-color: white;
     color: var(--kami-text-color);
@@ -540,8 +540,8 @@ header {
 }
 .evf-profilepic img {
     cursor: pointer;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -571,6 +571,9 @@ header {
 }
 .evf-name img{
     margin-right: 8px;
+}
+
+.evf-event-location {
 }
 
 .evf-location {
@@ -858,6 +861,30 @@ header {
     color: white;
     border: 2px solid white;
     background-color: var(--not-so-soft-red);
+}
+
+/* user event block */
+.ue-event-identity-ex {
+    color: white;
+    width: 45%;
+    max-width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-left: 20px;
+}
+
+.ue-event-location {
+    width: 40%;
+}
+
+.ue-location-detail-pin {
+    width: 100%;
+    overflow-x: auto;
+}
+.ue-location-detail-pin img{
+    margin-right: 5px;
 }
 
 /* user detail block */

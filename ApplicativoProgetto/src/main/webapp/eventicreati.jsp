@@ -32,7 +32,7 @@
     <%for (Evento evento : eventoList) { %>
     <div class="event-block" onclick="redirectToDettaglio('<%= evento.getId_evento() %>')">
         <div class="evf-event-details">
-            <div class="evf-event-identity-ex">
+            <div class="ue-event-identity-ex">
                 <div class="evf-name">
                     <% if(evento.getTipo().equals("privato")){%>
                     <img src="images/icons/event-private.png" height="20px" width="20px">
@@ -51,7 +51,7 @@
                     <%}%>
                 </div>
             </div>
-            <div class="evf-event-location">
+            <div class="ue-event-location">
                 <div class="evf-location-detail">
                     <img src="images/icons/calendar.png" height="15px" width="15px">
                     <%=evento.getData()%>
@@ -60,7 +60,7 @@
                     <img src="images/icons/clock.png" height="15px" width="15px">
                     <%=evento.getOra()%>
                 </div>
-                <div class="evf-location-detail-pin">
+                <div class="ue-location-detail-pin">
                     <img src="images/icons/location-pin.png" height="15px" width="15px">
                     <%=evento.getLuogo()%>
                 </div>
