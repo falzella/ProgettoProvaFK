@@ -32,17 +32,18 @@ public class FileUploadServlet extends HttpServlet {
 
         // Componi il percorso del file di destinazione
         String destinationPath = filePath;
-        if (!fileNamehost.equals("null")) {
-            destinationPath += ("profilepic/");
-            fileName = fileNamehost + ".png";
-        } else {
+        if (!fileNameev.equals("null")) {
             destinationPath += ("eventspic/" + fileNameev + "/");
             fileName = "1.png";
-
             File directory = new File(destinationPath);
             if (!directory.exists()) {
                 directory.mkdirs(); // Crea tutte le directory nel percorso specificato
             }
+
+        } else {
+            destinationPath += ("profilepic/");
+            fileName = fileNamehost + ".png";
+
 
         }
 
@@ -50,7 +51,7 @@ public class FileUploadServlet extends HttpServlet {
         filePart.write(destinationPath + fileName);
 
         // Invia una risposta al client
-        response.getWriter().print("Il file stato caricato correttamente.");
+        response.sendRedirect("addimage.jsp?messaggio=Immagine Caricata Correttamente!");
     }
 
     // Metodo ausiliario per ottenere il nome del file da un Part
