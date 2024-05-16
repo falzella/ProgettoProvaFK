@@ -13,7 +13,7 @@
     <div class="hcenter-div">
         <div class="logo-space">
             <div class="vcenter-div">
-                <img src="images/quello_bello_cropped.svg" height="65px" class="img-round">
+                <img id="KAMI-logo" src="images/quello_bello_cropped.svg" height="65px" class="img-round">
             </div>
         </div>
 

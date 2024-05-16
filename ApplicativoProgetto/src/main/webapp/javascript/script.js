@@ -109,17 +109,20 @@ function switchMode() {
     var lightmodeCSS = document.getElementById("lightmodeCSS");
     var darkmodeCSS = document.getElementById("darkmodeCSS");
     var button = document.getElementById("darkmode-switch");
+    var logo = document.getElementById("KAMI-logo");
 
     if (lightmodeCSS.disabled) {
         lightmodeCSS.disabled = false;
         darkmodeCSS.disabled = true;
         button.innerHTML = "darkmode";
         document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        logo.src = "images/quello_bello_cropped.svg";
     } else {
         lightmodeCSS.disabled = true;
         darkmodeCSS.disabled = false;
         button.innerHTML = "lightmode";
         document.cookie = "mode=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        logo.src = "images/quello_bello_cropped_dark.svg";
     }
 }
 
