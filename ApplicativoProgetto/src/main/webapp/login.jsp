@@ -29,7 +29,7 @@
                     <%
                         String message = request.getParameter("messaggio");
                         if(message == null || message.isEmpty()) {
-                            message = "Welcome to KAMI!";
+                            message = "Benvenuto su KAMI!";
                         }
                         out.write(message);
                     %>
@@ -48,12 +48,12 @@
                     </div>
 
                     <div class="form__field">
-                        <input type="submit" value="Sign In">
+                        <input type="submit" value="Accedi">
                     </div>
 
                 </form>
 
-                <p class="text--center">Not a member? <a href="signup.jsp">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+                <p class="text--center">Non hai un account? <a href="signup.jsp">Iscriviti ora</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
             </div>
         </div>
