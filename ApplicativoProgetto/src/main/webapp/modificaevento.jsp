@@ -22,11 +22,10 @@
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
-
 <div class="homepage-flow">
     <div class="ce-block">
         <div class="ce-input-section">
-            <form action="registraEvento.jsp" method="POST" class="ce-form">
+            <form action="registramodificheevento.jsp" method="POST" class="ce-form">
                 <div class="ce-title-block">MODIFICA IL TUO EVENTO!</div>
                 <div class="ce-column-division-block">
                     <div class="ce-half-section">
