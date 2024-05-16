@@ -10,6 +10,7 @@
 <head>
     <title>login</title>
     <link href="style/login.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="images/KAMI-icon-cropped.png" type="image/x-icon">
 </head>
 <body>
 <!-- partial:index.partial.html -->

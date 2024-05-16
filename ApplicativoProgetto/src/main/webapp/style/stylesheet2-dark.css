@@ -21,8 +21,23 @@ body, html, header {
     color: white;
 }
 
+input[type="file"] {
+    cursor: pointer;
+}
 input[type="file"]::file-selector-button {
     display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 /* Animation webkit */

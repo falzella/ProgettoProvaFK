@@ -1,26 +1,8 @@
-<%--
-    Document   : registrazione
-    Created on : Oct 13, 2023, 11:21:50 AM
-    Author     : falz
---%>
-
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="javaDB.Evento"%>
-<%@page import="javaDB.Utente"%>
-<%@page import="javaDB.ClassiDB"%>
-<%@page import="java.io.*"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@include file="connessione.jsp"%>
 <%@include file="getidhost.jsp"%>
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<html>
-<head>
-    <title>Registra Evento</title>
-</head>
-<body>
 
-</body>
-</html>
 
 <%
     String nome = request.getParameter("nome");

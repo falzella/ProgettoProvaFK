@@ -1,23 +1,7 @@
-<%--
-    Document   : registrazione
-    Created on : Oct 13, 2023, 11:21:50 AM
-    Author     : falz
---%>
-
-<%@page import="javaDB.Utente"%>
-<%@page import="java.io.*"%>
-<%@include file="connessione.jsp"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<a href="signup.jsp"></a>
+<%@include file="connessione.jsp"%>
+<%@page import="javaDB.Utente"%>
 
-<head>
-    <title>JSP Page</title>
-</head>
-
-<body>
-<h1>Registrazione!</h1>
 
 <%
     String username = request.getParameter("username");
@@ -40,19 +24,9 @@
         if (user != null) {
             if (conn.inserisciUtenza(user)) {
                 response.sendRedirect("homepage.jsp");
-            %>
-<br>
-<%
             } else {
                 response.sendRedirect("signup.jsp?messaggio=errore in inserimento");
             }
         }
     }
 %>
-
-
-
-
-</body>
-
-</html>

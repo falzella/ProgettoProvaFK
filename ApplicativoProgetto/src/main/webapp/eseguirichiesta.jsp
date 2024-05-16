@@ -20,12 +20,3 @@
     }
 
 %>
-
-<html>
-<head>
-    <title>Richiesta Di Amicizia</title>
-</head>
-<body>
-
-</body>
-</html>

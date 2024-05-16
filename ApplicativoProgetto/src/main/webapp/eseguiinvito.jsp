@@ -20,12 +20,3 @@
     }
 
 %>
-
-<html>
-<head>
-    <title>Invito</title>
-</head>
-<body>
-
-</body>
-</html>

@@ -12,8 +12,22 @@
     --kami-text-color: #8d8d8d
 }
 
+input[type="file"] {
+    background-color: white;
+    cursor: pointer;
+}
 input[type="file"]::file-selector-button {
     display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 body, html, header {
@@ -1060,9 +1074,6 @@ header {
     color: grey;
     overflow-y: hidden;
 }
-.ce-input-box button{
-    background-color: red;
-}
 
 #media  {
     opacity: 0;
@@ -1198,8 +1209,8 @@ header {
     padding-right: 50px;
     margin-left: 10px;
     border-radius: 15px;
-    border: 2px solid black;
-    background-color: black;
+    border: 2px solid white;
+    background-color: white;
     font-family: inherit;
     font-size: 20px;
     color: red;
@@ -1210,6 +1221,6 @@ header {
 }
 .il-button:hover {
     color: white;
-    border: 2px solid red;
-    background-color: red;
+    border: 2px solid white;
+    background-color: var(--not-so-soft-red);
 }
