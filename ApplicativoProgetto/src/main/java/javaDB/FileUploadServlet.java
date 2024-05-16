@@ -1,8 +1,8 @@
 package javaDB;
 import java.io.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 /* The Java file upload Servlet example */
 
 @WebServlet(name = "FileUploadServlet", urlPatterns = { "/fileuploadservlet" })
@@ -12,7 +12,6 @@ import jakarta.servlet.annotation.*;
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
 public class FileUploadServlet extends HttpServlet {
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         /* Receive file uploaded to the Servlet from the HTML5 form */
@@ -23,5 +22,4 @@ public class FileUploadServlet extends HttpServlet {
         }
         response.getWriter().print("The file uploaded sucessfully.");
     }
-
 }
