@@ -41,12 +41,12 @@
 
             <div class="form__field">
                 <label for="signup__firstname"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">First Name</span></label>
-                <input id="signup__firstname" type="text" name="nome" class="form__input" placeholder="First Name" required>
+                <input id="signup__firstname" type="text" name="nome" class="form__input" placeholder="Nome" required>
             </div>
 
             <div class="form__field">
                 <label for="signup__lastname"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Last Name</span></label>
-                <input id="signup__lastname" type="text" name="cognome" class="form__input" placeholder="Last Name" required>
+                <input id="signup__lastname" type="text" name="cognome" class="form__input" placeholder="Cognome" required>
             </div>
 
             <div class="form__field">
@@ -61,16 +61,16 @@
 
             <div class="form__field">
                 <label for="signup__confirm_password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Confirm Password</span></label>
-                <input id="signup__confirm_password" type="password" name="password2" class="form__input" placeholder="Confirm Password" required>
+                <input id="signup__confirm_password" type="password" name="password2" class="form__input" placeholder="Conferma Password" required>
             </div>
 
             <div class="form__field">
-                <input type="submit" value="Sign Up">
+                <input type="submit" value="Registra">
             </div>
 
         </form>
 
-        <p class="text--center">Already a member? <a href="login.jsp">Sign in</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+        <p class="text--center">Hai gia' un account? <a href="login.jsp">Accedi</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
     </div>
 </div>
