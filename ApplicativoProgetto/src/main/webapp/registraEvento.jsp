@@ -38,7 +38,6 @@
             if(eventoCreato == null){
                 response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
             }else{
-
                 String mediaFileName = "";
                 Part mediaPart = request.getPart("media");
                 if (mediaPart != null && mediaPart.getSize() > 0) {

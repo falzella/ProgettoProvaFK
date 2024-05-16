@@ -28,6 +28,10 @@ function redirectToModificaEvento(eventoId) {
     window.location.href = 'modificaevento.jsp?IdEvento=' + eventoId;
 }
 
+function redirectToModificaUtente(username){
+    window.location.href = 'modificautente.jsp?UserFriend=' + username;
+}
+
 function inviaRichiesta(id_friend) {
     window.location.href = 'inviarichiesta.jsp?id_friend=' + id_friend;
 }

@@ -90,6 +90,29 @@ public class ClassiDB {
         return true;
     }
 
+    public boolean modificaUtenza(Utente p) {
+        try {
+            String sql = "UPDATE utenti SET Username = ?, Password = ?, Mail = ?, Nome = ?, Cognome = ?, Data_Nascita = ? WHERE Id_Utente = ?;";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, p.getUsername());
+                preparedStatement.setString(2, p.getPassword());
+                preparedStatement.setString(3, p.getMail());
+                preparedStatement.setString(4, p.getNome());
+                preparedStatement.setString(5, p.getCognome());
+                preparedStatement.setString(6, p.getData_nascita());
+                preparedStatement.setString(7, p.getId_utente());
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
     public boolean usernameEsistente(String username) {
         try {
             String sql = "SELECT COUNT(*) AS count FROM utenti WHERE Username = ?";
@@ -122,6 +145,27 @@ public class ClassiDB {
                 if (rs.next()) {
                     int count = rs.getInt("count");
                     return count > 0; // Restituisce true se l'email esiste già, altrimenti false
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // In caso di errore, assume che l'email non esista
+    }
+
+    public boolean emailEsistenteModifica(String email, String idUtente) {
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM utenti WHERE Mail = ? AND Id_Utente <> ?";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, idUtente);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    return count > 0; // Restituisce true se l'email esiste già per un altro utente, altrimenti false
                 }
             }
         } catch (SQLException e) {
