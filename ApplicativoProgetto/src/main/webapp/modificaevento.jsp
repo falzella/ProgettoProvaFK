@@ -1,10 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="HTMLelements.jsp"%>
 <%@include file="getidevento.jsp"%>
-<%@page import="javaDB.Utente"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.sql.SQLException"%>
-
 
 <%
     Evento evento = conn.getEventoFromHost(id_evento);
@@ -25,7 +21,7 @@
 <div class="homepage-flow">
     <div class="ce-block">
         <div class="ce-input-section">
-            <form action="registramodificheevento.jsp" method="POST" class="ce-form">
+            <form action="registramodificheevento.jsp?IdEvento=<%=id_evento%>" method="POST" class="ce-form">
                 <div class="ce-title-block">MODIFICA IL TUO EVENTO!</div>
                 <div class="ce-column-division-block">
                     <div class="ce-half-section">
