@@ -1190,3 +1190,26 @@ header {
     color: var(--kami-red);
     background-color: var(--soft-red);
 }
+
+/* lista inviti */
+.il-button {
+    height: 80%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 10px;
+    border-radius: 15px;
+    border: 2px solid black;
+    background-color: black;
+    font-family: inherit;
+    font-size: 20px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.il-button:hover {
+    color: white;
+    border: 2px solid red;
+    background-color: red;
+}

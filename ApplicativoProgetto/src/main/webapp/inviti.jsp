@@ -146,9 +146,9 @@
                 <%=evento.getNome()%>
             </div>
             <div class="ul-buttons-space">
-                <div class="evd-button" onclick="redirectToDettaglio('<%=evento.getId_evento()%>')">dettagli</div>
-                <div class="evd-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', true)">✔</div>
-                <div class="evd-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', false)">X</div>
+                <div class="il-button" onclick="redirectToDettaglio('<%=evento.getId_evento()%>')">dettagli</div>
+                <div class="il-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', true)">✔</div>
+                <div class="il-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', false)">X</div>
             </div>
         </div>
     </div>
