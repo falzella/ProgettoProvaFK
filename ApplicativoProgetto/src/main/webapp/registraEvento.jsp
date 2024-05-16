@@ -1,8 +1,10 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="javaDB.Evento"%>
 <%@include file="connessione.jsp"%>
 <%@include file="getidhost.jsp"%>
-
+<%@page import="java.io.File"%>
+<%@page import="java.nio.file.Paths"%>
+<%@page import="javax.servlet.annotation.MultipartConfig"%>
+<%@page import="javax.servlet.http.Part"%>
 
 <%
     String nome = request.getParameter("nome");
@@ -36,6 +38,21 @@
             if(eventoCreato == null){
                 response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
             }else{
+
+                String mediaFileName = "";
+                Part mediaPart = request.getPart("media");
+                if (mediaPart != null && mediaPart.getSize() > 0) {
+                    mediaFileName = Paths.get(mediaPart.getSubmittedFileName()).getFileName().toString();
+                    // Salva il file sul server
+                    String mediaUploadDirectory = request.getServletContext().getRealPath("/") + "imagetree/eventspic/" + eventoCreato.getIdHost();
+                    File mediaUploadPath = new File(mediaUploadDirectory);
+                    if (!mediaUploadPath.exists()) {
+                        mediaUploadPath.mkdirs();
+                    }
+                    String mediaFilePath = mediaUploadDirectory + File.separator + "1.png"; // Rinomina il file come 1.png
+                    mediaPart.write(mediaFilePath);
+                }
+
                 if(tipo.equals("pubblico")){
                     response.sendRedirect("dettaglievento.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Evento registrato con successo!");
                 }else{

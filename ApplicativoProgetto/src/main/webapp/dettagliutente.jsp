@@ -87,9 +87,13 @@
           </div>
           <div class="ud-straight-line margin-bottom-5p"></div>
           <div class="ud-buttons-block">
-            <% if(!(conn.checkAmicizia(id_host, friend.getId_utente()) || conn.checkRichiesta(id_host, friend.getId_utente()))){%>
+            <%if(!id_host.equals(friend.getId_utente())){
+              if(!(conn.checkAmicizia(id_host, friend.getId_utente()) || conn.checkRichiesta(id_host, friend.getId_utente()))){%>
             <div class="evd-button" onclick="inviaRichiesta('<%=friend.getId_utente()%>')">Richiedi amicizia</div>
-            <%}%>
+            <%}
+            }else{%>
+            <div class="evd-button">Modifica Dati</div>
+              <%}%>
           </div>
         </div>
       </div>

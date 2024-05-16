@@ -65,14 +65,17 @@ window.onload = function() {
 function switchMode() {
     var lightmodeCSS = document.getElementById("lightmodeCSS");
     var darkmodeCSS = document.getElementById("darkmodeCSS");
+    var button = document.getElementById("darkmode-switch");
 
     if (lightmodeCSS.disabled) {
         lightmodeCSS.disabled = false;
         darkmodeCSS.disabled = true;
+        button.innerHTML = "darkmode";
         document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     } else {
         lightmodeCSS.disabled = true;
         darkmodeCSS.disabled = false;
+        button.innerHTML = "lightmode";
         document.cookie = "mode=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     }
 }

@@ -339,7 +339,6 @@ public class ClassiDB {
 
     public boolean checkAmicizia(String idUtente1, String idUtente2) {
         try {
-            if(!idUtente1.equals(idUtente2)){
                 String sql = "SELECT COUNT(*) AS count FROM amicizieutenti WHERE (Id_Utente1 = ? AND Id_Utente2 = ?) OR (Id_Utente1 = ? AND Id_Utente2 = ?)";
 
                 try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
@@ -355,7 +354,6 @@ public class ClassiDB {
                         return count > 0;
                     }
                 }
-            }
 
         } catch (SQLException e) {
             e.printStackTrace();
