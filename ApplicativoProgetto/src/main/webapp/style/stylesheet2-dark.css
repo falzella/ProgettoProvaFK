@@ -1308,3 +1308,45 @@ header {
     width: 90%;
     height: 90%;
 }
+
+/* modifica profilo block */
+.mp-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mp-image-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.mp-profilepic-big {
+    width: 400px;
+    height: 400px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mp-profilepic-big img{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.mp-input-container {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
