@@ -52,6 +52,45 @@ function inviaInvito(id_evento, id_invitato) {
     window.location.href = 'inviainvito.jsp?idEvento=' + id_evento + '&idInvitato=' + id_invitato;
 }
 
+function resettaSearch() {
+    document.querySelector('.search-box-new input[type="text"]').value = '';
+    document.querySelector('.search-box-new input[type="text"]').placeholder = 'search in KAMI!';
+}
+
+function usaSearch() {
+    var searchText = document.getElementById("searchInput").value.toLowerCase();
+
+    if (searchText.trim() === "") {
+        showAllEvents();
+        return;
+    }
+
+    var eventBlocks = document.getElementsByClassName("event-block");
+    for (var i = 0; i < eventBlocks.length; i++) {
+        eventBlocks[i].classList.remove("visible");
+        eventBlocks[i].classList.add("hidden");
+    }
+
+    var eventDescriptions = document.getElementsByClassName("evf-name");
+    for (var z = 0; z < eventDescriptions.length; z++) {
+        var description = eventDescriptions[z].innerText.toLowerCase();
+        if (description.includes(searchText)) {
+            eventDescriptions[z].closest(".event-block").classList.remove("hidden");
+            eventDescriptions[z].closest(".event-block").classList.add("visible");
+        }
+    }
+}
+
+function showAllEvents() {
+    var eventBlocks = document.getElementsByClassName("event-block");
+    for (var i = 0; i < eventBlocks.length; i++) {
+        eventBlocks[i].classList.remove("hidden");
+        eventBlocks[i].classList.add("visible");
+    }
+}
+
+
+
 window.onload = function() {
     var eventBlocks = document.querySelectorAll('.event-block');
     eventBlocks.forEach(function(block) {

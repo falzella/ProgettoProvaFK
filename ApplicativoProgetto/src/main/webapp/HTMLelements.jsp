@@ -19,11 +19,11 @@
 
         <div class="search-space">
             <div class="search-box-new">
-                <input type="text" placeholder="search in KAMI!">
+                <input type="text" placeholder="search in KAMI!" id="searchInput">
                 <div class="search-box-new-img-container">
-                    <img src="images/icons/cancel-icon.png" height="15px" width="15px">
+                    <img src="images/icons/cancel-icon.png" onclick="resettaSearch()" height="15px" width="15px">
                     <span style="min-width: 5px"></span>
-                    <img src="images/icons/search-icon.png" height="17px" width="17px">
+                    <img src="images/icons/search-icon.png" onclick="usaSearch()" height="17px" width="17px">
                 </div>
             </div>
         </div>

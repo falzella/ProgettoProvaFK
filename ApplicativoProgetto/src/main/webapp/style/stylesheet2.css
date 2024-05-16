@@ -486,6 +486,10 @@ header {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 /* event feed components */
 .evf-profilepic-space {
     width: 5%;

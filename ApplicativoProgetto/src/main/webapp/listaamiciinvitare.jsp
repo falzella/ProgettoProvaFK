@@ -26,6 +26,7 @@
   <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 
+<body class="homepage-body">
 <div class="homepage-flow">
   <%for (Utente utente : amicidainvitareList) { %>
   <div class="ul-user-block">

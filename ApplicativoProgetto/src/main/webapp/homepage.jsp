@@ -25,7 +25,7 @@
 <body class="homepage-body">
     <div class="homepage-flow">
         <%for (EventoFeed eventoFeed : feed) { %>
-            <div class="event-block" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
+            <div class="event-block visible" onclick="redirectToDettaglio('<%= eventoFeed.GetEvento().getId_evento() %>')">
                 <div class="evf-event-details">
                     <div class="evf-profilepic-space">
                         <div class="evf-profilepic" onclick=RedirectToDettagliUtente('<%=eventoFeed.GetHost()%>')>

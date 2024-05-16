@@ -215,7 +215,32 @@ public class ClassiDB {
             e.printStackTrace();
             return false;
         }
+        return true;
+    }
 
+    public boolean modificaEvento(Evento evento, String idEvento) {
+        try {
+            String sql = "UPDATE eventi SET Nome = ?, Luogo = ?, Indirizzo = ?, Citta = ?, Data = ?, Ora = ?, Informazioni_Luogo = ?, Descrizione_Evento = ?, Tipo = ?, Id_Host = ? WHERE ID_Evento = ?;";
+
+            try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+                preparedStatement.setString(1, evento.getNome());
+                preparedStatement.setString(2, evento.getLuogo());
+                preparedStatement.setString(3, evento.getIndirizzo());
+                preparedStatement.setString(4, evento.getCitta());
+                preparedStatement.setString(5, evento.getData());
+                preparedStatement.setString(6, evento.getOra());
+                preparedStatement.setString(7, evento.getInformazioniLuogo());
+                preparedStatement.setString(8, evento.getDescrizione());
+                preparedStatement.setString(9, evento.getTipo());
+                preparedStatement.setString(10, evento.getIdHost());
+                preparedStatement.setString(11, idEvento);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
         return true;
     }
 
