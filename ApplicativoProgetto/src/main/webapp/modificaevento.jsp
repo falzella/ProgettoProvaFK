@@ -8,6 +8,17 @@
     {
         response.sendRedirect("homepage.jsp?messaggio=Non puoi modificare un evento che non hai creato!");
     }
+
+    if(request.getParameter("messaggio")!=null){
+        String messaggio = request.getParameter("messaggio").toString();
+        if(messaggio.equals("Modifiche effettuate con successo!")){
+            if(evento.getTipo().equals("privato")){
+                response.sendRedirect("listaamiciinvitare.jsp?IdEvento=" + evento.getId_evento() + "&messaggio=Invita i tuoi amici!");
+            }
+        }
+    }
+
+
 %>
 
 <html>
