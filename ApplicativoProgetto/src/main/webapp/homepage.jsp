@@ -4,6 +4,14 @@
 <%@page import="java.util.ArrayList"%>
 
 <%
+    String message = request.getParameter("messaggio");
+    if(!(message == null || message.isEmpty())){
+        out.println("<script>alert('"+message+"');</script>");
+    }
+%>
+
+
+<%
     ArrayList<EventoFeed> feed = conn.GetEventFeed(id_host);
 %>
 

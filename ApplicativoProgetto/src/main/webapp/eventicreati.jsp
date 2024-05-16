@@ -14,14 +14,14 @@
         throw new RuntimeException(e);
     }
 
-    if(eventoList.isEmpty()){%>
-    Non hai creato nessun evento!
-<%}else{%>
+    if(eventoList.isEmpty()){
+    response.sendRedirect("homepage.jsp?messaggio=Non hai creato nessun evento");
+    } else{%>
 
 
 <html>
 <head>
-    <title>homepage</title>
+    <title>eventicreati</title>
     <link href="style/stylesheet2.css" rel="stylesheet" type="text/css" id="lightmodeCSS">
     <link href="style/stylesheet2-dark.css" rel="stylesheet" type="text/css" id="darkmodeCSS" disabled>
     <script src="javascript/script.js" type="text/javascript"></script>

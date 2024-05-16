@@ -13,9 +13,9 @@
         throw new RuntimeException(e);
     }
 
-    if(eventoList.isEmpty()){%>
-Non hai creato nessun evento!
-<%}else{%>
+    if(eventoList.isEmpty()){
+        response.sendRedirect("homepage.jsp?messaggio=Non hai ancora partecipato a nessun evento");
+}else{%>
 
 
 <html>

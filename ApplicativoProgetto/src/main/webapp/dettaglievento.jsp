@@ -214,7 +214,7 @@
                         <%}else{
                             if(!conn.checkPartecipazione(id_host,evento.getId_evento())){
                         %>
-                        <div class="evd-button" onclick="inviaPartecipazione('<%=evento.getId_evento()%>')">partecipa</div>
+                        <div class="evd-button" onclick="eseguiInvito('<%=evento.getId_evento()%>', true)">partecipa</div>
                         <%}else{
                             %><div class="evd-button">partecipi a questo evento!</div><%}%>
                             <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
