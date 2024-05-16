@@ -3,3 +3,11 @@ COSE DA FARE:
 - whiteboardlong è troppo lunga (820px -> 750px) ma è meglio sostituire i px con le percentuali
 - mettere tutto il CSS in un solo file
 - chiedere al pino per il salvataggio di MIME
+
+
+ULTIME COSE
+- immagini e file
+- modifica e crea utente
+- searchbar
+- sidebar con active navigation
+- profile info in alto a destra
