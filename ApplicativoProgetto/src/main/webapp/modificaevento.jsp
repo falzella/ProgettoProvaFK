@@ -27,7 +27,7 @@
     <div class="ce-block">
         <div class="ce-input-section">
             <form action="registraEvento.jsp" method="POST" class="ce-form">
-                <div class="ce-title-block">CREA IL NUOVO EVENTO!</div>
+                <div class="ce-title-block">MODIFICA IL TUO EVENTO!</div>
                 <div class="ce-column-division-block">
                     <div class="ce-half-section">
                         <div class="ce-input">
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="ce-button-section">
-                    <input type="submit" value="CREA EVENTO" class="evd-button">
+                    <input type="submit" value="MODIFICA EVENTO" class="evd-button">
                 </div>
             </form>
         </div>

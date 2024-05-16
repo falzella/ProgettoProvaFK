@@ -191,7 +191,7 @@
                         if(evento.getTipo().equals("pubblico")){
                             if(id_host.equals(evento.getIdHost())){
                     %>
-                        <div class="evd-button">modifica</div>
+                        <div class="evd-button" onclick="redirectToModificaEvento('<%=evento.getId_evento()%>')">modifica</div>
                         <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
                         <%}else{
                                 if(!conn.checkPartecipazione(id_host,evento.getId_evento())){
@@ -209,7 +209,7 @@
                             //pulsanti diversi per evento privato
                             // <!-- se modifica, invia a modifica evento (simile a creaevento), dove si controlla utenza per ID evento -->
                         if(id_host.equals(evento.getIdHost())){%>
-                            <div class="evd-button">modifica</div>
+                            <div class="evd-button" onclick="redirectToModificaEvento('<%=evento.getId_evento()%>')">modifica</div>
                             <div class="evd-button" onclick="redirectToListaPartecipazione('<%=evento.getId_evento()%>')">visualizza partecipanti</div>
                         <%}else{
                             if(!conn.checkPartecipazione(id_host,evento.getId_evento())){

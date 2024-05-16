@@ -24,6 +24,10 @@ function RedirectToDettagliUtente(username){
     window.location.href = 'dettagliutente.jsp?UserFriend=' + username;
 }
 
+function redirectToModificaEvento(eventoId) {
+    window.location.href = 'modificaevento.jsp?IdEvento=' + eventoId;
+}
+
 function inviaRichiesta(id_friend) {
     window.location.href = 'inviarichiesta.jsp?id_friend=' + id_friend;
 }
