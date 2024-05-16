@@ -1,6 +1,15 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="HTMLelements.jsp"%>
-<%@include file="getidevento.jsp"%>
+
+<%String id_evento = request.getParameter("IdEvento");
+if(request.getParameter("messaggio")!=null){
+    String messaggio = request.getParameter("messaggio").toString();
+    if(messaggio.equals("Immagine Caricata Correttamente!")){
+        response.sendRedirect(request.getRequestURI()); // Esegue il reload della pagina
+    }
+}
+
+%>
 
 
 <html>
