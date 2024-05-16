@@ -13,8 +13,6 @@
     if(user!=null){
         id_host = user.getId_utente();
     }
-
-    id_evento="7";
     %>
 
 <form method="post" action="fileuploadservlet" enctype="multipart/form-data">

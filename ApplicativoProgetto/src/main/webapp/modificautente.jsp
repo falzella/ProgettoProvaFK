@@ -82,12 +82,6 @@
                         </div>
                         <div class="ce-input">
                             <div class="ce-input-label">
-                                <img src="images/icons/images.png">
-                            </div>
-                            <input type="file" name="media" class="ce-input-box">
-                        </div>
-                        <div class="ce-input">
-                            <div class="ce-input-label">
                                 <img src="images/icons/cake.png">
                             </div>
                             <input type="date" name="data" value="<%=friend.getData_nascita()%>" class="ce-input-box" required>
@@ -96,6 +90,8 @@
                 </div>
                 <div class="ce-button-section">
                     <input type="submit" value="MODIFICA PROFILO" class="evd-button">
+                    <div class="space"></div>
+                    <input type="button" value="IMMAGINE PROFILO" class="evd-button" onclick="redirectToAddImage(null)">
                 </div>
             </form>
         </div>

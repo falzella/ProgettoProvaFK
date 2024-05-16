@@ -28,7 +28,6 @@
       <version>10.1.15</version>
     </dependency>
 
-
   </dependencies>
   <build>
     <finalName>ApplicativoProgetto</finalName>

@@ -32,6 +32,10 @@ function redirectToModificaUtente(username){
     window.location.href = 'modificautente.jsp?UserFriend=' + username;
 }
 
+function redirectToAddImage(idEvento){
+    window.location.href = 'addimage.jsp?IdEvento=' + idEvento;
+}
+
 function inviaRichiesta(id_friend) {
     window.location.href = 'inviarichiesta.jsp?id_friend=' + id_friend;
 }
