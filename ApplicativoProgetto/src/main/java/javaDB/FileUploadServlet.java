@@ -20,39 +20,47 @@ public class FileUploadServlet extends HttpServlet {
         // Ottieni il nome del file caricato
         Part filePart = request.getPart("file");
         String fileName = getFileName(filePart);
+        if(fileName != null){
+            if(!fileName.isEmpty()){
+                // Ottieni il percorso del file di destinazione
+                String filePath = request.getParameter("filePath");
 
-        // Ottieni il percorso del file di destinazione
-        String filePath = request.getParameter("filePath");
+                // Ottieni il nome del file host
+                String fileNamehost = request.getParameter("filehost");
 
-        // Ottieni il nome del file host
-        String fileNamehost = request.getParameter("filehost");
+                // Ottieni il nome del file evento
+                String fileNameev = request.getParameter("fileev");
 
-        // Ottieni il nome del file evento
-        String fileNameev = request.getParameter("fileev");
+                // Componi il percorso del file di destinazione
+                String destinationPath = filePath;
+                if (!fileNameev.equals("null")) {
+                    destinationPath += ("eventspic/" + fileNameev + "/");
+                    fileName = "1.png";
+                    File directory = new File(destinationPath);
+                    if (!directory.exists()) {
+                        directory.mkdirs(); // Crea tutte le directory nel percorso specificato
+                    }
 
-        // Componi il percorso del file di destinazione
-        String destinationPath = filePath;
-        if (!fileNameev.equals("null")) {
-            destinationPath += ("eventspic/" + fileNameev + "/");
-            fileName = "1.png";
-            File directory = new File(destinationPath);
-            if (!directory.exists()) {
-                directory.mkdirs(); // Crea tutte le directory nel percorso specificato
+                } else {
+                    destinationPath += ("profilepic/");
+                    fileName = fileNamehost + ".png";
+
+
+                }
+
+                // Scrivi il file nella directory di destinazione
+                filePart.write(destinationPath + fileName);
+
+                // Invia una risposta al client
+                response.sendRedirect("addimage.jsp?messaggio=Immagine Caricata Correttamente!");
+            }else{
+                response.sendRedirect("addimage.jsp?messaggio=Seleziona Un Immagine!");
             }
-
-        } else {
-            destinationPath += ("profilepic/");
-            fileName = fileNamehost + ".png";
-
-
+        }else{
+            response.sendRedirect("addimage.jsp?messaggio=Seleziona Un Immagine!");
         }
-
-        // Scrivi il file nella directory di destinazione
-        filePart.write(destinationPath + fileName);
-
-        // Invia una risposta al client
-        response.sendRedirect("addimage.jsp?messaggio=Immagine Caricata Correttamente!");
     }
+
 
     // Metodo ausiliario per ottenere il nome del file da un Part
     private String getFileName(Part part) {
