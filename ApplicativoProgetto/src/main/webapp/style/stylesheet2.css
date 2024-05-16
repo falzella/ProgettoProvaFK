@@ -1224,3 +1224,7 @@ header {
     border: 2px solid white;
     background-color: var(--not-so-soft-red);
 }
+
+.hidden {
+    display: none;
+}

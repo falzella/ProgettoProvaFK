@@ -3,9 +3,6 @@
 <%@include file="getidhost.jsp"%>
 <%@page import="java.io.File"%>
 <%@page import="java.nio.file.Paths"%>
-<%@page import="javax.servlet.annotation.MultipartConfig"%>
-<%@page import="javax.servlet.http.Part"%>
-
 <%
     String nome = request.getParameter("nome");
     String luogo = request.getParameter("luogo");
@@ -27,7 +24,7 @@
 
     // Validazione dei campi
     if (nome == null || luogo == null || indirizzo == null || citta == null || data == null || ora == null || informazioniLuogo == null || descrizione == null || tipo == null) {
-        response.sendRedirect("provacreaevento.jsp?messaggio=Complete all the fields below");
+        response.sendRedirect("creaevento2.jsp?messaggio=Complete all the fields below");
     } else {
         // Creazione di un nuovo oggetto evento
         Evento evento = new Evento(nome, luogo, indirizzo, citta, data, ora, informazioniLuogo, descrizione, tipo, id_host);
@@ -36,10 +33,10 @@
         if (conn.inserisciEvento(evento)) {
             Evento eventoCreato = conn.getLastEventoHost(id_host);
             if(eventoCreato == null){
-                response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
+                response.sendRedirect("creaevento2.jsp?messaggio=Errore durante la registrazione dell'evento");
             }else{
 
-                String mediaFileName = "";
+                /*String mediaFileName = "";
                 Part mediaPart = request.getPart("media");
                 if (mediaPart != null && mediaPart.getSize() > 0) {
                     mediaFileName = Paths.get(mediaPart.getSubmittedFileName()).getFileName().toString();
@@ -51,7 +48,7 @@
                     }
                     String mediaFilePath = mediaUploadDirectory + File.separator + "1.png"; // Rinomina il file come 1.png
                     mediaPart.write(mediaFilePath);
-                }
+                }*/
 
                 if(tipo.equals("pubblico")){
                     response.sendRedirect("dettaglievento.jsp?IdEvento=" + eventoCreato.getId_evento() + "&messaggio=Evento registrato con successo!");
@@ -60,7 +57,7 @@
                 }
             }
         } else {
-            response.sendRedirect("provacreaevento.jsp?messaggio=Errore durante la registrazione dell'evento");
+            response.sendRedirect("creaevento2.jsp?messaggio=Errore durante la registrazione dell'evento");
         }
     }
 %>
