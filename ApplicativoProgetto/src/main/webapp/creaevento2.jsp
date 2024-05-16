@@ -168,7 +168,7 @@
                             <div class="ce-input-label">
                                 <img src="images/icons/images.png">
                             </div>
-                            <input type="file" name="media" class="ce-input-box">
+                            <input type="file" name="media" class="ce-input-box" multiple>
                         </div>
                     </div>
                 </div>
