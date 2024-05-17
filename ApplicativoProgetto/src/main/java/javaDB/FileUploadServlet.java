@@ -52,7 +52,7 @@ public class FileUploadServlet extends HttpServlet {
                 filePart.write(destinationPath + fileName);
 
                 // Invia una risposta al client
-                response.sendRedirect("addimage.jsp?messaggio=Immagine Caricata Correttamente!");
+                response.sendRedirect("addimage.jsp?messaggio=Immagine Caricata Correttamente!&IdEvento="+fileNameev);
             }else{
                 response.sendRedirect("addimage.jsp?messaggio=Seleziona Un Immagine!");
             }
