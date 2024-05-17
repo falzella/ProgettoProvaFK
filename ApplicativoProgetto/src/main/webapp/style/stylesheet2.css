@@ -1184,6 +1184,7 @@ header {
     border-color: transparent;
     border-radius: 15px;
     width: 95%;
+    margin-bottom: 10px;
     min-height: 100px;
     display: flex;
     justify-content: center;

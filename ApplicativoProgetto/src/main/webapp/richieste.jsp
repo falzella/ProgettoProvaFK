@@ -48,9 +48,9 @@
                     <%=utente.getUsername()%>
                 </div>
                 <div class="ul-buttons-space">
-                    <div class="ul-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
-                    <div class="ul-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">✔</div>
-                    <div class="ul-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">X</div>
+                    <div class="il-button" onclick="RedirectToDettagliUtente('<%=utente.getUsername()%>')">dettagli</div>
+                    <div class="il-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', true)">✔</div>
+                    <div class="il-button" onclick="eseguiRichiesta('<%=utente.getId_utente()%>', false)">X</div>
                 </div>
             </div>
         </div>
