@@ -150,7 +150,9 @@
                     } else {
                         // Se il file specifico non esiste, mostra un'immagine predefinita
                     %>
-                    <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
+                    <figure class="card">
+                        <img src="imagetree/eventspic/default.png" alt="i">
+                    </figure>
                     <%
                             }
                         }
