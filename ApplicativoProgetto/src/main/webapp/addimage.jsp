@@ -1,15 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="HTMLelements.jsp"%>
 
-<%String id_evento = request.getParameter("IdEvento");
-if(request.getParameter("messaggio")!=null){
-    String messaggio = request.getParameter("messaggio").toString();
-    if(messaggio.equals("Immagine Caricata Correttamente!")){
-        response.sendRedirect(request.getRequestURI()); // Esegue il reload della pagina
-    }
-}
-%>
-
 <html>
 <head>
     <title>Modifica Profilo</title>
@@ -18,6 +9,31 @@ if(request.getParameter("messaggio")!=null){
     <script src="javascript/script.js" type="text/javascript"></script>
 </head>
 <body class="homepage-body">
+
+
+<%
+    String id_evento = "null";
+    if(request.getParameter("IdEvento")!=null){
+        id_evento = request.getParameter("IdEvento");
+    }
+
+    if(request.getParameter("messaggio")!=null) {
+        String messaggio = request.getParameter("messaggio").toString();
+        if (messaggio.equals("Immagine Caricata Correttamente!")) {
+            // Ottiene l'URI corrente
+            String currentUri = request.getRequestURI();
+
+            // Aggiunge il parametro idEvento=null alla query string
+            String newUri = currentUri + "?IdEvento=" + id_evento;
+
+            // Esegue il redirect alla nuova URI
+            response.sendRedirect(newUri);
+
+        }
+    }
+%>
+
+
 <div class="homepage-flow">
     <div class="ce-block">
         <div class="ce-input-section">
@@ -27,6 +43,8 @@ if(request.getParameter("messaggio")!=null){
                     <div class="mp-profilepic-big">
                         <div class="mu-profilepic-big-img-box">
                             <%
+                                if(id_evento.equals("null")){
+
                                 String imagePfpOld = "imagetree/profilepic/" + id_host + ".png";
                                 java.io.File imageFilePfpOld = new java.io.File(application.getRealPath("/") + imagePfpOld);
 
@@ -37,9 +55,27 @@ if(request.getParameter("messaggio")!=null){
                             } else {
                             %>
                             <img src="imagetree/profilepic/default.png" alt="img">
-                            <%
-                                }
+                            <%}
+                                }else{
+                                String eventFolderPath ="imagetree/eventspic/" + id_evento;
+                                java.io.File eventFolder = new java.io.File(application.getRealPath("/") + eventFolderPath);
+
+                                if (!eventFolder.exists()) {
                             %>
+                                <img src="imagetree/eventspic/default.png" alt="i">
+                            <%
+                            } else {
+                                String EventimagePath = eventFolderPath + "/1.png"; // Percorso dell'immagine desiderata
+                                java.io.File EventimgFile = new java.io.File(application.getRealPath("/") + EventimagePath);
+
+                                if (EventimgFile.exists()) {
+                            %>
+                                <img src="<%= EventimagePath %>">
+                                <%}else {%>
+                                    <img src="imagetree/eventspic/default.png" alt="i" width="400" height="200">
+                                     <% } %>
+                                    <%}%>
+                                <%}%>
                         </div>
                     </div>
                     <div class="mp-input-container">
