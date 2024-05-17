@@ -24,7 +24,6 @@
     boolean partecipazione = request.getParameter("partecipazione") != null;
     if(partecipazione){%>
 <script>
-    alert("Adesso partecipi a questo evento")
     RedirectTo("dettaglievento.jsp?IdEvento=<%=evento.getId_evento()%>")
 </script>
 <%}%>

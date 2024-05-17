@@ -51,6 +51,18 @@
             </div>
         </div>
     </div>
+<!--
+    <div id="alert-container" class="alert-container">
+        <div class="alert-box">
+            <div id="alert-box-content" class="alert-box-content">
+                <div id="alert-box-title" class="alert-box-title">title</div>
+                <div id="alert-box-text" class="alert-box-text">text</div>
+                <div id="alert-box-buttons" class="alert-box-buttons">
+                    <div id="alert-box-button-ok" class="alert-box-button" onclick="closeAlertBox()">ok</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </header>
 
 <div>

@@ -328,6 +328,30 @@ public class ClassiDB {
         return utentiList;
     }
 
+    public ArrayList<Utente> GetListaDaInvitare(String IdHost, String IdEvento) throws SQLException {
+        ArrayList<Utente> utentiList = new ArrayList<>();
+        String sql = "SELECT utenti.*\n" +
+                "FROM amicizieutenti\n" +
+                "JOIN utenti ON (amicizieutenti.Id_Utente1 = utenti.Id_Utente OR amicizieutenti.Id_Utente2 = utenti.Id_Utente)\n" +
+                "WHERE (amicizieutenti.Id_Utente1 = ? OR amicizieutenti.Id_Utente2 = ?) AND utenti.Id_Utente <> ?\n" +
+                "AND (utenti.Id_Utente NOT IN (SELECT ID_Invitato FROM inviti WHERE ID_Evento = ?)\n" +
+                "AND utenti.Id_Utente NOT IN (SELECT ID_Utente FROM partecipazioni WHERE ID_Evento = ?));";
+
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, IdHost);
+            preparedStatement.setString(2, IdHost);
+            preparedStatement.setString(3, IdHost);
+            preparedStatement.setString(4, IdEvento);
+            preparedStatement.setString(5, IdEvento);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Utente utente = getUtenteFromResultSet(rs);
+                utentiList.add(utente);
+            }
+        }
+        return utentiList;
+    }
+
     public ArrayList<Utente> GetSuggestFeed(String IdHost) throws SQLException {
         ArrayList<Utente> utentiList = new ArrayList<>();
         String sql = "SELECT *\n" +
@@ -627,11 +651,14 @@ public class ClassiDB {
 
     public boolean mandaInvito(String id_host, String id_evento) {
         try {
-            String sql = "INSERT INTO inviti (ID_Invitato, ID_Evento) VALUES (?, ?)";
+            String sql = "INSERT INTO inviti (ID_Invitato, ID_Evento) VALUES (?, ?) WHERE ID_Invitato <> ? AND ID_Evento <> ? AND ID_Invitato NOT IN (SELECT ID_Utente FROM partecipazioni WHERE ID_Evento = ?)";
 
             try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
                 preparedStatement.setString(1, id_host);
                 preparedStatement.setString(2, id_evento);
+                preparedStatement.setString(3, id_host);
+                preparedStatement.setString(4, id_evento);
+                preparedStatement.setString(5, id_evento);
 
                 preparedStatement.executeUpdate();
             }

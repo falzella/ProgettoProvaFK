@@ -5,13 +5,8 @@
 
 <%
     String message = request.getParameter("messaggio");
-    if(!(message == null || message.isEmpty())){
-        out.println("<script>alert('"+message+"');</script>");
-    }
-%>
+    // implementazione di alert per messaggio
 
-
-<%
     ArrayList<EventoFeed> feed = conn.GetEventFeed(id_host);
 %>
 

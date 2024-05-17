@@ -30,7 +30,7 @@
         <div class="ul-user-block">
             <div class="ul-user-container">
                 <div class="ul-profilepic-space">
-                    <div class="ul-profilepic" onclick="redirectToDettaglio('<%= utente.getId_utente() %>')">
+                    <div class="ul-profilepic" onclick="RedirectToDettagliUtente('<%= utente.getUsername() %>')">
                         <%
                             String imagePath = "imagetree/profilepic/" + utente.getId_utente()  + ".png"; // Percorso dell'immagine desiderata
                             java.io.File imgFile = new java.io.File(application.getRealPath("/") + imagePath);

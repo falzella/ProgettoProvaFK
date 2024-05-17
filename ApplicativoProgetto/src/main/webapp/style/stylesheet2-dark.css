@@ -1339,7 +1339,7 @@ header {
     justify-content: center;
     align-items: center;
 }
-.mp-profilepic-big img{
+.mp-profilepic-big img {
     width: 100%;
     height: 100%;
     border-radius: 25px;
@@ -1351,4 +1351,57 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* KAMI alert block */
+.alert-container {
+    width: 100%;
+    height: 85%;
+    z-index: 9999;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-box {
+    width: 500px;
+    height: 250px;
+    background-color: red;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-box-content {
+    width: 95%;
+    height: 95%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-box-title {
+    width: 100%;
+    height: 25%;
+    font-size: 30px;
+}
+
+.alert-box-text {
+    width: 100%;
+    height: 45%;
+    font-size: 25px;
+}
+
+.alert-box-buttons {
+    width: 100%;
+    height: 30%;
+    font-size: 20px;
+}
+
+.alert-box-button {
+
 }

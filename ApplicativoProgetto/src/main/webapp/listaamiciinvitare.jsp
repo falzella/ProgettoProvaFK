@@ -11,7 +11,7 @@
   Evento evento = conn.getEventoFromHost(id_evento);
   ArrayList<Utente> amicidainvitareList = null;
   try {
-    amicidainvitareList = conn.GetFriendFeed(id_host);
+    amicidainvitareList = conn.GetListaDaInvitare(id_host, id_evento);
   } catch (SQLException e) {
     throw new RuntimeException(e);
   }

@@ -6,7 +6,6 @@
 
 
 <%
-
     ArrayList<Evento> invitiList = null;
     try {
         invitiList = conn.getInviti(id_host);
@@ -57,31 +56,8 @@
             </div>
         </div>
     </div>
-    <br>
     <%}%>
 </div>
-
-
-<%
-    boolean esitoInv = request.getParameter("esitoInv") != null;
-    if(esitoInv){
-        String scelta = request.getParameter("scelta");
-        if(scelta.equals("true")){
-%>
-
-<script>
-    alert("Invito Accettato")
-</script>
-<%}else{
-
-%>
-<script>
-    alert("Invito Rifiutato")
-</script>
-<%}%>
-<%}%>
-
-
 </body>
 </html>
 

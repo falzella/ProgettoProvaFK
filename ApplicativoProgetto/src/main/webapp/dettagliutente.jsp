@@ -22,7 +22,6 @@
     boolean friendReq = request.getParameter("friendReq") != null;
     if(friendReq){%>
   <script>
-    alert("Richiesta inviata")
     RedirectTo("dettagliutente.jsp?UserFriend=<%=friend.getUsername()%>")
   </script>
 <%}%>
